@@ -137,9 +137,9 @@ function loginelamaso() { //fungsi pada bar
     w3_close();
 };
 
-function fn2lihatpassword() { // fungsi untuk melihat input password (dalam simbol atau teks biasa)
-    var x = document.getElementById("passwordlogin");
-    var label = document.getElementById("lihatpassword2");
+function fn2lihatpassword(id, labell) { // fungsi untuk melihat input password (dalam simbol atau teks biasa)
+    var x = document.getElementById(id);
+    var label = document.getElementById(labell);
     if (x.type === "password") {
         x.type = "text";
         label.innerHTML = "<i class='fa fa-eye-slash'></i> Sembunyikan Password"
