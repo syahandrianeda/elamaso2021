@@ -51,15 +51,16 @@
 
 <body>
     <!-- Top container -->
-    <div class="w3-bar w3-top w3-black w3-large" style="z-index:4">
-        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
-            onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+    <div class="w3-bar w3-top  w3-large w3-card-4" style="z-index:4;background-color: rgb(250, 234, 8)">
+        <button class="w3-bar-item w3-button w3-hover-black w3-hover-text-light-grey" onclick="w3_open();"><i
+                class="fa fa-bars"></i>  Menut</button>
         <span class="w3-bar-item w3-right">e-Lamaso</span>
     </div>
 
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
+    <nav class="w3-sidebar w3-card w3-collapse w3-animate-left tesbody" style="z-index:9;width:300px;" id="mySidebar">
+        <br>
         <!-- A. SIDEBAR-->
         <div class="w3-container w3-row">
             <!-- 1. Logo Sekolah -->
@@ -115,95 +116,83 @@
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
         title="close side menu" id="myOverlay">
     </div>
+    <div class="w3-main" style="margin-left:300px;margin-top:43px;background-color: rgb(248, 242, 242);" id="mainlogin">
+        <div class="w3-row-padding">
+            <div class="w3-third w3-center" style="height: 735px;">
+                <div class="w3-card-4 w3-margin" style="background-color: rgb(250, 234, 8)">
+                    <h4>Login sebagai Siswa</h4>
 
-
-    <div class="w3-main" style="margin-left:300px;margin-top:43px;" id="mainlogin">
-
-        <div class="w3-row">
-
-
-            <div class="w3-half w3-blue-gray w3-container w3-center" id="buatsiswa"
-                style="height:700px;background-image: url(/img/bgloginsiswa.jpeg); background-repeat: no-repeat;background-size: 100% 700px">
-                <h2 class="w3-orange">
-                    Login Sebagai Siswa
-                </h2>
-                <div class="w3-card w3-white animate w3-round-xxlarge "
-                    style=" background-image: linear-gradient(145deg, #b3ffb3, #ffffcc, #d9b3ff);">
+                </div>
+                <div class="w3-card-4 w3-margin w3-round-large" style="background-color: rgba(250, 234, 8, 0.5)">
                     <form name="flogin" id="flogin">
                         <div class="imgcontainer">
                             <br />
-                            <img src="/img/anaksd.png" style="width:90px;border:2px dotted blue;margin:auto"
-                                alt="login siswa lamaso" />
+                            <img src="/img/anaksd.png" style="width:90px;margin:auto" alt="login siswa lamaso" />
                             <br />
                             <label for="previewtoken">Token/Sandi:</label><br /><input type="text" id="previewtoken"
-                                class="w3-input w3-border w3-round-xxlarge w3-border-black w3-center"
-                                style="width:75%;margin:0 auto" />
+                                class="w3-input w3-border w3-round-xxlarge w3-center" style="width:75%;margin:0 auto" />
                             <br /><br />
 
                             <div id="ceksiswa"></div>
                         </div>
 
                     </form>
-                    <button id="mulaimulai" onclick="kliklamaso()"
-                        style="cursor:pointer;border:1px solid yellow;border-radius:15px;padding:5px;background-color:navy;color:yellow;margin:0px auto"
-                        title="klik Untuk Memulai">Ananda Login</button><br />
+                    <button id="mulaimulai" class="w3-button w3-yellow w3-round-large w3-card-4" onclick="kliklamaso()"
+                        title="klik Untuk Memulai">Login Siswa</button>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </div>
             </div>
-            <div class="w3-half w3-lime w3-container  w3-center" id="buatOT"
-                style="height:700px;background-image: url(/img/bgloginortu.jpeg); background-repeat: no-repeat;background-size: 100% 700px">
-                <h2 class="w3-pale-blue">
-                    Login Sebagai PTK
-                </h2>
-                <div class="w3-card w3-white animate w3-round-xxlarge"
-                    style=" background-image: linear-gradient(145deg, #d9b3ff , #ffffcc,#b3ffb3);">
-
-                    <form class="w3-card  w3-animate-zoom w3-round w3-round-xxlarge" name="frmlogin" id="frmlogin">
+            <div class="w3-third w3-center" style="height: 735px;">
+                <div class="w3-card-4 w3-margin" style="background-color: rgb(250, 234, 8)">
+                    <h4>Login sebagai PTK</h4>
+                </div>
+                <div class="w3-card-4 w3-margin w3-round-large" style="background-color: rgba(250, 234, 8, 0.5)">
+                    <form class="w3-animate-zoom w3-round w3-round-xxlarge" name="frmlogin" id="frmlogin"
+                        style="margin-bottom: 8px;">
                         <div class="imgcontainer">
                             <br />
-                            <img id="frmlogo" src="/img/PTK.png" style="width:90px;height:90px;border:2px dotted blue"
+                            <img id="frmlogo" src="/img/PTK.png" style="width:80px;height:75px;"
                                 alt="login sebagai guru elamaso" />
                             <div id="loaderform"></div>
 
                         </div>
                         <div class="container">
-                            <label for="namauser">User:</label><br />
+                            <label for="namauser">User:</label>
                             <input id="namauser" name="namauser" type="text"
-                                class="w3-input w3-center w3-border w3-round-xxlarge w3-border-black" />
+                                class="w3-input w3-center w3-border w3-round-xxlarge" />
                             <!-- style=" width:100%;height:30px;border-radius:5px" /><br /><br /> -->
                             <label for="passwordlogin">Password:</label><br />
                             <input name="passwordlogin" id="passwordlogin" type="password"
-                                class="w3-input w3-center w3-border w3-round-xxlarge w3-border-black" />
+                                class="w3-input w3-center w3-border w3-round-xxlarge " />
 
                             <label id="lihatpassword2" for="checkboxlihat2password"><i class="fa fa-eye"></i> Lihat
                                 Password</label>
                             <input type="checkbox" onclick="fn2lihatpassword('passwordlogin','lihatpassword2')"
                                 id="checkboxlihat2password" style="display: none;">
                         </div>
-                    </form><br />
-                    <button type="button" onclick="gurulogin()" id="loginpertama"
-                        style="cursor:pointer;border:1px solid yellow;border-radius:15px;padding:5px;background-color:navy;color:yellow;margin:0px auto;width:80%"><i
-                            class="fa fa-check"></i>
-                        Login</button>
+                    </form>
+                    <button type="button" onclick="gurulogin()" class="w3-button w3-yellow w3-round-large w3-card-4"
+                        id="loginpertama">Login Guru</button>
+                    <br />
+                    <br />
                 </div>
             </div>
-        </div>
-        <div class="w3-row">
-            <div class="w3-main w3-sand w3-container w3-center w3-round-xxlarge"
-                style="height:700px;background-image: url(/img/bgloginguru.jpeg);background-repeat: no-repeat;background-size: 100% 700px">
-                <h2 class="w3-pale-red">
-                    Login Sebagai Orang Tua
-                </h2>
-                <div class="w3-card w3-white animate w3-round-xxlarge w3-padding"
-                    style=" background-image: linear-gradient(145deg, #d9b3ff , #ffffcc,#b3ffb3)">
+            <div class="w3-third  w3-center" style="height: 735px;">
+                <div class="w3-card-4 w3-margin" style="background-color: rgb(250, 234, 8)">
+                    <h5>Login sebagai Orang Tua</h5>
+                </div>
+                <div class="w3-card-4 w3-margin w3-round-large" style="background-color: rgba(250, 234, 8, 0.5)">
                     <form name="flogin1" id="flogin1">
                         <div class="imgcontainer">
                             <br />
-                            <img src="/img/Gambar Orangtua copy.png"
-                                style="height:90px;border:2px dotted blue;margin:auto"
+                            <img src="/img/Gambar Orangtua copy.png" style="height:90px;margin:auto"
                                 alt="login orang tua di lamaso" />
                             <br />
                             <label for="previewtokenn">Token/Sandi:</label><br /><input type="text" id="previewtokenn"
-                                class="w3-input w3-border w3-round-xxlarge w3-border-black w3-center"
+                                class="w3-input w3-border w3-round-xxlarge  w3-center"
                                 style="width:75%;margin:0 auto" />
                             <br /><br />
 
@@ -211,13 +200,18 @@
                         </div>
 
                     </form>
-                    <button id="mulaimulaiortu" onclick="loginot()"
-                        style="cursor:pointer;border:1px solid yellow;border-radius:15px;padding:5px;background-color:navy;color:yellow;margin:0px auto"
-                        title="klik Untuk Memulai">Ayah/Bunda Login</button><br />
+                    <button id="mulaimulaiortu" onclick="loginot()" class="w3-button w3-yellow w3-round-large w3-card-4"
+                        title="klik Untuk Memulai">Login Orang Tua</button>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+
                 </div>
             </div>
+
         </div>
-        <div class="w3-light-grey w3-container  w3-justify">
+        <div class="w3-light-grey w3-container  w3-justify w3-card-4">
             <h2>
                 Tentang e-Lamaso
             </h2>
@@ -256,26 +250,24 @@
             sengaja dipermudah. Tanpa harus memverifikasi ulang (kecuali saat mengganti profil pribadinya dan ini masih
             bisa diakses oleh admin).
         </div>
-
-
-
-
-
-
     </div>
 
 
 
 
-    <div id="loadingmodal" class="modal w3-black w3-opacity-min">
+
+
+    <div id="loadingmodal" class="modal w3-opacity-min">
         <i class="fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>
+
     </div>
 
 
 
-    <script src="/js/idsekolah.js"></script>
+    <script src="/script/idsekolah.js"></script>
     <!-- <script src="/script/main.js"></script> -->
-    <script src="https://cdn.jsdelivr.net/gh/syahandrianeda/elamaso2021/script/main.js?@latest"></script>
+    <script src="https://cdn.jsdelivr.net/gh/syahandrianeda/script@0.0.3/script.js"></script>
+    <!-- <script src="https://github.com/syahandrianeda/elamaso2021/blob/main/script/main.js"></script> -->
 
     <!-- <script src="/js/gsscript.js"></script>
     <script src="/js/waktu.js"></script> -->
