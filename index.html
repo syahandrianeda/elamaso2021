@@ -39,7 +39,7 @@
 
 
     <link rel="stylesheet" href="/css/firststyle.css">
-    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <link rel="manifest" href="/manifest.json">
     <!-- ios support-->
     <link rel="apple-touch-icon" href="/img/icons/pic96.png">
     <meta name="apple-mobile-web-app-status-bar" content="#ffffff">
@@ -53,7 +53,7 @@
     <!-- Top container -->
     <div class="w3-bar w3-top  w3-large w3-card-4" style="z-index:4;background-color: rgb(250, 234, 8)">
         <button class="w3-bar-item w3-button w3-hover-black w3-hover-text-light-grey" onclick="w3_open();"><i
-                class="fa fa-bars"></i>  Menut</button>
+                class="fa fa-bars"></i>  Menu</button>
         <span class="w3-bar-item w3-right">e-Lamaso</span>
     </div>
 
@@ -278,19 +278,15 @@
             if (m.akses == "Guru Kelas") {
                 //window.location.href="/user/guru.html";
                 window.location.replace("/user/guru.html");
-
             } else if (m.akses == "Guru Mapel") {
                 window.location.replace("/user/gmp.html");
-
             } else if (m.akses == "Kepala Sekolah") {
-
                 window.location.replace("/user/kepsek.html");
             } else if (m.akses == "siswa") {
                 window.location.replace("/user/siswa.html");
             } else if (m.akses == "Staff") {
                 window.location.replace("/user/staff.html");
             } else {
-
             }
         }
     </script>

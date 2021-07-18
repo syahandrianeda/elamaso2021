@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 
 <head>
-    <title>e-LAMASO SISWA</title>
+    <title>e-LAMASO ORANGTUA</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Aplikasi Pembelajaran Jarak Jauh (PJJ) selama Belajar di Rumah (BDR) untuk Siswa">
+    <meta name="description"
+        content="Aplikasi Pembelajaran Jarak Jauh (PJJ) selama Belajar di Rumah (BDR) untuk Orang Tua">
     <link href='https://sdnratujaya1-elamaso.net/user/gmp.html' hreflang='x-default' rel='alternate' />
     <meta content='en_US' property='og:locale' />
     <meta content='en_GB' property='og:locale:alternate' />
@@ -14,18 +15,19 @@
     <link href="/img/lamaso.webp" rel="shortcut icon" type="image/x-icon" />
 
     <!-- meta tag sosial media     -->
-    <meta property="og:url" content="https://sdnratujaya1-elamaso.net/user/siswa.html" />
+    <meta property="og:url" content="https://sdnratujaya1-elamaso.net/user/orangtua.html" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="e-LAMASO Siswa" />
-    <meta property="og:description" content="Sebuah Web Aplikasi Pembelajaran Jarak Jauh dari PT EKA CIPTA MULTITAMA" />
+    <meta property="og:description" content="Sebuah Web Aplikasi Pembelajaran Jarak Jauh dari Lamaso Mediatama" />
     <meta property="og:image" content="/img/lamaso.webp" />
 
     <meta name='twitter:card' content='summary' />
     <meta property='twitter:title' content='e-LAMASO Siswa' />
-    <meta property='twitter:url' content='https://sdnratujaya1-elamaso.net/user/siswa.html' />
-    <meta property='twitter:description'
-        content="Sebuah Web Aplikasi Pembelajaran Jarak Jauh dari PT EKA CIPTA MULTITAMA" />
+    <meta property='twitter:url' content='https://sdnratujaya1-elamaso.net/user/orangtua.html' />
+    <meta property='twitter:description' content="Sebuah Web Aplikasi Pembelajaran Jarak Jauh dari Lamaso Mediatama" />
     <meta property="twitter:image" content="/img/lamaso.webp" />
+    <!-- end meta tag sosial media  entah   -->
+
 
     <link rel="stylesheet" href="/css/w3.css">
 
@@ -35,12 +37,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script> -->
+
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js' type='text/javascript'></script>
 
-    <link rel="stylesheet" href="/css/css_siswa.css">
-    <link rel="stylesheet" href="/css/csssiswa.css">
+    <link rel="stylesheet" href="/css/css_siswa.css?v=5.12">
+    <link rel="stylesheet" href="/css/csssiswa.css?v=5.0">
     <script src="/script/idsekolah.js"></script>
     <script>
+
         let jlo = JSON.parse(localStorage.getItem("inst_id"))
         let urlmateri = jlo.url_materi;
         let ssmateri = jlo.ss_materi;
@@ -48,11 +52,10 @@
         const identitaskotasekolah = jlo.kota;
         const linkmateri = urlmateri + "?idss=" + ssmateri;
         const surel = jlo.surel;
-        // let ddurl = "url_nilaikelas" + m.jenjang;
+
         let urlnilai = "";
-        /////////////////////////////////////
+
         let namasiswa, url_absenkaldik;
-        let tokensiswa;
         let namakelas;
         let jenjang;
         let arrayStringTglLibur = [], arrayKetLibur = [];
@@ -84,20 +87,23 @@
                 let ssmateri = jlo.ss_materi;
                 const linkmateri = urlmateri + "?idss=" + ssmateri;
                 let ddurl = "url_nilaikelas" + m.jenjang;
+                //console.log(ddurl);
+                //console.log(jlo[ddurl])
                 urlnilai = jlo[ddurl];
-
-                namasiswa = m.user;
-                namakelas = m.room;
-                tokensiswa = m.idrow;
+                namasiswa = m.user
+                namakelas = m.room
                 jenjang = m.jenjang;
                 absenheader = "absen" + jenjang;
 
                 url_kaldikaja = jlo.url_dataabsen;
                 url_absenkaldik = jlo.url_dataabsen + "?action=datakaldik";
                 url_absensiswa = jlo[absenheader];//+ "?action=absensiswahariini";
-                if (m.hasOwnProperty("ote")) {
-                    window.location.replace("/user/orangtua.html");
+                if (!m.hasOwnProperty("ote")) {
+
+                    window.location.replace("/user/siswa.html");
+
                 }
+
 
 
             }
@@ -120,31 +126,25 @@
     <link crossorigin='' href='//cdnjs.cloudflare.com' rel='dns-prefetch' />
     <link crossorigin='' href='//ajax.googleapis.com' rel='dns-prefetch' />
 
-
-    <!-- <link rel="manifest" href="/manifest.json"> -->
+    <link rel="manifest" href="/manifest.json">
     <!-- ios support-->
     <link rel="apple-touch-icon" href="/img/icons/pic96.png">
     <meta name="apple-mobile-web-app-status-bar" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+
 </head>
 
-<body class="tesbody">
-
+<body>
     <!-- Top container -->
-    <div class=" w3-bar w3-top w3-large w3-card-4" style="z-index:4;background-color: rgb(250, 234, 8)">
-        <button class="w3-bar-item w3-button  w3-hover-black w3-hover-text-light-grey" onclick="w3_open();"><i
-                class="fa fa-bars"></i>  Menu</button>
-        <div class="w3-bar-item w3-right "><img class="avatarsiswa w3-circle " onclick="klikpotosiswa(this)"
-                src="/img/L_vT86_100px.png" alt="Avatar" style="height:30px;cursor: pointer;"> <span
-                class="w3-hide-small">e-Lamaso Siswa</span> </div>
+    <div class=" w3-bar w3-top w3-black w3-large" style="z-index:4">
+        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
+            onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
+        <span class="w3-bar-item w3-right">e-Lamaso Orangtua</span>
     </div>
 
 
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar  w3-animate-left"
-        style="z-index:3;width:300px;display:none;background: rgba(250, 244, 164, 0.9) url(/img/bgwa2.png) repeat "
-        id="mySidebar">
-        <br>
+    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
         <!-- A. SIDEBAR-->
         <div class="w3-container w3-row">
             <!-- 1. Logo Sekolah -->
@@ -181,15 +181,10 @@
         </div>
         <!-- B.2 Bar Guru Kelas, Ketika User sebagai guru kelas -->
         <div class="w3-bar-block" id="bargurukelas">
-            <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="infoupdate()"><i
-                    class="fa fa-info-circle"></i>
-                Info Update</a>
-            <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="w3_close()"><i
-                    class="fa fa-home"></i>
-                beranda</a>
+
             <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="profilsayasiswa()"><i
                     class="fa fa-user-o"></i>
-                Profil Saya</a>
+                Profil Anak Saya</a>
             <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="menudataabsen()"><i
                     class="fa fa-id-card-o"></i>
                 Data Absen</a>
@@ -225,16 +220,15 @@
 
 
 
+
+
     </nav>
     <!-- Overlay effect when opening sidebar on small screens -->
-    <div class="w3-overlay   w3-animate-opacity w3-center" onclick="w3_close()"
-        style="cursor:pointer;background-color:rgb(235, 235, 233)" title="close side menu" id="myOverlay">
-        <img src="/img/bgwa3.png" style="margin:15% 5% 5% 25%">
+    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
+        title="close side menu" id="myOverlay">
     </div>
 
-
-    <!-- Laman ' -->
-    <div class="w3-main" style="margin-top:43px;" id="lamansiswa">
+    <div class="w3-main " style="margin-left:300px;margin-top:43px;" id="lamansiswa">
         <header id="idheaderguru" class="w3-container">
             <h5>
                 <i class="fa fa-dashboard"></i>
@@ -242,132 +236,94 @@
                     <i class="fa fa-spin fa-spinner"></i>
 
                 </b>
+
             </h5>
-            <h4>
-            </h4>
 
         </header>
-        <div class="w3-main w3-margin w3-animate-zoom w3-card-4 w3-panel w3-round-xlarge"
-            style="background-color:rgb(250, 234, 8)">
-            <div class="w3-card w3-white w3-margin-top w3-container w3-round-large">
 
-                Informasi untuk Ananda <span id="namaku"></span>:
-                <span class="ketabsensiswa"></span>
-                <div class="w3-section belumabsen">
-                    <button class="w3-button w3-yellow w3-hover-teal w3-card-4 w3-round-large"
-                        onclick="bantuabsen()">Mulai
-                        Absen</button>
-                </div>
-
-                <div class="w3-section sudahabsen">
-                    <button class="w3-button w3-yellow w3-hover-teal w3-card-4 w3-round-large"
-                        onclick="panggilmateri()">Mulai Belajar</button>
-
+        <div class="w3-row-padding w3-margin-bottom">
+            <div class="w3-quarter" style="cursor:pointer" id="tomboltabeldatakelassaya" onclick="profilsayasiswa()">
+                <div class="w3-container w3-aqua w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-user w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>...</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h3>Profil Siswa</h3>
                 </div>
             </div>
-            <div class="pesankhususkepsek w3-card w3-white w3-margin-top w3-container w3-round-large">
-                <h3 class="w3-center">Segera Daftar Ulang</h3>
-                Dimohon untuk seluruh siswa, untuk mengisi melengkapi formulir <b>Ajuan Perubahan Data</b> untuk
-                validasi data (Daftar Ulang).<br>
-                <br>Caranya:
-                <ul>
-                    <li>Pilih menu <b>Tentang Aku</b></li>
-                    <li>Pilih menu <b>Ajuan Perubahan Data</b></li>
-                    <li>Lengkapi semua isian data</li>
-                </ul>
-                Persiapkan juga dokumen-dokumen berikut untuk diunggah di formulir ajuan:
-                <ul>
-                    <li>Akta Kelahrian/Surat Kenal Lahir</li>
-                    <li>Kartu Keluarga</li>
-                    <li>KIP/PKH/KIS (jika memiliki)</li>
-                </ul>
+            <div class="w3-quarter" style="cursor:pointer" id="panel_menudataabsen" onclick="menudataabsen()">
+                <div class="w3-container w3-teal w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-id-card-o w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>...</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h3>Data Kehadiran</h3>
+                </div>
             </div>
-            <div class="pesankhususgurukelas  w3-card w3-white w3-margin-top w3-container w3-round-large">
-                <p class="w3-center">
-                    <img src="/img/barloading.gif" />
 
-                </p>
+            <div class="w3-quarter" style="cursor:pointer" id="menudatapembelajaran" onclick="menudatapembelajaran()">
+                <div class="w3-container w3-blue-grey w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-child w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>...</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h3>Keaktifan KBM</h3>
+                </div>
             </div>
-            <br />
+            <div class="w3-quarter" style="cursor:pointer" id="menudatahasilbelajar" onclick="menudatahasilbelajar()">
+                <div class="w3-container w3-blue w3-padding-16">
+                    <div class="w3-left"><i class="fa fa-graduation-cap w3-xxxlarge"></i></div>
+                    <div class="w3-right">
+                        <h3>...</h3>
+                    </div>
+                    <div class="w3-clear"></div>
+                    <h3>Hasil Belajar</h3>
+                </div>
+            </div>
         </div>
-
-        <div class="w3-row-padding">
-            <div class="w3-third " style="margin:50px 0;cursor: pointer;" onclick="profilsayasiswa()">
-                <div class="w3-container n_zoom w3-center ">
-                    <div><img src="/img/pngegg (17).png?s80" style="height: 90px;"></div>
-                    <!-- <div><img src="/img/lg_absensi.png"></div> -->
-
-                    <h3>Tentang Aku </h3>
-                </div>
-            </div>
-            <div class="w3-third " style="cursor: pointer; margin:50px 0" onclick="menudataabsen()">
-                <div class="w3-container n_zoom w3-center ">
-                    <div><img src="/img/pngegg (3).png" style="height: 90px;"></div>
-
-
-                    <h3>Kehadiranku</h3>
-                </div>
-            </div>
-            <div class="w3-third  elabsen" style="cursor: pointer; margin:50px 0" onclick="menudatapembelajaran()">
-                <div class="w3-container n_zoom w3-center ">
-                    <div><img src="/img/pngegg (2).png" style="height: 90px;"></div>
-
-                    <h3>Pembelajaranku</h3>
-                </div>
-            </div>
-            <div class="w3-third " style="cursor: pointer; margin:50px 0" onclick="menudatapembelajaran()">
-                <div class="w3-container n_zoom w3-center ">
-                    <div><img src="/img/pngegg (1).png" style="height: 90px;"></div>
-
-                    <h3>Nilai-nilaiku</h3>
-                </div>
-            </div>
-
-            <div class="w3-third " style="margin:50px 0;cursor: pointer;" onclick="lihatraportsemester()">
-                <div class="w3-container n_zoom w3-center ">
-                    <div><img src="/img/pngegg (13).png" style="height: 90px;"></div>
-
-                    <h3>Raportku</h3>
-                </div>
-            </div>
-            <div class="w3-third " style="cursor: pointer; margin:50px 0" onclick="pengumumankelulusan()">
-                <div class="w3-container n_zoom w3-center ">
-                    <div><img src="/img/pngegg (12).png" style="height: 90px;"></div>
-
-                    <h3>Kelulusanku</h3>
-                </div>
-            </div>
-
-
-
-        </div>
-
     </div>
+    <div class="w3-hide">
 
-    <div class="w3-main ">
+        <h3>Kehadiran <br><span id="namaku">Saya</span></h3>
 
+        <img class="avatarsiswa" src="/img/L_vT86_100px.png" alt="Avatar" style="width:80%">
+        <div class="ketabsensiswa"><i class="fa fa-spin fa-spinner"></i> kehadiran saya ...</div>
+
+        <div class="w3-section belumabsen">
+            <button class="w3-button w3-green w3-round-xlarge" onclick="bantuabsen()">Absen</button>
+
+        </div>
+        <div class="w3-section sudahabsen">
+            <button class="w3-button w3-green w3-round-xlarge" onclick="panggilmateri()">Lihat
+                Materi</button>
+
+        </div>
+    </div>
+    <iframe id="iframeprint" name="iframeprint" style="display:none"></iframe>
+
+    <!-- 
         <div class="w3-card-4 w3-container w3-light-grey" style="width:80%;margin:0 auto">
             <div class="w3-container ">
 
                 <div class="w3-dark-grey w3-panel">
 
                     <div class="w3-container w3-center">
-
-
-
-                        <!-- <h3>Kehadiran <br><span id="namaku">Saya</span></h3>
-                            <img class="avatarsiswa" src="/img/L_vT86_100px.png" alt="Avatar" style="width:80%">
-                            <div class="ketabsensiswa"><i class="fa fa-spin fa-spinner"></i> kehadiran saya ...</div>
+                        <h3>Kehadiran <br><span id="namaku">Saya</span></h3>
+                        <img class="avatarsiswa" src="/img/L_vT86_100px.png" alt="Avatar" style="width:80%">
+                        <div class="ketabsensiswa"><i class="fa fa-spin fa-spinner"></i> kehadiran saya ...</div>
 
                         <div class="w3-section belumabsen">
                             <button class="w3-button w3-green w3-round-xlarge" onclick="bantuabsen()">Absen</button>
-                          
+                            
                         </div>
                         <div class="w3-section sudahabsen">
                             <button class="w3-button w3-green w3-round-xlarge" onclick="panggilmateri()">Lihat
                                 Materi</button>
 
-                        </div> -->
+                        </div>
 
                     </div>
 
@@ -379,7 +335,7 @@
         <div class="w3-main klikmateri w3-padding" style="overflow-x: auto; margin:0 auto">
         </div>
         <div id="informasiumum" class="w3-padding w3-margin w3-card-4"></div>
-        <div class="w3-container w3-card-4 w3-hide" id="dataframekreatif">
+        <div class="w3-container w3-card-4" id="dataframekreatif">
             <h3>Yuk .... Bikin Frame </h3>
             <div id="kesiapanmeme">
                 Kreasikan Poto Ananda di sini:
@@ -393,10 +349,10 @@
             <hr />
 
 
-            <!-- <div id="tampilinframe" style="overflow-x: auto;"> -->
+           
             <div id="tampilinframe" style="width:75%;margin:0 auto">
                 <input type="file" id="imageInput" accept="image/*" class="w3-hide">
-                <!-- <div id="bingkai" class="w3-display-container" style="width:600px"> -->
+                
                 <div id="bingkai" class="w3-display-container w3-image">
                     <img src="/img/192.png" id="potomeme"
                         style="width:60%;height:70%;z-index: -10;position:absolute;top:21%;right:0;">
@@ -413,6 +369,7 @@
             <label id="downloadmeme" onclick="downloadCanvas()" class="w3-button w3-blue w3-hide"><i
                     class="fa fa-download"></i> Download</label>
         </div>
+  -->
     </div>
     <div class="w3-main w3-light-grey w3-center" style="margin-left:300px;margin-top:43px;" id="lamanlibur">
         <h4>Selamat Datang </h4>
@@ -456,10 +413,10 @@
         <!-- <button onclick="cektugasdansoal()">cek jumlah opsi</button> -->
 
         <!-- <button onclick="tambahtombolisijawaban()">Tambah Tombol</button>
-                <button onclick="ceknilai()">cek koleksi ceklis opsi PG</button>
-                <button onclick="hasilakhirelamaso()">hasilakhirelamaso()</button>
-                
-                <div id="cektagihan"></div> -->
+            <button onclick="ceknilai()">cek koleksi ceklis opsi PG</button>
+            <button onclick="hasilakhirelamaso()">hasilakhirelamaso()</button>
+            
+            <div id="cektagihan"></div> -->
 
         <div id="hasilakhir" style="display: none;">
             <div id="fromHTMLtestdiv">
@@ -522,87 +479,12 @@ borderhasilnama
 
     </div>
 
-    <div class="w3-modal w3-pale-red w3-animate-zoom" id="divbantuabsen">
-        <div class="w3-modal-container ">
-            <div class="w3-modal-content w3-card-4 w3-round-medium w3-center">
-                <div class="imgcontainer w3-center" style="margin:0 auto">
-                    <button class="w3-button w3-red w3-right "
-                        onclick="document.getElementById('divbantuabsen').style.display='none'; ">&times;</button>
-                    <img id="potosiswa" src="/img/eabsensi.webp" style="width:300px;"
-                        class="w3-round-xxlarge w3-margin-top" /><br /><br />
-                    <span id="bantusiapa">...</span>
-                </div>
-                <br>
-                <form name="bantuisi" id="bantuisi">
 
-
-                    <!-- <input id="time_stampbantu" name="time_stampbantu" type="date" /><br /><span
-                    id="dibaca"></span><br /><br /> -->
-                    <label for="pilih_kehadiran">Pilih Jenis Kehadiran:</label>
-                    <br>
-                    <select id="pilih_kehadiran" name="pilih_kehadiran" class="w3-round-xxlarge"
-                        onchange="gantikehadiranbantu()" style="height:30px;width:30%">
-                        <option value="Hadir" selected>Hadir</option>
-                        <option value="Ijin">Ijin
-                        </option>
-                        <option value="Sakit">Sakit
-                        </option>
-                    </select>
-                    <br />
-                    <br />
-                    Ambil Gambar:<br />
-                    <label for="lampirkanpotoabsen" class="w3-button w3-card w3-dark-grey w3-round-xxlarge"><i
-                            class="fa fa-camera"></i> Ambil Poto:</label><br />
-
-                    <input type="file" id="lampirkanpotoabsen" onchange="uploadfilebantu()" style="display:none"
-                        accept="image/*" capture="user">
-                    <sub class="w3-animate-opacity">Selfi Poto Terkini </sub>
-
-                </form>
-                <hr />
-
-                <form name="bantukirim" id="bantukirim">
-                    <div id="thankyou_messagekirim">
-                    </div>
-                    <div id="sembunyikan" style="display:block">
-                        <!-- time_stamp:
-                        <input name="Time_Stamp" id="Time_Stampbantukirim" /><br /> -->
-                        <input name="tokensiswa" id="input_tokensiswa">
-                        id:
-                        <input name="id" id="idbantukirim" /><br />
-                        name:
-                        <input name="name" id="namebantukirim" /><br />
-                        kehadiran(Select)diijinkan:
-                        <input name="kehadiran" id="kehadiranbantukirim" value="Hadir" /><br />
-                        fileContent diijinkan:
-                        <div id="kodefilepotosiswaabsen">Di sini akan muncul elemen input yang memiliki
-                            attribute name:
-                            data/fileContent, filename, mimeType</div>
-                        <!-- <input name="fileContent" id="fileContentbantukirim" /><br /> -->
-                        kelas:
-                        <input name="kelas" id="kelasbantukirim" />
-                    </div>
-                </form>
-                <div class="w3-section inginkirim">
-                    <button onclick="tombolbantukirim()" class="w3-button w3-round-xxlarge w3-blue" id="loginbantu"><i
-                            class="fa fa-paper-plane"></i>
-                        Kirim</button> <button onclick="document.getElementById('divbantuabsen').style.display='none'; "
-                        class="w3-button w3-red w3-round-xxlarge" id="loginclosebantu"> <i class="fa fa-times"></i>
-                        Batal</button>
-                </div>
-                <hr>
-
-            </div>
-
-        </div>
-    </div>
-
-
-    <div id="loadingmodal" class="w3-modal w3-hite w3-opacity-min">
+    <div id="loadingmodal" class="w3-modal w3-red w3-opacity-min">
         <span class="w3-btn w3-blue w3-right w3-badge" onclick="loadingmodal.style.display='none'">&times;</span>
         <i class="fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>
     </div>
-    <div id="loadingAPI" class="w3-modal w3-white w3-opacity-min">
+    <div id="loadingAPI" class="w3-modal w3-red w3-opacity-min">
         <div class="w3-modal-container">
             <span class="w3-btn w3-blue w3-right w3-badge" onclick="loadingAPI.style.display='none'">&times;</span>
             <div id="infoloadingAPI" class="w3-modal-content w3-card-4 w3-round-medium w3-display-middle">
@@ -610,37 +492,33 @@ borderhasilnama
             </div>
         </div>
     </div>
-    <div id="loadingljk" class="w3-modal">
-
-        <div class="w3-modal-content w3-card-4 " style="width: 98%">
-            <header class="warnaeka w3-card-4  w3-border-bottom w3-border-black w3-container">
-                <span class="w3-button w3-right w3-round-large w3-light-blue"
-                    onclick="loadingljk.style.display='none'">&times;</span>
-            </header>
-            <div id="infoloadingljk" class="w3-margin">
-                <!-- <i class=" fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i> -->
-                <p class="w3-center"><img src="/img/barloading.gif"></p>
+    <div id="loadingljk" class="w3-modal w3-white">
+        <div class="w3-modal-container">
+            <div class="w3-modal-content w3-card-4 w3-padding-16" style="width: 98%;">
+                <span class="w3-btn w3-blue w3-right w3-badge" onclick="loadingljk.style.display='none'">&times;</span>
+                <div id="infoloadingljk" class="w3-margin">
+                    <i class=" fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>
+                </div>
+                <div style="height: 50px;"></div>
             </div>
-            <div style="height: 50px;"></div>
-            <footer class="warnaeka w3-card-4  w3-topbar w3-border-black w3-container"><br></footer>
         </div>
-
     </div>
     <div class="w3-modal w3-pale-red w3-animate-zoom" id="modalmateri">
         <div class="w3-modal-container">
             <div class="w3-modal-content w3-card-4 w3-round-medium w3-padding" style="width: 98%;">
                 <span class="w3-btn w3-red w3-right w3-badge" onclick="modalmateri.style.display='none'">&times;</span>
                 <h2>
-                    Data Materi / Pelajaran Yang Dipublikasikan:
+                    Data Materi :
                 </h2>
                 <hr>
-                <label for="siswapilihmateri"><span id="spanlabelmateri"><i
-                            class="fa fa-spin fa-spinner w3-large"></i></span></label>
+                Jumlah Kegiatan KBM ada <span id="spanlabelmateri"><i class="fa fa-spin fa-spinner w3-large"></i></span>
+                Kegiatan. Silakan klik Tombol Cek untuk mengetahui aktifitas Ananda:
+                <!-- <label for="siswapilihmateri"></label>
 
                 <select id="siswapilihmateri" class="w3-select" onchange="modalfnmateri()">
 
                 </select>
-                <hr>
+                <hr> -->
                 <div id="divmodalmateri" style="overflow-x: auto;">
 
 
@@ -667,9 +545,9 @@ borderhasilnama
                 </div>
                 <br>
                 <!-- @Created By:<br> <a href="https://sdnratujaya1.net" target="_blank" rel="noopener">Ade Andriansyah_ SDN
-                    Ratujaya 1
-                    Kota
-                    Depok</a> -->
+                Ratujaya 1
+                Kota
+                Depok</a> -->
                 <br>
                 <br>
                 <br>
@@ -698,9 +576,9 @@ borderhasilnama
                 <br>
                 <br>
                 <!-- @Created By: <br><a href="https://sdnratujaya1.net" target="_blank" rel="noopener">Ade Andriansyah_ SDN
-                    Ratujaya 1
-                    Kota
-                    Depok</a> -->
+                Ratujaya 1
+                Kota
+                Depok</a> -->
                 Telah dilisensikan untuk <br> <a href="https://lamaso.online" target="_blank" rel="noopener">Lamaso
                     Mediatama</a>
             </div>
@@ -927,14 +805,16 @@ borderhasilnama
         </div>
     </div>
 
-    <footer class="w3-main w3-yellow" style="text-align:center">Telah dilisensikan untuk <a href="https://lamaso.online"
-            target="_blank">PT EKA CIPTA MULTITAMA</a>
+    <footer class="w3-main" style="margin-left:300px;text-align:center">Telah dilisensikan untuk <a
+            href="https://lamaso.online" target="_blank">Lamaso Mediatama</a>
+
+
     </footer>
-    <script src="/script/siswa.js"></script>
-    <script>
 
-    </script>
+
+    <script src="/js/siswa.js?v=5.0"></script>
+    <script src="/script/ortu.js"></script>
+    <!-- <script src="/js/app.js"></script> -->
 </body>
-
 
 </html>

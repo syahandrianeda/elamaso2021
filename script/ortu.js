@@ -606,9 +606,8 @@ const klikpotosiswa = (el) => {
             let indekhari = day.getDay()
             // console.log(indekhari)
             let indek = arrayStringTglLibur.indexOf(StringTanggal(day));
-            console.log(indek)
 
-            if (indekhari == 5 || indekhari == 5 || indek > -1) {
+            if (indekhari == 1 || indekhari == 1 || indek > -1) {
                 //console.log("Libur atau Sabtu Minggu")
                 belajaraktif = false;
                 // tampilkan laman libur:
@@ -639,7 +638,7 @@ const klikpotosiswa = (el) => {
             let pkl = getCookie("ketpukul");
 
             document.querySelector(".avatarsiswa").setAttribute("src", srcimg)
-            document.querySelector(".ketabsensiswa").innerHTML = ket + "<br>" + pkl;
+            document.querySelector(".ketabsensiswa").innerHTML = ket + " " + pkl;
             // stop loading
             loadingmodal.style.display = "none";
             //tampiin halaman belumabsen;
@@ -650,7 +649,7 @@ const klikpotosiswa = (el) => {
             let pkl = getCookie("ketpukul");
 
             document.querySelector(".avatarsiswa").setAttribute("src", srcimg)
-            document.querySelector(".ketabsensiswa").innerHTML = ket + "<br>" + pkl;
+            document.querySelector(".ketabsensiswa").innerHTML = ket + " " + pkl;
             // stop loading
             loadingmodal.style.display = "none";
             tampilinsublamansiswa(cek)
@@ -679,9 +678,8 @@ const klikpotosiswa = (el) => {
             let indekhari = day.getDay()
             // console.log(indekhari)
             let indek = arrayStringTglLibur.indexOf(StringTanggal(day));
-            console.log(indek)
 
-            if (indekhari == 5 || indekhari == 5 || indek > -1) {
+            if (indekhari == 1 || indekhari == 1 || indek > -1) {
                 //console.log("Libur atau Sabtu Minggu")
                 belajaraktif = false;
                 // tampilkan laman libur:
@@ -705,10 +703,10 @@ const klikpotosiswa = (el) => {
                 //console.log("Ga Libur")
                 belajaraktif = true;
                 absennya(true)
-                // //kuki belajaraktif                
-                // //document.querySelector(".ketabsensiswa").innerHTML = "Ananda Belum Absen"             
-                // //setCookie("lamankode", 1)   
-                // //tampilinsublamansiswa("aktifbelumabsen")
+                //kuki belajaraktif                
+                //document.querySelector(".ketabsensiswa").innerHTML = "Ananda Belum Absen"             
+                //setCookie("lamankode", 1)   
+                //tampilinsublamansiswa("aktifbelumabsen")
             }
         }).catch(er => {
             console.log(er)

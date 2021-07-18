@@ -579,6 +579,14 @@ function tombolbantukirim() {
             }
 
         }).catch(err => { console.log(err) })
+    await fetch(url_absenkaldik).then(m => m.json()).then(k => {
+        //console.table(k.records)
+        arrayStringTglLibur = k.stringTgl.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
+        arrayKetLibur = k.stringTgl.map(m => Object.keys(m).map(n => m[n])).reduce((a, b) => a.concat(b));
+        localStorage.setItem('Kaldik', JSON.stringify(k.records));
+
+        localStorage.setItem('TglLibur', JSON.stringify(k.stringTgl))
+    }).catch(er => console.log(er))
 
     let cek = getCookie("lamankode");
     if (cek != "" & cek != null) {
@@ -594,7 +602,7 @@ function tombolbantukirim() {
             // console.log(indekhari)
             let indek = arrayStringTglLibur.indexOf(StringTanggal(day));
 
-            if (indekhari == 1 || indekhari == 1 || indek > -1) {
+            if (indekhari == 0 || indekhari == 0 || indek > -1) {
                 //console.log("Libur atau Sabtu Minggu")
                 belajaraktif = false;
                 // tampilkan laman libur:
@@ -666,7 +674,7 @@ function tombolbantukirim() {
             // console.log(indekhari)
             let indek = arrayStringTglLibur.indexOf(StringTanggal(day));
 
-            if (indekhari == 1 || indekhari == 1 || indek > -1) {
+            if (indekhari == 0 || indekhari == 0 || indek > -1) {
                 //console.log("Libur atau Sabtu Minggu")
                 belajaraktif = false;
                 // tampilkan laman libur:
@@ -1022,27 +1030,35 @@ const profilsayasiswa = () => {
     // console.log(srcimg)
 
     document.querySelector(".kontenmateri").innerHTML = "";
-    infoloadingljk.innerHTML = `<i class="fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>`;
+    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"></p>`;
 
     fetch(ling + "&action=datasiswaaktif&kelas=" + namakelas)
         .then(m => m.json())
         .then(k => {
             //console.log(k);
-            fil = k.datasiswa.filter(k => k.pd_nama == namasiswa)[0];
+            fil = k.datasiswa.filter(k => k.id == tokensiswa)[0];
             //console.log(fil);
             infoloadingljk.innerHTML = `
-            <h4 class="w3-center">Profil Saya</h4>
+            <h4 class="w3-center">Biodataku (Profil)</h4>
             <div class="w3-center">
             <img src='${srcimg}' class='avatarsiswa' style="width:50%"/><br/>
             <sup>Poto Profil ini berdasarkan Poto Absen Ananda hari ini</sup>
             </div>
             <hr/>
            
-            <table class="w3-table w3-striped">
+            <table class="w3-table w3-striped w3-border">
+                <tr class="warnaeka">
+                    <td colspan="3" class="w3-center">Kode Akses Lamaso (Token)</td>
+                </tr>
                 <tr>
                     <td>Kode Token</td>
                     <td>:</td>
                     <td>${fil.id}</td>
+                </tr>
+                
+                
+                <tr class="warnaeka">
+                    <td colspan="3" class="w3-center">Data Pribadi Siswa</td>
                 </tr>
                 <tr>
                     <td>Nama Lengkap</td>
@@ -1080,17 +1096,7 @@ const profilsayasiswa = () => {
                     <td>${(fil.pd_jk == "L") ? "Laki-laki" : "Perempuan"}</td>
                 </tr>
                 
-                <tr>
-                    <td>Nama Ayah</td>
-                    <td>:</td>
-                    <td>${fil.pd_namaayah}</td>
-                </tr>
                 
-                <tr>
-                    <td>Nama Ibu</td>
-                    <td>:</td>
-                    <td>${fil.pd_namaibu}</td>
-                </tr>
                 <tr>
                     <td>Nomor Induk Kependudukan (NIK)</td>
                     <td>:</td>
@@ -1106,19 +1112,77 @@ const profilsayasiswa = () => {
                     <td>:</td>
                     <td>${fil.pd_alamat}</td>
                 </tr>
+                <tr class="w3-white">
+                    <td colspan="3" class="w3-center"></td>
+                </tr>
                 
+                <tr class="warnaeka">
+                    <td colspan="3" class="w3-center">Data Orang Tua</td>
+                </tr>
+                <tr>
+                    <td>Nama Ayah</td>
+                    <td>:</td>
+                    <td>${fil.pd_namaayah}</td>
+                </tr>
+                
+                <tr>
+                    <td>Nama Ibu</td>
+                    <td>:</td>
+                    <td>${fil.pd_namaibu}</td>
+                </tr>
             </table>
-            Apabila data-data tersebut ada bagian data yang kurang tepat, silakan hubungi guru kelas Ananda.
+            Apabila data-data tersebut ada bagian data yang kurang tepat, Silakan ajukan Usulan Perubahan Data di tombol berikut ini
             <br/>
-            <sub>Nama Siswa yang mengandung tanda baca apostrof (') atau titik satu di atas (huruf 'ain ejaan Bahasa Arab), sengaja tidak diperkanankan</sub>
             <br/>
-
+            <div class="w3-center">
+            <button class="w3-button w3-card-4 w3-round-large warnaeka" onclick="biolengkap()">Biodata Detail</button>
+            <button class="w3-button w3-card-4 w3-round-large warnaeka" onclick="ajuanperubahandata()">Ajuan Perubahan Data</button>
+            </div>
+            <br/>
             `;
             //infoloadingljk.innerHTML = datahtml;
 
         })
 }
+const htmlprofil = () => {
+    let html = `
+    
+    `;
 
+    return html
+};
+const biolengkap = () => {
+    let ss = jlo.ss_datauser;
+    let ur = jlo.url_datauser;
+    let ling = ur + "?idss=" + ss;
+    let datahtml = "", fil;
+    loadingljk.style.display = "block";
+    // let img = document.querySelector(".avatarsiswa");
+    // let srcimg = img.getAttribute("src");
+    // // console.log(srcimg)'
+    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"></p>`;
+
+    fetch(ling + "&action=usulanperbaikandata")
+        .then(m => m.json())
+        .then(k => {
+            let cariid = k.datasiswa.filter(s => s.id == tokensiswa);
+            if (cariid.length == 0) {
+                infoloadingljk.innerHTML = `<h4 class="w3-center">Maaf, Ananda belum pernah mengusulkan Perubahan Data (Belum pernah mendaftar ulang)</h4>`;
+            } else {
+                infoloadingljk.innerHTML = `Data Berhasil Input`;
+            }
+
+
+        })
+        .catch(er => console.log(er))
+
+
+    document.querySelector(".kontenmateri").innerHTML = "";
+    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"></p>`;
+    //cekdaftarulang
+}
+
+const ketik_kapital = (el) => el.value = el.value.toUpperCase();
 
 const lihatraportsemester = () => {
     //cek dulu data apinya ada ga untuk namasiswa ini:
