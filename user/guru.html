@@ -51,8 +51,9 @@
     <!-- <script src="https://raw.githubusercontent.com/davidshimjs/qrcodejs/master/qrcode.js"></script> -->
     <script src="/js/exceltabel.js" defer></script>
     <script src="/js/variabel.js" defer></script>
+    <script src="/script/idsekolah.js"></script>
     <script>
-        const idlogo = "1BZwicOBix4eILY0IQrJs4H825w2k4g-3";
+        // const idlogo = "1BZwicOBix4eILY0IQrJs4H825w2k4g-3";
         const jlo = JSON.parse(localStorage.getItem("inst_id"))
         let urlmateri = jlo.url_materi;
         let ssmateri = jlo.ss_materi;
@@ -215,9 +216,10 @@
                 <i class="fa fa-calendar-times-o"></i>
                 <b class="n_tapelsemester">
                     Tahun Pelajaran
-                </b><select class="w3-yellow w3-hover-khaki" style="width: 50%;height:30px;">
+                </b><select class="w3-yellow w3-hover-khaki" style="width: 50%;height:30px;" id="selectpindahsemester"
+                    onchange="pindahsemester()">
                     <option selected value="now">Tapel 2021/2022 Semester 1</option>
-                    <option selected value="1">Tapel 2020/2021 Semester 2</option>
+                    <option value="1">Tapel 2020/2021 Semester 2</option>
                 </select>
             </h5>
 
@@ -2877,7 +2879,7 @@ _OPSI-SEL_${val}D 	<|>	Xerofitisme	<|>	Hubungan burung jalak dengan kerbau`
         <option id="repo2" value="2">Cara Membuat Konten Materi</option>
         <option id="repo3" value="3">Download File KKM dan KD</option>
         `;
-        let teksalamat = "JL. SMP Ratujaya No. 41 RT.005/003 Kel. Ratujaya Kec. Cipayung";
+        // let teksalamat = "JL. SMP Ratujaya No. 41 RT.005/003 Kel. Ratujaya Kec. Cipayung";
         document.getElementById("editalamatkopsurat").innerHTML = teksalamat;
         if (idJenjang == 6) {
             document.querySelector(".tabolahijazah").style.display = "block";
@@ -2889,7 +2891,18 @@ _OPSI-SEL_${val}D 	<|>	Xerofitisme	<|>	Hubungan burung jalak dengan kerbau`
 
         }
 
+        function pindahsemester() {
+            let x = document.getElementById("selectpindahsemester").options;
+            let y = document.getElementById("selectpindahsemester").selectedIndex;
+            let val = x[y].value;
+            if (val == "1") {
+                let confirm = confirm(`Anda yakin ingin melanjutkan ke WebbApp elamaso ${teks}? Klik OK untuk melanjutkan atau CANCEL untuk membatalkan.`);
+                if (confirm) {
+                    window.location.replace(web2021semester1)
 
+                }
+            }
+        }
     </script>
 </body>
 
