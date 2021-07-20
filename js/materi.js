@@ -1328,6 +1328,7 @@ function hasilakhirelamaso(id) { // untuk tipe berkali-kali (bukan type token ak
 
         //resumenilai.style.display = "block";
         document.kirimnilaielamaso.matericode.value = dlo.idbaris;
+        document.kirimnilaielamaso.tokensiswa.value = tokensiswa;
         hasilakhir.style.display = "block";
         cmd.style.display = "none";
         bypassme.style.display = "none";

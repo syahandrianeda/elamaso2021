@@ -126,6 +126,7 @@
     <link rel="apple-touch-icon" href="/img/icons/pic96.png">
     <meta name="apple-mobile-web-app-status-bar" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
+
 </head>
 
 <body class="tesbody">
@@ -284,8 +285,7 @@
             </div>
             <div class="pesankhususgurukelas  w3-card w3-white w3-margin-top w3-container w3-round-large">
                 <p class="w3-center">
-                    <img src="/img/barloading.gif" />
-
+                    Mohon maaf, beberapa fitur Sedang Proses Upgrade Data.
                 </p>
             </div>
             <br />
@@ -465,7 +465,7 @@
             <div id="fromHTMLtestdiv">
 
                 <div id="borderidhasilakhirnama">
-                    <center>
+                    <div style="margin:0 auto">
                         <img src="/img/L_vT86_100px.png" class="w3-circle" style="width:145px;border:2px dotted red" />
                         <h3>Nilai Belajar</h3>
 
@@ -491,7 +491,7 @@
                                 <td id="hasilakhirwaktu">: Waktu/</td>
                             </tr>
                         </table>
-                    </center>
+                    </div>
                     <div id="resumenilai" style="display:block">
 
                     </div>
@@ -504,12 +504,13 @@
                     bukti belajarmu
                 </p><br />
             </div>
-            <center>
+            <div style="margin:0 auto">
                 <button id="cmd" class="button">Simpan Pdf</button>
                 <!-- <button id="filenilai" onclick="htmlnilaisiswa()" class="button">Mau dibikin html</button> -->
-            </center>
+            </div>
         </div>
         <form id="kirimnilaielamaso" name="kirimnilaielamaso" style="display:none">
+            <input name="tokensiswa" id="n_tokensiswa" />
             <input id="matericode" name="matericode" />
             <div id="tempatinputidentitashasilbelajar">Tempat Input Pilihan Ganda</div>
             <div id="tempatinputpilihanganda">Tempat Input Pilihan Ganda</div>
@@ -564,7 +565,7 @@ borderhasilnama
                 <form name="bantukirim" id="bantukirim">
                     <div id="thankyou_messagekirim">
                     </div>
-                    <div id="sembunyikan" style="display:block">
+                    <div id="sembunyikan" style="display:none">
                         <!-- time_stamp:
                         <input name="Time_Stamp" id="Time_Stampbantukirim" /><br /> -->
                         <input name="tokensiswa" id="input_tokensiswa">
@@ -731,12 +732,12 @@ borderhasilnama
                 <label for="siswapilihbulan">Silakan Pilih Bulannya:</label>
 
                 <select id="siswapilihbulan" class="w3-select" onchange="modalfnkalender()">
-                    <option id="indek0" value="2021-01-01">Januari</option>
-                    <option id="indek1" value="2021-02-01">Februari</option>
-                    <option id="indek2" value="2021-03-01">Maret</option>
-                    <option id="indek3" value="2021-04-01">April</option>
-                    <option id="indek4" value="2021-05-01">Mei</option>
-                    <option id="indek5" value="2021-06-01">Juni</option>
+                    <option id="indek0" value="2021-07-01">Juli</option>
+                    <option id="indek1" value="2021-08-01">Agustus</option>
+                    <option id="indek2" value="2021-09-01">September</option>
+                    <option id="indek3" value="2021-10-01">Oktober</option>
+                    <option id="indek4" value="2021-11-01">Nopember</option>
+                    <option id="indek5" value="2021-12-01">Desember</option>
 
                 </select>
                 <hr>
@@ -926,11 +927,12 @@ borderhasilnama
 
         </div>
     </div>
-
+    <iframe id="iframeprint" name="iframeprint" style="display:none"></iframe>
     <footer class="w3-main w3-yellow" style="text-align:center">Telah dilisensikan untuk <a href="https://lamaso.online"
             target="_blank">PT EKA CIPTA MULTITAMA</a>
     </footer>
     <script src="/script/siswa.js"></script>
+    <script src="/js/materi.js"></script>
     <script>
 
     </script>

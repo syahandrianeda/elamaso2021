@@ -247,7 +247,7 @@ function tanggalfull(tgl) {
     var bln = d.getMonth();
     var thn = d.getFullYear();
     var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
-    return tgl + " " + bulan[bln] + " " + thn
+    return tgl + " " + bulan[bln] + " " + thn;
 }
 
 function addZero(i) {
@@ -1144,12 +1144,1402 @@ const profilsayasiswa = () => {
 
         })
 }
-const htmlprofil = () => {
+const htmldataprofil = () => {
     let html = `
+    <h3 class="w3-center warnaeka w3-round-large w3-card-4">DATA SISWA</h3>
+    <div style="overflow-x:auot">
+    <table class="w3-table w3-striped w3-border">
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">KODE AKSES</th>
+        </tr>
+        <tr>
+            <td>Kode Token</td>
+            <td>:</td>
+            <td class="hdp_id">hdp_id</td>
+        </tr>
+        <tr>
+            <td>Status Data</td>
+            <td>:</td>
+            <td class="hdp_usulanperubahandata">usulanperubahandata</td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">NARAHUBUNG</th>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>:</td>
+            <td class="hdp_dapo_email">hdp__dapo_email</td>
+        </tr>
+        <tr>
+            <td>No. HP WA</td>
+            <td>:</td>
+            <td class="hdp_pd_hp">hdp_pd_hp"</td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">JENJANG KELAS</th>
+        </tr>
+        <tr>
+            <td>Jenjang Kelas</td>
+            <td>:</td>
+            <td class="hdp_jenjang">hdp_jenjang</td>
+        </tr>
+        <tr>
+            <td>Rombel</td>
+            <td>:</td>
+            <td class="hdp_nama_rombel">hdp_nama_rombel</td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">DATA PRIBADI</th>
+        </tr>
+        <tr>
+        <td>NIS</td>
+        <td>:</td>
+        <td class="hdp_nis"> hdp_nis</td>
+    </tr>
+     <tr>
+        <td>NISN</td>
+        <td>:</td>
+        <td class="hdp_nisn">hdp_nisn</td>
+    </tr>
+        <tr>
+            <td>Nama Lengkap</td>
+            <td>:</td>
+            <td class="hdp_pd_nama">pd_nama</td>
+        </tr>
+        <tr>
+            <td>Jenis Kelamin</td>
+            <td>:</td>
+            <td class="hdp_pd_jk">hdp_pd_jk</td>
+        </tr>
+
+        <tr>
+        <td>Agama</td>
+        <td>:</td>
+        <td class="hdp_pd_agama">hdp_pd_agama</td>
+        </tr>
+        <tr>
+            <td>Tempat Lahir</td>
+            <td>:</td>
+            <td class="hdp_pd_tl"> hdp_pd_tl</td>
+        </tr>
+        <tr>
+            <td>Tanggal Lahir</td>
+            <td>:</td>
+            <td class="hdp_pd_tanggallahir"> hdp_pd_tanggallahir</td>
+        </tr>
+        <tr>
+            <td>No Registrasi Akta Kelahiran</td>
+            <td>:</td>
+            <td class="hdp_dapo_noregistrasiaktalahir"> hdp_dapo_noregistrasiaktalahir</td>
+        </tr>
+        <tr>
+            <td>Anak Ke-</td>
+            <td>:</td>
+            <td class="hdp_dapo_anakkeberapa"></td>
+        </tr>
+        <tr>
+            <td>Jumlah Saudara Kandung</td>
+            <td>:</td>
+            <td><span class="hdp_dapo_jumlahsaudarakandung">...</span> Saudara</td>
+        </tr>
+        
+        <tr>
+            <td>Berkebutuhan Khusus?</td>
+            <td>:</td>
+            <td class="hdp_dapo_kebutuhankhusus"></td>
+        </tr>
+        <tr>
+            <td>Sekolah Asal</td>
+            <td>:</td>
+            <td class="hdp_dapo_sekolahasal"></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="w3-center"><b>Dokumen Akta Kelahiran/Surat Kenal Lahir</b></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="hdp_dok_akte">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>NIK</td>
+            <td>:</td>
+            <td class="hdp_nik">hdp_nik</td>
+        </tr>
+         <tr>
+            <td>Nomor KK</td>
+            <td>:</td>
+            <td class="hdp_nokk">hdp_nokk</td>
+        </tr>
+        <tr>
+            <td>Alamat Jalan</td>
+            <td>:</td>
+            <td class="hdp_pd_alamat">hdp_pd_alamat</td>
+        </tr>
+        <tr>
+            <td>Nama Dusun</td>
+            <td>:</td>
+            <td class="hdp_dapo_dusun">hdp_dapo_dusun</td>
+        </tr>
+        <tr>
+            <td>RT</td>
+            <td>:</td>
+            <td class="hdp_dapo_rt"></td>
+        </tr>
+        
+        <tr>
+            <td>RW</td>
+            <td>:</td>
+            <td class="hdp_dapo_rw"></td>
+        </tr>
+        <tr>
+            <td>Kelurahan</td>
+            <td>:</td>
+            <td class="hdp_dapo_kelurahan">hdp_dapo_kelurahan</td>
+        </tr>
+        <tr>
+            <td>Kecamatan</td>
+            <td>:</td>
+            <td class="hdp_dapo_kecamatan">hdp_dapo_kecamatan</td>
+        </tr>
+        <tr>
+            <td>Kota</td>
+            <td>:</td>
+            <td class="hdp_dapo_kota">hdp_dapo_kota</td>
+        </tr>
+        <tr>
+            <td>Provinsi</td>
+            <td>:</td>
+            <td class="hdp_dapo_provinsi">hdp_dapo_provinsi</td>
+        </tr>
+        <tr>
+            <td>Kode Pos</td>
+            <td>:</td>
+            <td class="hdp_dapo_kodepos"></td>
+        </tr>
+        <tr>
+            <td>Jenis Tinggal</td>
+            <td>:</td>
+            <td class="hdp_dapo_jenistinggal">hdp_dapo_jenistinggal</td>
+        </tr>
+
+        <tr>
+            <td>Moda Transportasi</td>
+            <td>:</td>
+            <td class="hdp_dapo_alattransportasi">hdp_dapo_alattransportasi</td>
+        </tr>
+        <tr>
+            <td colspan="3" class="w3-center"><b>Dokumen Kartu Keluarga</b></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="hdp_dok_kk">
+                
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">Koordinat Geografis</th>
+        </tr>
+        <tr>
+            <td>Lintang (Latitude)</td>
+            <td>:</td>
+            <td class="hdp_dapo_lintang">hdp_dapo_lintang</td>
+        </tr>
+        <tr>
+            <td>Bujur (Longitude)</td>
+            <td>:</td>
+            <td class="hdp_dapo_bujur">hdp_dapo_longitude</td>
+        </tr>
+        <tr>
+            <td>Jarak Rumah Ke sekolah</td>
+            <td>:</td>
+            <td class="hdp_dapo_jarakrumahkesekolah">hdp_dapo_jarakrumahkesekoilah</td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">Program KIP/KKS/KPS/PKH/PIP</th>
+        </tr>
+        <tr>
+            <td>Nomor KKS<br><sub>Kartu Keluarga Sejahtera)</sub></td>
+            <td>:</td>
+            <td class="hdp_dapo_nomorkks"></td>
+        </tr>
+        
+        <tr>
+            <td colspan="3" class="w3-center"><b>Dokumen KKS (Kartu Keluarga Sejahtera)</b></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="hdp_dok_kks">
+               
+            </td>
+        </tr>
+        <tr>
+            <td>Penerima KPS/PKH?</td>
+            <td>:</td>
+            <td class="hdp_dapo_penerimakps"></td>
+        </tr>
+        <tr>
+            <td>Nomor KPS/PKH</td>
+            <td>:</td>
+            <td class="hdp_dapo_nokps">hdp_dapo_nokps</td>
+        </tr>
+        
+        <tr>
+            <td colspan="3" class="w3-center"><b>Dokumen KPS(Kartu Perlindungan Sosial) / PKH(Program Keluarga Harapan)</b></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="hdp_dok_kpspkh">
+                
+            </td>
+        </tr>
+        <tr>
+            <td>Memiliki KIP?</td>
+            <td>:</td>
+            <td class="hdp_dapo_penerimakip">hdp_dapo_penerimakip</td>
+        </tr>
+        <tr>
+            <td>Nomor KIP</td>
+            <td>:</td>
+            <td class="hdp_dapo_nomorkip">hdp_dapo_nomorkip</td>
+        </tr>
+        <tr>
+            <td>Nama di KIP</td>
+            <td>:</td>
+            <td class="hdp_dapo_namadikip">hdp_dapo_namadikip</td>
+        </tr>
+        
+        <tr>
+            <td colspan="3" class="w3-center"><b>Dokumen KIP(Kartu Indonesia Pintar)</b></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="hdp_dok_kip">
+                
+            </td>
+        </tr>
+        
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">Alasan Layak PIP</th>
+        </tr>
+        <tr>
+            <td>Layak PIP?</td>
+            <td>:</td>
+            <td class="hdp_dapo_layakpip">hdp_dapo_layakpip</td>
+        </tr>
+        <tr>
+            <td>Alasan layak</td>
+            <td>:</td>
+            <td class="hdp_dapo_alasanlayakpip">hdp_dapo_alasanlayakpip</td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">BANK PENERIMA PIP<br/>Khusus bagi siswa yang mendapatkan dana PIP</th>
+        </tr>
+        <tr>
+            <td>Nama Bank</td>
+            <td>:</td>
+            <td class="hdp_dapo_bank"></td>
+        </tr>
+        <tr>
+            <td>Nomor Rekening Bank</td>
+            <td>:</td>
+            <td class="hdp_dapo_namarekeningbank"></td>
+        </tr>
+        <tr>
+            <td>Rekening Atas Nama</td>
+            <td>:</td>
+            <td class="hdp_dapo_rekeningatasnama"></td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">DATA ORANG TUA</th>
+        </tr>
+        <tr>
+            <td colspan="3" class="w3-center"><b>Ayah Kandung</b></td>
+        </tr>
+        <tr>
+            <td>Nama Lengkap Ayah</td>
+            <td>:</td>
+            <td class="hdp_pd_namaayah"></td>
+        </tr>
+        <tr>
+            <td>Tanggal Lahir Ayah</td>
+            <td>:</td>
+            <td class="hdp_dapo_tahunlahirayah"></td>
+        </tr>
+        <tr>
+            <td>Pendidikan Ayah</td>
+            <td>:</td>
+            <td class="hdp_dapo_jenjangpendidikanayah"></td>
+        </tr>
+        <tr>
+            <td>NIK Ayah</td>
+            <td>:</td>
+            <td class="hdp_dapo_nikayah"></td>
+        </tr>
+        <tr>
+            <td>Pekerjaan Ayah</td>
+            <td>:</td>
+            <td class="hdp_dapo_pekerjaanayah"></td>
+        </tr>
+        <tr>
+            <td>Penghasilan Ayah</td>
+            <td>:</td>
+            <td class="hdp_dapo_penghasilanayah"></td>
+        </tr>
+        
+        <tr>
+            <td>Berkebutuhan Khusus?</td>
+            <td>:</td>
+            <td class="hdp_dapo_abkayah"></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="w3-center"><b>Ibu Kandung</b></td>
+        </tr>
+        <tr>
+            <td>Nama Lengkap Ibu</td>
+            <td>:</td>
+            <td class="hdp_pd_namaibu"></td>
+        </tr>
+        <tr>
+            <td>Tanggal Lahir Ibu</td>
+            <td>:</td>
+            <td class="hdp_dapo_tahunlahiribu"></td>
+        </tr>
+        
+        <tr>
+            <td>Pendidikan Ibu</td>
+            <td>:</td>
+            <td class="hdp_dapo_jenjangpendidikanibu"></td>
+        </tr>
+        <tr>
+            <td>NIK Ibu</td>
+            <td>:</td>
+            <td class="hdo_dapo_nikibu"></td>
+        </tr>
+        <tr>
+            <td>Pekerjaan Ibu</td>
+            <td>:</td>
+            <td class="hdp_dapo_pekerjaanibu"></td>
+        </tr>
+        <tr>
+            <td>Penghasilan Ibu</td>
+            <td>:</td>
+            <td class="hdp_dapo_penghasilanibu"></td>
+        </tr>
+        
+        <tr>
+            <td>Berkebutuhan Khusus?</td>
+            <td>:</td>
+            <td class="hdp_dapo_abkibu"></td>
+        </tr>
+        <tr>
+            <td colspan="3" class="w3-center"><b>Wali</b></td>
+        </tr>
+        <tr>
+            <td>Nama Lengkap Wali</td>
+            <td>:</td>
+            <td class="hdp_dapo"></td>
+        </tr>
+        <tr>
+            <td>Tanggal Lahir Wali</td>
+            <td>:</td>
+            <td class="hdp_dapo_tahunlahirwali"></td>
+        </tr>
+        
+        <tr>
+            <td>Pendidikan Wali</td>
+            <td>:</td>
+            <td class="hdp_dapo_jenjangpendidikanwali"></td>
+        </tr>
+        <tr>
+            <td>NIK Wali</td>
+            <td>:</td>
+            <td class="hdo_dapo_nikwali"></td>
+        </tr>
+        <tr>
+            <td>Pekerjaan Wali</td>
+            <td>:</td>
+            <td class="hdp_dapo_pekerjaanwali"></td>
+        </tr>
+        <tr>
+            <td>Penghasilan Wali</td>
+            <td>:</td>
+            <td class="hdp_dapo_penghasilanwali"></td>
+        </tr>
+        <tr>
+            <td>Berkebutuhan Khusus (Wali)</td>
+            <td>:</td>
+            <td class="hdp_dapo_abkwali"></td>
+        </tr>
+        <tr>
+            <th colspan="3"></th>
+        </tr>
+        <tr>
+            <th class="w3-light-green w3-center" colspan="3">DATA PRIODIK PERKEMBANGAN SISWA</th>
+        </tr>
+        <tr>
+            <td>Tinggi Badan (Cm)</td>
+            <td>:</td>
+            <td class="hdp_dapo_tinggibadan"></td>
+        </tr>
+        <tr>
+            <td>Berat Badan (Kg)</td>
+            <td>:</td>
+            <td class="hdp_dapo_beratbadan"></td>
+        </tr>
+        <tr>
+            <td>Lingkar Kepala</td>
+            <td>:</td>
+            <td class="hdp_dapo_lingkarkepala"></td>
+        </tr>
+    </table>
+    </div>
+    `;
+
+    return html
+};
+
+function umur(tgllahir) {
+    var curday = new Date().getDate();;//document.cir.len11.value;
+    var curmon = new Date().getMonth();//.cir.len12.value;
+    var curyear = new Date().getFullYear();//.cir.len13.value;
+
+    var calday = new Date(tgllahir).getDate();//document.cir.len21.value;
+    var calmon = new Date(tgllahir).getMonth();//document.cir.len22.value;
+    var calyear = new Date(tgllahir).getFullYear();//document.cir.len23.value;
+
+    var curd = new Date(curyear, curmon, curday);
+    var cald = new Date(calyear, calmon, calday);
+
+
+    var dife = datediff(curd, cald);
+    let objret = {};
+    objret.tahun = dife[0];
+    objret.bulan = dife[1];
+    objret.hari = dife[2];
+    return objret
+}
+
+function datediff(date1, date2) {
+    var y1 = date1.getFullYear(), m1 = date1.getMonth(), d1 = date1.getDate(),
+        y2 = date2.getFullYear(), m2 = date2.getMonth(), d2 = date2.getDate();
+
+    if (d1 < d2) {
+        m1--;
+        d1 += DaysInMonth2(y2, m2);
+    }
+    if (m1 < m2) {
+        y1--;
+        m1 += 12;
+    }
+    return [y1 - y2, m1 - m2, d1 - d2];
+}
+
+function DaysInMonth2(Y, M) {
+    with (new Date(Y, M, 1, 12)) {
+        setDate(0);
+        return getDate();
+    }
+}
+
+const konversi_tanggal = (el, kelas) => {
+    let d = new Date(el.value);
+    let div = document.querySelector("." + kelas);
+
+    var tgl = d.getDate();
+    var bln = d.getMonth();
+    var thn = d.getFullYear();
+    var bulan = ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+    let result = tgl + " " + bulan[bln] + " " + thn;
+
+    div.innerHTML = `${result}`;
+};
+const htmlformulirdatasiswa = () => {
+    let html = `
+    <h3 class="w3-center warnaeka w3-round-large w3-card-4">FORMULIR AJUAN DATA SISWA</h3>
+    <div style="overflow-x:auto">
+    <form name="formajuandatasiswa" id="formajuandatasiswa">
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h3 class="w3-light-green w3-center" >KODE AKSES<br>(Tidak bisa diubah)</h3>
+            <label for="hfd_id">Kode Token:
+        <br/><input type="text" class="w3-input  w3-border w3-border-black w3-round" name="id" id="hfd_id" disabled/>
+            <hr/>
+            <label for="hfd_usulanperubahandata">Status Data:</label>
+            <br/>
+            <input type="text" class="w3-input  w3-border w3-border-black w3-round"  name="usulanperubahandata" id="hfd_usulanperubahandata" disabled>
+        </fieldset> 
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+        <h3 class="w3-light-green w3-center" >JENJANG KELAS<br>(Tidak bisa diubah)</h3>
+        <label for="hfd_jenjang">Jenjang Kelas:</label>
+            <br/>
+            <input type="number" class="w3-input  w3-border" name="jenjang" id="hfd_jenjang" disabled>
+            <br/>
+            <label>Rombel:</label>
+            <br/>
+            <input type="text" class="w3-input w3-border w3-border-black w3-round"  name="nama_rombel" id="hfd_nama_rombel" disabled/>
+
+        </fieldset>   
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h3 class="w3-light-green w3-center" >NARAHUBUNG</h3>
+        <label for="hfd_dapo_email">Email:</label>
+            <br/>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_email" id="hfd_dapo_email"/>
+            <br/>
+            <label for="hfd_pd_hp">No. HP WA:</label>
+            (bisa dihubungi)
+            <br/>
+            <input type="tel" class="w3-input w3-white w3-border w3-border-black w3-round"  name="pd_hp" id="hfd_pd_hp"/>
+            <br/>
+            <label for="hfd_dapo_telepon">No Telpon Rumah</label>
+            <br/>
+            <input type="tel" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_telepon" id="hfd_dapo_telepon"/>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+        <h3 class="w3-light-green w3-center" >DATA PRIBADI</h3>
+        <label for="hfd_nis">NIS:</label>
+        <br/>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round"  name="nis" id="hfd_nis">
+        <br/>
+        <label for="hfd_nisn">NISN:</label>
+        <br/>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="nisn" id="hfd_nisn">
+        <br/>
+        <label for="hfd_pd_nama">Nama Lengkap:</label>
+            <br/>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="pd_nama" id="hfd_pd_nama" oninput="ketik_kapital(this)"/>
+            <br/>
+            Jenis Kelamin: <br/>
+            <label for="hfd_pd_jk_l">
+                <input type="radio" class="w3-radio" name="pd_jk" id="hfd_pd_jk_l" value="L"/>
+                Laki-laki
+            </label>
+            <label for="hfd_pd_jk_p">
+                <input type="radio" class="w3-radio" name="pd_jk" ="hfd_pd_jk_p" value="P"/>
+                Perempuan
+            </label>
+        <br/>
+        <br/>
+        <label for="hfd_pd_agama">Agama:</label>
+        <br/>
+        <select class="w3-select warnaeka w3-border warnaeka" name="pd_agama" id="hfd_pd_agama">
+        <option value="">Silakan Pilih</option>
+                    <option value="ISLAM" >ISLAM</option>
+                    <option value="KRISTEN">KRISTEN/PROTESTAN</option>
+                    <option value="KATHOLIK">KATHOLIK</option>
+                    <option value="HINDU">HINDU</option>
+                    <option value="BUDHA">BUDHA</option>
+                    <option value="KHONGHUCU">KHONGHUCU</option>
+                    <option value="Kepercayaan Lain">Kepercayaan Lainnya</option>
+        </select>
+        <br/>
+        <br/>
+        <label for="hfd_pd_tl">Tempat Lahir:</label>
+            <br/>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="pd_tl" id="hdf_pd_tl" oninput="ketik_kapital(this)">
+            <br/>
+            <label for="hfd_pd_tanggallahir">Tanggal Lahir:</label>
+            <input type="date" class="w3-padding w3-border w3-border-black w3-round"  name="pd_tanggallahir" id="hfd_pd_tanggallahir" onchange="konversi_tanggal(this,'sub_arti_tanggal')"/>
+            Teks Tanggal Lahir: <b class="sub_arti_tanggal w3-text-red"></b>
+          <br/>  
+          <br/>  
+            <label for="hfd_dapo_noregistrasiaktalahir">No Registrasi Akta Kelahiran:</label>
+            <br/>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_noregistrasiaktalahir"/>
+            <br/>
+            <label for="hfd_dapo_anakkeberapa">Anak Ke-:</label>
+            <input type="number" class="w3-white w3-padding w3-border w3-border-black w3-round" name="dapo_anakkeberapa" id="hfd_dapo_anakkeberapa" style="width:100px"/>
+            
+            <label for="hfd_dapo_jumlahsaudarakandung">Jumlah Saudara Kandung:</label>
+            <input type="number" class="w3-white w3-padding w3-border w3-border-black w3-round" name="dapo_jumlahsaudarakandung" id="hfd_dapo_jumlahsaudarakandung" style="width:100px"/>
+            <br/>
+
+            <br/>
+            <br/>
+            <label for="hfd_dapo_kebutuhankhusus">Berkebutuhan Khusus?</label>
+
+                <select id="hfd_dapo_kebutuhankhusus" name="dapo_kebutuhankhusus" class="w3-select w3-border warnaeka">
+            <option value="">Silakan Pilih</option>
+                    <option value="TIDAK" >Tidak</option> 
+                    <option value="NETRA (A)">Netra (A)</option>
+                    <option value="RUNGU (B)">Rungu (B)</option>
+                    <option value="GRAHITA RINGAN (C)">Grahita Ringan (C)</option>
+                    <option value="GRAHITA SEDANG (C1)">Grahita Sedang (C1)</option>
+                    <option value="DAKSA RINGAN (D)">Daksa Ringan (D)</option>
+                    <option value="DAKSA SEDANG (D1)">Daksa Sedang (D1)</option>
+                    <option value="INDIGO (O)">Indigo (O)</option>
+                    <option value="DOWN SINDROME (P)">Down Sindrome (P)</option>
+                    <option value="AUTIS (Q)">Autis (Q)</option>
+                    <option value="LARAS (E)">Laras ( E)</option>
+                    <option value="WICARA (F)">Wicara (F)</option>
+                    <option value="TUNA GANDA (G)">Tuna Ganda (G)</option>
+                    <option value="HIPERAKTIF (H)">Hiperaktif (H)</option>
+                    <option value="CERDAS ISTIMEWA (I)">Cerdas Istimewa (i)</option>
+                    <option value="BAKAT ISTIMEWA (J)">Bakat Istimewa (J)</option>
+                    <option value="KESULITAN BELAJAR (K)">Kesulitan Belajar (K)</option> 
+                </select>
+                <br>
+                <br>
+                
+            </fieldset>
+            <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h5 class="w3-light-green w3-center">Dokumen Akta Kelahiran/Surat Kenal Lahir</h5>
+            Unggah Dokumen Akta Kelahiran / Surat Keterangan Lahir:<br/>    
+            <label for="input_dok_akte" id="label_dok_akte" class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i class="fa fa-upload"></i> Unggah Dokumen</label>
+                <input type="text" name="dok_akte" id="hfd_dok_akte" class="w3-input  w3-round" disabled/>
+                <div class="status_idfile_akta w3-center w3-text-blue"></div>
+            </fieldset>
+            <fieldset class="w3-card-4 w3-margin w3-light-grey"> 
+            <h3 class="w3-light-green w3-center">ALAMAT</h3>
+            <span class="w3-text-red">Disi sesuai dengan dokumen Kartu Keluarga</span>  <br/><br/> 
+            <label for="hfd_nik">NIK:</label>
+            <input type="number" class="w3-input w3-white w3-border w3-border-black w3-round" name="nik" id="hfd_nik">
+        <br/>
+            <label for="hfd_nokk">Nomor KK:</label>
+            
+            <input type="number" class="w3-input w3-white w3-border w3-border-black w3-round" name="nokk" ="hfd_nokk">
+            <br/>
+            <label for="hfd_pd_alamat">Alamat Jalan:</label>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="pd_alamat" id="hfd_pd_alamat">
+            <br/>
+            <label for="hfd_dapo_dusun">Nama Dusun:</label>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_dusun" id="hfd_dapo_dusun">
+            <br/>
+            <label for="hfd_rt">RT: </label> <input type="number" class="w3-white w3-border w3-border-black w3-round w3-padding" name="dapo_rt" id="hfd_dapo_rt" min="1" style="width:100px"/>
+            <label for="hfd_rw">RW: </label> <input type="number" class="w3-white w3-border w3-border-black w3-round w3-padding" name="dapo_rw" id="hfd_dapo_rw" min="1" style="width:100px"/>
+            <br/>
+            <br/>
+            <label for="hfd_dapo_kelurahan">Kelurahan:</label>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_kelurahan" id="hfd_dapo_kelurahan" oninput="ketik_kapital(this)">
+            <div class="w3-tiny">
+            Refrensi Tulisan Kelurahan (Perhatikan spasinya)<br/>
+            RATUJAYA, CIPAYUNG JAYA, BOJONG PONDOK TERONG, PONDOK JAYA
+            </div><br/>
+            <label for="hfd_dapo_kecamatan">Kecamatan :</label>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_kecamatan" id="hfd_dapo_kecamatan" oninput="ketik_kapital(this)"/>
+            <br/>
+            <laber for="hfd_dapo_kota">Kota:</td>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_kota" id="hfd_dapo_kota" oninput="ketik_kapital(this)"/>
+            <br/>
+            <label for="hfd_dapo_provinsi">Provinsi:</label>
+            <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_provinsi" id="hfd_dapo_provinsi" oninput="ketik_kapital(this)"/>
+            <br/>
+            <label for="hfd_dapo_kodepos">Kode Pos:</label>
+            <input type="number" class="w3-white w3-border w3-border-black w3-round w3-padding" name="dapo_kodepos" id="hfd_dapo_kodepos" style="width:150px;"/>
+            <br/>
+            <br/>
+            <label for="hfd_dapo_jenistinggal">Jenis Tinggal:</label>
+            <select class="w3-select w3-border warnaeka" name="dapo_jenistinggal" id="hfd_dapo_jenistinggal">
+            <option value="">Silakan Pilih</option>
+            <option value="Bersama Orang Tua" >Bersama Orang tua</option>
+                <option value="Wali">Wali</option>
+                <option value="Kos">Kos</option>
+                <option value="Asrama">Asrama</option>
+                <option value="Panti Asuhan">Panti Asuhan</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <br/>
+            <br/>
+            
+            <label for="hfd_dapo_alattransportasi">Moda Transportasi:</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_alattransportasi" id="hfd_dapo_alattransportasi">
+            <option value="">Silakan Pilih</option>
+            <option value="Jalan Kaki" >Jalan Kaki</option>
+                <option value="Kendaraan Pribadi">Kendaraan Pribadi</option>
+                <option value="Kendaraan Umum/Angkot/Pete-pete">Kendaraan Umum/Angkot/Pete-pete</option>
+                <option value="Jemputan Sekolah">Jemputan Sekolah</option>
+                <option value="Kereta Api">Kereta Api</option>
+                <option value="Ojek">Ojek</option>
+                <option value="Andong/Bendi/Sado/Dokar/Delman/Beca">Andong/Bendi/Sado/Dokar/Delman/Beca</option>
+                <option value="Perahu Penyebrangan/Rakit/Getek">Perahu Penyebrangan/Rakit/Getek</option>
+                <option value="Lainnya">Lainnya</option>
+            </option>
+            </select>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h5 class="w3-light-green w3-center">Dokumen Kartu Keluarga</h5>
+            Unggah Dokumen Kartu Keluarga:<br/>
+            <label for="input_dok_kk" id="label_dok_kk" class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i class="fa fa-upload"></i> Unggah Dokumen</label>
+                <input type="text" name="dok_kk" id="hfd_dok_kk" class="w3-input  w3-round" disabled/>
+                <div class="status_idfile_kk w3-center w3-text-blue"></div>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h3 class="w3-light-green w3-center">Koordinat Geografis</h3>
+        Pastikan dalam pengisian ini, Anda berada di tempat tinggal Anda. Silakan klik tombol berikut untuk menggenerate titik koordinat rumah tinggal Ananda di sini.
+        <br/>
+        <br/>
+        <label for="tombol_titikkoordinat" id="label_tombol_titikkoordinat" class="w3-button w3-card-4 warnaeka w3-border-bottom w3-border-black w3-round-large"><i class="fa fa-map-marker"></i> Koordinat Saya</label>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_lintang">Lintang (Latitude):</label>
+        <input type="text" class="w3-input  w3-border w3-border-black w3-round" name="dapo_lintang" id="hfd_dapo_lintang" disabled/>
+        <br/>
+        <label for="hfd_dapo_bujur">Bujur (Longitude)</td>
+        <input type="text" class="w3-input  w3-border w3-border-black w3-round" name="dapo_bujur" id="hfd_dapo_bujur" disabled/>
+        <br/>
+        <label for="hfd_dapo_jarakrumahkesekolah">Jarak Rumah Ke sekolah (Km)</label>
+        <input type="text" class="w3-input  w3-border w3-border-black w3-round" name="dapo_jarakrumahkesekolah" id="hfd_dapo_jarakrumahkesekolah" disabled />
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h3 class="w3-light-green w3-center">Program KIP/KKS/KPS/PKH/PIP</h3>
+            <h4 class="w3-light-green w3-center">KKS (Kartu Keluarga Sejahtera) </h4>
+        <label for="hfd_dapo_nomorkks">Nomor KKS:</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_nomorkks" id="hfd_dapo_nomorkks"/>
+        <br/>
+        <br/>
+        Dokumen KKS<br/>
+        <label for="input_dok_kks" id="label_dok_kks" class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i class="fa fa-upload"></i> Unggah Dokumen</label>
+        <input type="text" class="w3-input  w3-round" name="dok_kks" id="hfd_dok_kks" disabled/>
+        <br/>     
+        <br/>     
+        <br/>     
+        <h4 class="w3-light-green w3-center">KPS/PKH</h4>
+        <sub class="w3-text-blue">KPS(Kartu Perlindungan Sosial) / PKH(Program Keluarga Harapan)</sub><br/><br/>
+        <label for="hfd_dapo_penerimakps">Penerima KPS/PKH?</label>
+        <select class="w3-select warnaeka w3-border" name="dapo_penerimakps" id="hfd_dapo_penerimakps">
+            <option value="TIDAK" >TIDAK</option>
+            <option value="YA" >YA</option>
+        </select>
+        <br/>    
+        <label for="hfd_dapo_nokps">Nomor KPS/PKH:</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_nokps" id="hfd_dapo_nokps"/>
+            <br/>
+            <br/>
+            Dokumen Kartu KPS atau PKH<br/>
+        <label for="input_dok_kpspkh" id="label_dok_kpspkh" class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i class="fa fa-upload"></i> Unggah Dokumen</label>
+        <input type="text" class="w3-input w3-round" name="dok_kpspkh" id="hfd_dok_kpspkh" disabled/>
+        <br/>
+        <br/>
+        <br/>
+        <h4 class="w3-light-green w3-center">KIP (Kartu Indonesia Pintar)</h4>
+            <label for="hfd_dapo_penerimakip">Memiliki KIP?</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_penerimakip" id="hfd_dapo_penerimakip">
+            <option value="TIDAK" >TIDAK</option>
+            <option value="YA">YA</option>
+            </select>
+            <br/>
+            <br/>
+        <label for="hfd_dapo_nomorkip">Nomor KIP</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_nomorkip" id="hfd_dapo_nomorkip"/>
+        <br/>
+        <label for="hfd_dapo_namadikip">Nama di KIP:</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_namadikip" id="hfd_dapo_namadikip"/>
+        <br/><br/>
+        Dokumen KIP(Kartu Indonesia Pintar):<br/>
+        <label for="input_dok_kip" id="label_dok_kip" class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i class="fa fa-upload"></i> Unggah Dokumen</label>
+        <input type="text" class="w3-input  w3-round" name="dok_kip" id="hfd_dok_kip" disabled/>
+        <br/>
+        <br/>
+        <br/>
+        <h4 class="w3-light-green w3-center">Kelayakan PIP:</h4>
+        
+        <label for="hfd_dapo_layakpip">Layak PIP?</label>
+        <select class="w3-select warnaeka w3-border" name="dapo_layakpip" id="hfd_dapo_layakpip" disabled>
+            <option value="TIDAK" >TIDAK</option>
+            <option value="YA" >YA</option>
+        </select>
+        <br/>
+        <br/>
+        <input type="text" class="w3-input  w3-round" name="dapo_alasanlayakpip" id="hfd_dapo_alasanlayakpip" placeholder="Terotomasi oleh Dapodik" disabled/>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+        <h3 class="w3-light-green w3-center">DATA ORANG TUA</h3>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h4 class="w3-light-green w3-center">Ayah Kandung</h4>
+        <label for="hfd_pd_namaayah">Nama Lengkap Ayah:</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="pd_namaayah" ="hfd_pd_namaayah" oninput="ketik_kapital(this)"/>
+        <br/>
+        <label for="hfd_dapo_tahunlahirayah">Tanggal Lahir Ayah:</label>
+        <input type="date" class="w3-padding w3-border w3-border-black w3-round" name="dapo_tahunlahirayah" id="hfd_dapo_tahunlahirayah" onchange="konversi_tanggal(this,'sub_arti_tanggal_ayah')"/>
+        Teks Tanggal Lahir: <b class="sub_arti_tanggal_ayah w3-text-red"></b>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_jenjangpendidikanayah">Pendidikan Ayah</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_jenjangpendidikanayah" id="hfd_dapo_jenjangpendidikanayah">
+            <option value="">Silakan Pilih</option>
+            <option value="Tidak Sekolah" >Tidak Sekolah</option>
+                <option value="Putus SD">Putus SD</option>
+                <option value="SD Sederajat">SD Sederajat</option>
+                <option value="SMP Sederajat">SMP Sederajat</option>
+                <option value="SMA Sederajat" >SMA Sederajat</option>
+                <option value="DI">D1</option>
+                <option value="D2">D2</option>
+                <option value="D3">D3</option>
+                <option value="D4/S1">D4/S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+            </select>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_nikayah">NIK Ayah:</label>
+        <input type="number" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_nikayah" id="hfd_dapo_nikayah">
+            <br/>
+            <label for="hfd_dapo_pekerjaanayah">Pekerjaan Ayah</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_pekerjaanayah" id="hfd_dapo_pekerjaanayah">
+            <option value="">Silakan Pilih</option>
+            <option value="Tidak bekerja" >Tidak bekerja</option>
+                <option value="Nelayan">Nelayan</option>
+                <option value="Petani">Petani</option>
+                <option value="Peternak">Peternak</option>
+                <option value="PNS/TNI/Polri">PNS/TNI/Polri</option>
+                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                <option value="Pedagang Kecil">Pedagang Kecil</option>
+                <option value="Pedagang Besar">Pedagang Besar</option>
+                <option value="Wiraswasta" >Wiraswasta</option>
+                <option value="Wirausaha">Wirausaha</option>
+                <option value="Buruh">Buruh</option>
+                <option value="Pensiunan">Pensiunan</option>
+                <option value="Tenaga Kerja Indonesia (TKI)">Tenaga Kerja Indonesia (TKI)</option>
+                <option value="Tidak dapat diterapkan">Tidak dapat diterapkan</option>
+                <option value="Meninggal Dunia">Meninggal Dunia</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <br>
+            <br>
+            <label for="hfd_dapo_penghasilanayah">Penghasilan Ayah</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_penghasilanayah" ="hfd_dapo_penghasilanayah">
+            <option value="">Silakan Pilih</option>
+            <option value="Kurang dari Rp. 1.000.000,-">Kurang dari Rp. 1.000.000,-</option>
+            <option value="Rp. 1.000.000 - Rp. 2.000.000">Rp. 1.000.000 - Rp. 2.000.000</option>
+                <option value="Lebih dari Rp. 2.000.000">Lebih dari Rp. 2.000.000</option>
+                <option value="Kurang dari Rp. 500.000">Kurang dari Rp. 500.000</option>
+                <option value="Rp. 500.000 - Rp. 999.999">Rp. 500.000 - Rp. 999.999</option>
+                <option value="Rp. 1.000.000 - Rp. 1.999.999" >Rp. 1.000.000 - Rp. 1.999.999</option>
+                <option value="Rp. 2.000.000 - Rp. 4.999.999" >Rp. 2.000.000 - Rp. 4.999.999</option>
+                <option value="Rp. 5.000.000 - Rp. 20.000.000">Rp. 5.000.000 - Rp. 20.000.000</option>
+                <option value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
+                <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                <option value="Lainnya">Lainnya</option>
+        </select>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_abkayah">Berkebutuhan Khusus?</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_abkayah" id="hfd_dapo_abkayah">
+            <option value="">Silakan Pilih</option>
+                <option value="TIDAK" >Tidak</option> 
+                <option value="NETRA (A)">Netra (A)</option>
+                <option value="RUNGU (B)">Rungu (B)</option>
+                <option value="GRAHITA RINGAN (C)">Grahita Ringan (C)</option>
+                <option value="GRAHITA SEDANG (C1)">Grahita Sedang (C1)</option>
+                <option value="DAKSA RINGAN (D)">Daksa Ringan (D)</option>
+                <option value="DAKSA SEDANG (D1)">Daksa Sedang (D1)</option>
+                <option value="INDIGO (O)">Indigo (O)</option>
+                <option value="DOWN SINDROME (P)">Down Sindrome (P)</option>
+                <option value="AUTIS (Q)">Autis (Q)</option>
+                <option value="LARAS (E)">Laras ( E)</option>
+                <option value="WICARA (F)">Wicara (F)</option>
+                <option value="TUNA GANDA (G)">Tuna Ganda (G)</option>
+                <option value="HIPERAKTIF (H)">Hiperaktif (H)</option>
+                <option value="CERDAS ISTIMEWA (I)">Cerdas Istimewa (i)</option>
+                <option value="BAKAT ISTIMEWA (J)">Bakat Istimewa (J)</option>
+                <option value="KESULITAN BELAJAR (K)">Kesulitan Belajar (K)</option> 
+            </select>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+        <h4 class="w3-light-green w3-center">Ibu Kandung</h4>
+        <label for="hfd_pd_namaibu">Nama Lengkap ibu:</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="pd_namaibu" ="hfd_pd_namaibu" oninput="ketik_kapital(this)"/>
+        <br/>
+        <label for="hfd_dapo_tahunlahiribu">Tanggal Lahir ibu:</label>
+        <input type="date" class="w3-padding w3-border w3-border-black w3-round" name="dapo_tahunlahiribu" id="hfd_dapo_tahunlahiribu" onchange="konversi_tanggal(this,'sub_arti_tanggal_ibu')"/>
+        Teks Tanggal Lahir: <b class="sub_arti_tanggal_ibu w3-text-red"></b>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_jenjangpendidikanibu">Pendidikan ibu</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_jenjangpendidikanibu" id="hfd_dapo_jenjangpendidikanibu">
+                <option value="">Silakan Pilih</option>
+                <option value="Tidak Sekolah" >Tidak Sekolah</option>
+                <option value="Putus SD">Putus SD</option>
+                <option value="SD Sederajat">SD Sederajat</option>
+                <option value="SMP Sederajat">SMP Sederajat</option>
+                <option value="SMA Sederajat" >SMA Sederajat</option>
+                <option value="DI">D1</option>
+                <option value="D2">D2</option>
+                <option value="D3">D3</option>
+                <option value="D4/S1">D4/S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+            </select>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_nikibu">NIK ibu:</label>
+        <input type="number" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_nikibu" id="hfd_dapo_nikibu">
+            <br/>
+            <label for="hfd_dapo_pekerjaanibu">Pekerjaan ibu</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_pekerjaanibu" id="hfd_dapo_pekerjaanibu">
+            <option value="">Silakan Pilih</option>
+            <option value="Tidak bekerja" >Tidak bekerja</option>
+                <option value="Nelayan">Nelayan</option>
+                <option value="Petani">Petani</option>
+                <option value="Peternak">Peternak</option>
+                <option value="PNS/TNI/Polri">PNS/TNI/Polri</option>
+                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                <option value="Pedagang Kecil">Pedagang Kecil</option>
+                <option value="Pedagang Besar">Pedagang Besar</option>
+                <option value="Wiraswasta" >Wiraswasta</option>
+                <option value="Wirausaha">Wirausaha</option>
+                <option value="Buruh">Buruh</option>
+                <option value="Pensiunan">Pensiunan</option>
+                <option value="Tenaga Kerja Indonesia (TKI)">Tenaga Kerja Indonesia (TKI)</option>
+                <option value="Tidak dapat diterapkan">Tidak dapat diterapkan</option>
+                <option value="Meninggal Dunia">Meninggal Dunia</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <br>
+            <br>
+            <label for="hfd_dapo_penghasilanibu">Penghasilan ibu</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_penghasilanibu" ="hfd_dapo_penghasilanibu">
+            <option value="">Silakan Pilih</option>
+            <option value="Kurang dari Rp. 1.000.000,-" >Kurang dari Rp. 1.000.000,-</option>
+            <option value="Rp. 1.000.000 - Rp. 2.000.000">Rp. 1.000.000 - Rp. 2.000.000</option>
+                <option value="Lebih dari Rp. 2.000.000">Lebih dari Rp. 2.000.000</option>
+                <option value="Kurang dari Rp. 500.000">Kurang dari Rp. 500.000</option>
+                <option value="Rp. 500.000 - Rp. 999.999" >Rp. 500.000 - Rp. 999.999</option>
+                <option value="Rp. 1.000.000 - Rp. 1.999.999">Rp. 1.000.000 - Rp. 1.999.999</option>
+                <option value="Rp. 2.000.000 - Rp. 4.999.999" >Rp. 2.000.000 - Rp. 4.999.999</option>
+                <option value="Rp. 5.000.000 - Rp. 20.000.000">Rp. 5.000.000 - Rp. 20.000.000</option>
+                <option value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
+                <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                <option value="Lainnya">Lainnya</option>
+        </select>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_abkibu">Berkebutuhan Khusus?</label>
+        <select class="w3-select warnaeka w3-border" name="dapo_abkibu" id="hfd_dapo_abkibu">
+        <option value="">Silakan Pilih</option>
+                <option value="TIDAK" >Tidak</option> 
+                <option value="NETRA (A)">Netra (A)</option>
+                <option value="RUNGU (B)">Rungu (B)</option>
+                <option value="GRAHITA RINGAN (C)">Grahita Ringan (C)</option>
+                <option value="GRAHITA SEDANG (C1)">Grahita Sedang (C1)</option>
+                <option value="DAKSA RINGAN (D)">Daksa Ringan (D)</option>
+                <option value="DAKSA SEDANG (D1)">Daksa Sedang (D1)</option>
+                <option value="INDIGO (O)">Indigo (O)</option>
+                <option value="DOWN SINDROME (P)">Down Sindrome (P)</option>
+                <option value="AUTIS (Q)">Autis (Q)</option>
+                <option value="LARAS (E)">Laras ( E)</option>
+                <option value="WICARA (F)">Wicara (F)</option>
+                <option value="TUNA GANDA (G)">Tuna Ganda (G)</option>
+                <option value="HIPERAKTIF (H)">Hiperaktif (H)</option>
+                <option value="CERDAS ISTIMEWA (I)">Cerdas Istimewa (i)</option>
+                <option value="BAKAT ISTIMEWA (J)">Bakat Istimewa (J)</option>
+                <option value="KESULITAN BELAJAR (K)">Kesulitan Belajar (K)</option> 
+            </select>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+        <h4 class="w3-light-green w3-center">Wali</h4>
+        <label for="hfd_dapo_namawali">Nama Lengkap wali:</label>
+        <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_namawali" ="hfd_dapo_namawali" oninput="ketik_kapital(this)"/>
+        <br/>
+        <label for="hfd_dapo_tahunlahirwali">Tanggal Lahir wali:</label>
+        <input type="date" class="w3-padding w3-border w3-border-black w3-round" name="dapo_tahunlahirwali" id="hfd_dapo_tahunlahirwali" onchange="konversi_tanggal(this,'sub_arti_tanggal_wali')"/>
+        Teks Tanggal Lahir: <b class="sub_arti_tanggal_wali w3-text-red"></b>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_jenjangpendidikanwali">Pendidikan wali</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_jenjangpendidikanwali" id="hfd_dapo_jenjangpendidikanwali">
+            <option value="">Silakan Pilih</option>
+            <option value="Tidak Sekolah">Tidak Sekolah</option>
+                <option value="Putus SD">Putus SD</option>
+                <option value="SD Sederajat">SD Sederajat</option>
+                <option value="SMP Sederajat">SMP Sederajat</option>
+                <option value="SMA Sederajat" >SMA Sederajat</option>
+                <option value="DI">D1</option>
+                <option value="D2">D2</option>
+                <option value="D3">D3</option>
+                <option value="D4/S1">D4/S1</option>
+                <option value="S2">S2</option>
+                <option value="S3">S3</option>
+            </select>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_nikwali">NIK wali:</label>
+        <input type="number" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_nikwali" id="hfd_dapo_nikwali">
+            <br/>
+            <label for="hfd_dapo_pekerjaanwali">Pekerjaan wali</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_pekerjaanwali" id="hfd_dapo_pekerjaanwali">
+            <option value="">Silakan Pilih</option>
+            <option value="Tidak bekerja">Tidak bekerja</option>
+                <option value="Nelayan">Nelayan</option>
+                <option value="Petani">Petani</option>
+                <option value="Peternak">Peternak</option>
+                <option value="PNS/TNI/Polri">PNS/TNI/Polri</option>
+                <option value="Karyawan Swasta">Karyawan Swasta</option>
+                <option value="Pedagang Kecil">Pedagang Kecil</option>
+                <option value="Pedagang Besar">Pedagang Besar</option>
+                <option value="Wiraswasta" >Wiraswasta</option>
+                <option value="Wirausaha">Wirausaha</option>
+                <option value="Buruh">Buruh</option>
+                <option value="Pensiunan">Pensiunan</option>
+                <option value="Tenaga Kerja Indonesia (TKI)">Tenaga Kerja Indonesia (TKI)</option>
+                <option value="Tidak dapat diterapkan">Tidak dapat diterapkan</option>
+                <option value="Meninggal Dunia">Meninggal Dunia</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+            <br>
+            <br>
+            <label for="hfd_dapo_penghasilanwali">Penghasilan wali</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_penghasilanwali" ="hfd_dapo_penghasilanwali">
+            <option value="">Silakan Pilih</option>
+            <option value="Kurang dari Rp. 1.000.000,-">Kurang dari Rp. 1.000.000,-</option>
+            <option value="Rp. 1.000.000 - Rp. 2.000.000">Rp. 1.000.000 - Rp. 2.000.000</option>
+                <option value="Lebih dari Rp. 2.000.000">Lebih dari Rp. 2.000.000</option>
+                <option value="Kurang dari Rp. 500.000">Kurang dari Rp. 500.000</option>
+                <option value="Rp. 500.000 - Rp. 999.999">Rp. 500.000 - Rp. 999.999</option>
+                <option value="Rp. 1.000.000 - Rp. 1.999.999">Rp. 1.000.000 - Rp. 1.999.999</option>
+                <option value="Rp. 2.000.000 - Rp. 4.999.999" >Rp. 2.000.000 - Rp. 4.999.999</option>
+                <option value="Rp. 5.000.000 - Rp. 20.000.000">Rp. 5.000.000 - Rp. 20.000.000</option>
+                <option value="Lebih dari Rp.20.000.000">Lebih dari Rp.20.000.000</option>
+                <option value="Tidak Berpenghasilan">Tidak Berpenghasilan</option>
+                <option value="Lainnya">Lainnya</option>
+        </select>
+        <br/>
+        <br/>
+        <label for="hfd_dapo_abkwali">Berkebutuhan Khusus?</label>
+            <select class="w3-select warnaeka w3-border" name="dapo_abkwali" id="hfd_dapo_abkwali">
+            <option value="">Silakan Pilih</option>
+            <option value="TIDAK" >Tidak</option> 
+                <option value="NETRA (A)">Netra (A)</option>
+                <option value="RUNGU (B)">Rungu (B)</option>
+                <option value="GRAHITA RINGAN (C)">Grahita Ringan (C)</option>
+                <option value="GRAHITA SEDANG (C1)">Grahita Sedang (C1)</option>
+                <option value="DAKSA RINGAN (D)">Daksa Ringan (D)</option>
+                <option value="DAKSA SEDANG (D1)">Daksa Sedang (D1)</option>
+                <option value="INDIGO (O)">Indigo (O)</option>
+                <option value="DOWN SINDROME (P)">Down Sindrome (P)</option>
+                <option value="AUTIS (Q)">Autis (Q)</option>
+                <option value="LARAS (E)">Laras ( E)</option>
+                <option value="WICARA (F)">Wicara (F)</option>
+                <option value="TUNA GANDA (G)">Tuna Ganda (G)</option>
+                <option value="HIPERAKTIF (H)">Hiperaktif (H)</option>
+                <option value="CERDAS ISTIMEWA (I)">Cerdas Istimewa (i)</option>
+                <option value="BAKAT ISTIMEWA (J)">Bakat Istimewa (J)</option>
+                <option value="KESULITAN BELAJAR (K)">Kesulitan Belajar (K)</option> 
+            </select>
+        </fieldset>
+        <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h4 class="w3-light-green w3-center">DATA PRIODIK PERKEMBANGAN SISWA</h4>
+        <label for="hfd_dapo_tinggibadan">Tinggi Badan (Cm):</label>
+        <input type="number" class="w3-padding w3-white w3-border w3-border-black w3-round" name="dapo_tinggibadan" id="hfd_dapo_tinggibadan" style="width=80px"/>
+        <br/>
+        <br/>
+            <label for="hfd_dapo_beratbadan">Berat Badan (Kg):</label>
+            <input type="number" class="w3-padding w3-white w3-border w3-border-black w3-round" name="dapo_beratbadan" id="hfd_dapo_beratbadan" style="width=80px"/>
+            <br/>
+            <br/>
+            <label for="hfd_dapo_lingkarkepala">Lingkar Kepala:</label>
+            <input type="number" class="w3-padding w3-white w3-border w3-border-black w3-round" name="dapo_lingkarkepala" id="hfd_dapo_lingkarkepala" style="width=80px"/>
+    </fieldset>
+    <fieldset class="w3-card-4 w3-margin w3-light-grey">
+            <h4 class="w3-light-green w3-center">BANK PENERIMA KIP</h4>
+    <label for="hfd_dapo_bank">Nama Bank PIP:</label>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_bank" id="hfd_dapo_bank"/>
+    <br/>
+    <label for="hfd_dapo_bank">Nomor Rekening Bank PIP:</label>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_nomorrekeningbank" id="hfd_dapo_nomorrekeningbank"/>
+    <br/>
+    <label for="hfd_dapo_rekeningatasnama">Rekening Atas Nama:</label>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round"  name="dapo_rekeningatasnama" id="hfd_dapo_rekeningatasnama"/>
+    <br/>
+
+    </fieldset>
+    <fieldset class="w3-card-4 w3-margin w3-light-grey">
+    <h4 class="w3-light-green w3-center">RIWAYAT SEKOLAH</h4>
+    Isian ini untuk mengisi data riwayat sekolah sebelum di ${identitassekolah}. Contoh TK, RA, PAUD.<br/><br/>
+    Bagi Siswa Pindahan, Isikan nama sekolah sebelumnya.
+    <br/>
+    <br/>
+    <label for="hfd_dapo_sekolahasal">Sekolah Asal:</label>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_sekolahasal" id="hfd_dapo_sekolahasal" oninput="ketik_kapital(this)"/>
+    </fieldset> 
+    <fieldset class="w3-hide">
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="aktif" id="hfd_aktif" disabled placeholder="Status Aktif"/>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dieditoleh" id="hfd_dieditoleh" placeholder="Diusulkan Kepada" disabled />
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="action" id="hfd_action" disabled placeholder="Aktifasi"/>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_nopesertaujiannasional" id="hfd_dapo_nopesertaujiannasional" disabled placeholder="No Peserta Ujian (untuk lulusan kelas 6)"/>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_skhun" id="hfd_dapo_skhun" disabled placeholder="Data SKHUN (untuk lulusan kelas 6)"/>
+    <input type="text" class="w3-input w3-white w3-border w3-border-black w3-round" name="dapo_noseriijazah" id="hfd_dapo_noseriijazah" disabled placeholder="No Seri Ijazah (untuk lulusan kelas 6)"/>
+    </fieldset>       
+    </form>
+   <div class="w3-hide">
+        <input type="file" id="input_dok_akte" onchange="fnbaru_unggahfiledulu(this)"/>
+        <input type="file" id="input_dok_kk" onchange="fnbaru_unggahfiledulu(this)"/>
+        <button id="tombol_titikkoordinat" onclick="getLocation(this)">Koordinat</button>
+        <input type="file" id="input_dok_kks" onchange="fnbaru_unggahfiledulu(this)"/>
+        <input type="file" id="input_dok_kpspkh" onchange="fnbaru_unggahfiledulu(this)"/>
+        <input type="file" id="input_dok_kip" onchange="fnbaru_unggahfiledulu(this)"/>
+        </div>
+        <div class="w3-margin-top w3-center">
+        <button onclick="validasiajuandata()" class="w3-button w3-card-4 warnaeka w3-margin w3-border-bottom w3-border-black w3-round-large"><i class="fa fa-paper-plane"></i> Kirim Ajuan </button>
+        <button class="w3-button warnaeka w3-card-4 w3-round-large w3-margin w3-border-bottom w3-border-black " onclick="infoloadingljk.innerHTML='';loadingljk.style.display='none'">Tutup Form</button>
+        </div>
+    </div>
     
     `;
 
     return html
+};
+
+const StringTanggalnol = (tgl) => { //parameter tgl bentuk tgl
+    let m = tgl.getMonth() + 1;
+    let d = tgl.getDate();
+    let y = tgl.getFullYear();
+
+
+    let string = y + "-" + addZero(m) + "-" + addZero(d);
+
+
+    //console.log(string)
+    return string
+}
+
+
+const fnbaru_unggahfiledulu = (el) => {
+    let elemen_id = el.getAttribute("id");
+    let id_label = elemen_id.replace("input_", "label_");
+    let id_input = elemen_id.replace("input_", "hfd_");
+
+    let elemen_label = document.getElementById(id_label);
+    elemen_label.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "end"
+    });
+    let innersebelumnya = elemen_label.innerHTML;
+    elemen_label.innerHTML = `<img scr="/img/barloading.gif"/>`;
+    var file = document.getElementById(elemen_id).files[0];
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        //document.getElementById('uploadForm').submit();
+
+        let src = e.target.result;
+        let data = src.replace(/^.*,/, '');
+        let tipe = e.target.result.match(/^.*(?=;)/)[0];
+        fn_upload_file(id_input, data, tipe);
+        // console.log(tipe);
+        // console.log(data);
+    }
+    reader.readAsDataURL(file);
+}
+
+const fn_upload_file = (id_input, param, tipe) => {
+    let div = document.querySelector("input[id=" + id_input + "]"); //cpdb_id_file_akta
+    let namadokumen = id_input.replace("hfd_", "");
+    let id_label = id_input.replace("hfd_", "label_")
+    let el_label = document.querySelector("label[id=" + id_label + "]"); //cpdb_id_file_akta
+    el_label.innerHTML = `<img src="/img/barloading.gif"/>`;
+    el_label.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+        inline: "end"
+    });
+    let namafile = namasiswa + "_" + namadokumen;
+
+    let data = new FormData();
+    data.append("action", "uploadfiledulu");
+    data.append("fileContent", param);
+    data.append("mimeType", tipe);
+    data.append("filename", namafile);
+    data.append("kelas", namakelas);
+    var url = url_absensiswa;// + "?action=uploaddulu";
+    fetch(url, {
+        method: 'post',
+        body: data
+    }).then(m => m.json())
+        .then(r => {
+            if (r.sukses == "Gagal") {
+                setTimeout(() => {
+                    el_label.innerHTML = `<i class="fa fa-upload"></i> Unggah Dokumen`;
+
+                }, 3000);
+                el_label.innerHTML = `Gagal Mengunggah`;
+            } else {
+                el_label.innerHTML = `<i class="fa fa-upload"></i> Unggah Dokumen`;
+                div.value = r.idfile;
+            }
+        })
+        .catch(er => {
+            console.log(er);
+            setTimeout(() => {
+                el_label.innerHTML = `<i class="fa fa-upload"></i> Unggah Dokumen`;
+
+            }, 3000);
+            el_label.innerHTML = `Gagal Mengunggah`;
+            alert("Maaf, terjadi kesalahan. Silakan ulangi sesi Anda sesaat lagi.")
+        })
+};
+
+function getLocation(el) {
+    let id = el.getAttribute("id")
+    let elemenlabel = document.getElementById("label_" + id)
+    elemenlabel.scrollIntoView();
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+        hfd_dapo_lintang.value = "Duh, HP Anda tidak support. Coba dengan HP Lain";
+        hfd_dapo_bujur.value = "Duh, HP Anda tidak support. Coba dengan HP Lain";
+    }
+}
+function showPosition(position) {
+    hfd_dapo_lintang.value = position.coords.latitude;
+    hfd_dapo_bujur.value = position.coords.longitude;
+    var xJarak = distance(hfd_dapo_lintang.value, hfd_dapo_bujur.value, "K");
+    hfd_dapo_jarakrumahkesekolah.value = xJarak.toFixed(3);
+}
+
+function distance(lat1, lon1, unit) {
+    // var lat2 = -6.4198454;
+    // var lon2 = 106.8134214;
+
+    var radlat1 = Math.PI * lat1 / 180
+    var radlat2 = Math.PI * lat2 / 180
+
+    var radlon1 = Math.PI * lon1 / 180
+    var radlon2 = Math.PI * lon2 / 180
+    var theta = lon1 - lon2
+    var radtheta = Math.PI * theta / 180
+    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    dist = Math.acos(dist)
+    dist = dist * 180 / Math.PI
+    dist = dist * 60 * 1.1515
+    if (unit == "K") { dist = dist * 1.609344 }
+    // if (unit == "K") { dist = dist * 0.01609344 }
+    if (unit == "N") { dist = dist * 0.8684 }
+    return dist
+}
+function komponenform(form) { // fungsi untuk membuat Array Object beserta value-nya dalam bentuk JSON
+    var koleksielement = form.elements;
+    var buatkolomheader = Object.keys(koleksielement).filter(function (k) {
+        if (koleksielement[k].name === "time_stamp") {
+            koleksispam = koleksielement[k].value;
+            return false;
+        }
+        return true; // hasilnya [0,1,2,3, ..., "dieditoleh", "id", "nis", ....berdasarkan nama]
+
+    }).map(function (k) {
+        if (koleksielement[k].name !== undefined) {
+            return koleksielement[k].name;
+        } else if (koleksielement[k].length > 0) {
+            return koleksielement[k].item(0).name; //
+        }
+    }).filter(function (item, pos, self) {
+        return self.indexOf(item) == pos && item;
+    });
+
+    var dataJSON = {};
+
+    buatkolomheader.forEach(function (name) { // masing-masing element yang memiliki attribute name;
+        var nameselement = koleksielement[name];
+        dataJSON[name] = nameselement.value;
+        if (nameselement.length) {
+            var data = [];
+            for (var i = 0; i < nameselement.length; i++) {
+                var item = nameselement.item(i);
+                if (item.checked || item.selected) {
+                    data.push(item.value);
+                }
+            }
+            dataJSON[name] = data.join(', ');
+        }
+
+    });
+    //dataJSON.formDataNameOrder = JSON.stringify(buatkolomheader);
+    return {
+        data: dataJSON,
+        head: buatkolomheader
+    }
+}
+const validasiajuandata = () => {
+    let namaform = document.getElementById("formajuandatasiswa");//.elements;
+    let dataoke = [];
+    let datagaada = [];
+    let cekhead = arrayheadsumber.filter(s => s !== "time_stamp");//array
+
+    let avoid_head = ["aktif", "dieditoleh", "action", "usulanperubahandata"];
+    let elemenform = komponenform(namaform); /// object
+    let dataelemen = elemenform.data; // {id:"", data: "", dst}
+
+    if (dataelemen.dok_akte == "" || dataelemen.dok_kk == "") {
+        alert("Anda wajib mengunggah file akte dan kartu keluarga");
+        return
+    }
+    let objekada = {};
+    let keyurut = [];
+    let valurut = [];
+    for (let i = 0; i < cekhead.length; i++) {
+        if (dataelemen[cekhead[i]] == undefined) {
+            datagaada.push(cekhead[i]);
+            if (angkadistring.indexOf(cekhead[i]) > -1) {
+                let n = "'";//+ dataelemen[cekhead[i]]
+                valurut.push(n);
+            } else {
+                valurut.push("")
+            }
+        } else {
+            dataoke.push(cekhead[i])
+            objekada[cekhead[i]] = dataelemen[cekhead[i]]
+            if (angkadistring.indexOf(cekhead[i]) > -1) {
+                let n = "'" + dataelemen[cekhead[i]]
+                valurut.push(n);
+            } else {
+
+                valurut.push(dataelemen[cekhead[i]]);
+            }
+        }
+        keyurut.push(cekhead[i]);
+    }
+    console.log(keyurut);
+    console.log(valurut)
+    let cocok = (JSON.stringify(keyurut) == JSON.stringify(cekhead)) ? "COCOK" : "BEDA";
+    console.log(cocok);
+
+    console.log("dataoke");
+    console.log(dataoke);
+    console.log("datagaada");
+    console.log(datagaada);
+    let tabel = JSON.stringify(valurut);
+    let datakirim = new FormData();
+    // datakirim.append("action", );
+    datakirim.append("tab", "new_datasiswa");
+    datakirim.append("tabel", tabel);
+    datakirim.append("tokensiswa", tokensiswa);
+    datakirim.append("idss", jlo.ss_datauser);
+
+    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif/></p>`
+    fetch(url_absensiswa + "?action=daftarulangdankonfirmasinya", {
+        method: "post",
+        body: datakirim
+    })
+        .then(m => m.json())
+        .then(r => {
+            infoloadingljk.innerHTML = r.result;
+        })
+        .catch(er => {
+            console.log(er);
+            infoloadingljk.innerHTML = "Terjadi kesalahan";
+        })
+
+
 };
 const biolengkap = () => {
     let ss = jlo.ss_datauser;
@@ -1157,6 +2547,8 @@ const biolengkap = () => {
     let ling = ur + "?idss=" + ss;
     let datahtml = "", fil;
     loadingljk.style.display = "block";
+    $('#infoloadingljk').nextAll('button').remove();
+
     // let img = document.querySelector(".avatarsiswa");
     // let srcimg = img.getAttribute("src");
     // // console.log(srcimg)'
@@ -1165,23 +2557,181 @@ const biolengkap = () => {
     fetch(ling + "&action=usulanperbaikandata")
         .then(m => m.json())
         .then(k => {
-            let cariid = k.datasiswa.filter(s => s.id == tokensiswa);
-            if (cariid.length == 0) {
-                infoloadingljk.innerHTML = `<h4 class="w3-center">Maaf, Ananda belum pernah mengusulkan Perubahan Data (Belum pernah mendaftar ulang)</h4>`;
+            let cariidd = k.datasiswa.filter(s => s.id == tokensiswa);
+            if (cariidd.length == 0) {
+                infoloadingljk.innerHTML = `<h4 class="w3-center">Maaf, Ananda belum pernah mengusulkan Perubahan Data (Belum pernah mendaftar ulang)</h4>
+                <div class="w3-center">
+                <button class="w3-button w3-card-4 w3-round-large warnaeka" onclick="ajuanperubahandata()">Ajuan Perubahan Data</button>
+                <button class="w3-button warnaeka w3-card-4 w3-round-large" onclick="infoloadingljk.innerHTML='';loadingljk.style.display='none'">Tutup Form</button>
+                </div>`;
             } else {
-                infoloadingljk.innerHTML = `Data Berhasil Input`;
+                let html = htmldataprofil()
+                infoloadingljk.innerHTML = `<div id="bio_print">${html}</div>
+                <div class="w3-center tempattomboltambahan">
+                Apabila ada data-data di atas terdapat kekeliruan, silakan ajukan perubahan data di link berikut:<br><br>
+                <button class="w3-button w3-card-4 w3-round-large warnaeka" onclick="ajuanperubahandata()">Ajuan Perubahan Data</button>
+                <br>
+                <br>
+                <button class="w3-button w3-card-4 w3-round-large warnaeka" onclick="printModalinfoljk('Data Siswa','bio_print')">Cetak</button>
+                <button class="w3-button warnaeka w3-card-4 w3-round-large" onclick="infoloadingljk.innerHTML='';loadingljk.style.display='none'">Tutup Form</button>
+
+                </div>`;
+                let cariid = cariidd[0];
+                let keyss = Object.keys(cariid);
+                let keys = keyss.filter(s => s !== "time_stamp");
+                for (i = 0; i < keys.length; i++) {
+                    let el = document.querySelector(".hdp_" + keys[i]);
+                    if (el == undefined || el == null) {
+                    } else {
+                        if (keys[i].indexOf("dok_") > -1) {
+                            let iddoc = (cariid[keys[i]] == "") ? `<b class="w3-text-red">Tidak Melampirkan</b>` : `<div class="containerbaru"><iframe class="responsive-iframebaru" src="https://drive.google.com/file/d/${(data.cpdb_id_file_akta == "") ? "18Zvo5idM92xYEIzqKDDFnc0iqI6JvUnS" : data.cpdb_id_file_akta}/preview" title="dokumen"></iframe></div>`;
+                            el.innerHTML = iddoc;
+                        } else if (keys[i].indexOf("tahunlahir") > -1) {
+                            el.innerHTML = (cariid[keys[i]] == "") ? "" : tanggalfull(cariid[keys[i]]);
+                        } else if (keys[i].indexOf("tanggallahir") > -1) {
+                            el.innerHTML = (cariid[keys[i]] == "") ? "" : tanggalfull(cariid[keys[i]]);
+                        } else {
+                            el.innerHTML = cariid[keys[i]];
+                        }
+                    }
+                }
+            }
+        })
+        .catch(er => {
+            console.log(er);
+            infoloadingljk.innerHTML = "Terjadi kesalahan. Ulangi sesi Ana sesaat lagi."
+        })
+
+
+    //document.querySelector(".kontenmateri").innerHTML = "";
+    // infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"></p>`;
+    //cekdaftarulang
+};
+const ajuanperubahandata = async () => {
+    let ss = jlo.ss_datauser;
+    let ur = jlo.url_datauser;
+    let ling = ur + "?idss=" + ss;
+    let datahtml = "", cariid;
+    loadingljk.style.display = "block";
+    $('#infoloadingljk').nextAll('button').remove();
+    // let img = document.querySelector(".avatarsiswa");
+    // let srcimg = img.getAttribute("src");
+    // // console.log(srcimg)'
+    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"></p>`;
+    await fetch(ling + "&action=usulanperbaikandata")
+        .then(m => m.json())
+        .then(k => {
+            let sss = k.datasiswa.filter(s => s.id == tokensiswa);
+            let ss = sss[0];
+            let teks = "";
+            let status = ss.usulanperubahandata
+            if (status.indexOf("disetujui") > -1) {
+                teks = status
+            } else {
+                teks = "sedang menunggu persetujuan admin Dapodik untuk disetujui."
+            }
+            if (sss.length == 0) {
+                alert("Ananda belum pernah mengirimkan perubahan data (Belum daftar ulang)");
+            } else {
+                alert("Ananda Sudah pernah mengajukan perubahan data dan " + teks);
+
+            }
+        }).catch(er => {
+            alert("terjadi kesalahan");
+            console.log(er)
+        })
+    await fetch(ling + "&action=datasiswaaktif&kelas=" + namakelas)
+        .then(m => m.json())
+        .then(k => {
+            // console.log(k);
+            let sumber = k.datasiswa.filter(s => s.id == tokensiswa);
+            console.log(sumber);
+            datahtml = htmlformulirdatasiswa();
+            infoloadingljk.innerHTML = datahtml;
+            let obj = sumber[0];
+            obj.action = "";
+            let statussebelumnya = obj.usulanperubahandata
+            if (statussebelumnya.indexOf("disetujui") > -1) {
+                obj.usulanperubahandata = "Ajuan Ke-" + (parseInt(statussebelumnya.match(/(\d+)/)[0]) + 1);
+            } else {
+                obj.usulanperubahandata = "Ajuan Ke-1";
+            }
+            let key = Object.keys(obj); // key == header
+            let nilai = Object.keys(obj).map(m => obj[m]);
+
+            var elementform = document.getElementById("formajuandatasiswa").elements;
+            for (x = 0; x < elementform.length; x++) {
+                for (d = 0; d < key.length; d++) {
+                    if (elementform[x].name == key[d]) {
+                        if (elementform[x].type == "date") {
+                            elementform[x].value = StringTanggalnol(new Date(nilai[d]))//;
+                        } else if (elementform[x].type == "radio") {
+                            if (elementform[x].value == nilai[d]) {
+                                elementform[x].checked = true;
+                            }
+                        }
+                        else if (elementform[x].type == "select-one") {
+                            // if (elementform[x].options[elementform[x].selectedIndex].value == nilai[d]) {
+                            //     elementform[x].options[elementform[x].selectedIndex].selected = true;
+                            //     //     elementform[x].selected = true;
+                            // }
+                            elementform[x].value = nilai[d];
+                            // console.log(elementform[x].name + "|" + elementform[x].type)
+                        }
+                        else {
+                            if (angkadistring.indexOf(key[d]) > -1) {
+                                elementform[x].value = nilai[d].replace("'", "")
+                            } else {
+                                elementform[x].value = nilai[d]
+
+                            }
+                        };
+                    }
+                }
             }
 
-
+        }).catch(er => {
+            console.log(er);
+            infoloadingljk.innerHTML = "Terjadi kesalahan."
         })
-        .catch(er => console.log(er))
+
+};
+
+const printModalinfoljk = (title, ele) => {
+    let isi = document.querySelector("#" + ele).innerHTML;
+    let el = document.getElementById("iframeprint");
+    let doc = el.contentDocument;
+    // head, body
+    let head = doc.head;
+    let body = doc.body;
+    //isikan HEAD dengan title, style, link, dll.
+    head.innerHTML = `<title>E-LAMASO ${title}</title>`;
+    head.innerHTML += `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`;
+    head.innerHTML += `<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">`;
+    head.innerHTML += `<link href="https://fonts.googleapis.com/css?family=Raleway">`;
+    head.innerHTML += `<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>`;
+    head.innerHTML += `<style type="text/css"> .versii-table{width:950px;max-width:100%;border-collapse:collapse}.versi-table{width:auto;max-width:100%;border-collapse:collapse}.versi-table td,.versi-table th,.versi-table tr,.versii-table td,.versii-table th,.versii-table tr{border:1px solid #000;color:#000;padding:5px 10px 5px 10px}.versi-table th,.versii-table th{background-color:#eee;color:#00f;vertical-align:middle;text-align:center}.versi-table tr:nth-of-type(even) td,.versii-table tr:nth-of-type(even) td{border:0;background-color:#fff;border:1px solid #000}.versi-table tr:nth-of-type(odd) td,.versii-table tr:nth-of-type(odd) td{border:0;background-color:#eef;border:1px solid #000} .garis td,.garis th,.garis tr{border:0.5px solid rgb(119, 116, 116)} .garis th{border:1px solid #000;text-align:center;vertical-align:middle} </style>`;
+
+    head.innerHTML += `<style type="text/css" media="print">
+    @media print {
+        html,body{height:100%;width:100%;margin:0;padding:0}
+        
+         @page {
+            size: A4 portrait;
+            max-height:100%;
+            max-width:100%;
+            
+            }
+    }
+    </style>`;
+
+    body.innerHTML = `${isi}`;
 
 
-    document.querySelector(".kontenmateri").innerHTML = "";
-    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"></p>`;
-    //cekdaftarulang
+    window.frames["iframeprint"].focus();
+    window.frames["iframeprint"].print();
+
 }
-
 const ketik_kapital = (el) => el.value = el.value.toUpperCase();
 
 const lihatraportsemester = () => {
@@ -1310,3 +2860,325 @@ const panggilmateri = async () => {
 
 }
 
+const menudataabsen = () => {
+
+    w3_close()
+    modalabsen.style.display = "block"
+}
+let rekapabsensiswabulanan;
+const modalfnkalender = () => {
+    let x = document.getElementById("siswapilihbulan").selectedIndex;
+    let y = document.getElementById("siswapilihbulan").options;
+    //alert("Index: " + y[x].index + " is " + y[x].text + " dan value = " + y[x].value);
+    let namabulan = y[x].text;
+    modalnamabulan.innerHTML = namabulan.toUpperCase() + " 2021";
+
+    let notgl = new Date(y[x].value);
+
+
+    let tyear = notgl.getFullYear();
+    let mont = notgl.getMonth();
+    let tmont = notgl.getMonth() + 1;
+    let tglakhir = daysInMonth(tmont, tyear);
+    let lr = 1;
+
+    let elkosong = document.querySelectorAll(".kosongindulu");
+    for (let a = 0; a < elkosong.length; a++) {
+        elkosong[a].innerHTML = "";
+    }
+
+    let ket = [];
+    for (let i = 0; i < tglakhir; i++) {
+        let dd = new Date(tyear, mont, (i + 1));
+        let day = new Date(tyear, mont, (i + 1)).getDay(); /// dimulai dari 0
+        let tday = new Date(tyear, mont, (i + 1)).getDate(); /// dimulai dari 0
+        let idok = tday + "" + addZero(dd.getMonth() + 1) + "" + dd.getFullYear();
+        let col = day + 1;
+
+
+        let td = document.getElementById("kolomtabel" + lr + "_" + col)
+        td.innerHTML = tday;
+        //td.innerHTML += (rekapabsensiswabulanan.id == idok) ? `<br><img src=""/>` : `<br>Tidak Hadir`
+        td.innerHTML += `<div id="td_${encodeURIComponent(namasiswa)}_${idok}"></div>`
+
+        if (cocoklibur(dd)) {
+            td.setAttribute("style", "background-color:red");
+            let tgllibur = tanggalfull(dd) + " = " + keteranganlibur(dd)
+            ket.push(tgllibur);
+        } else {
+            td.removeAttribute("style")
+        }
+
+        if (col == 7) {
+
+            lr++
+        }
+    }
+    if (ket.length == 0) {
+        ketketlibur.innerHTML = ""
+    } else {
+        ketketlibur.innerHTML = ket.join("<br>")
+    }
+    let datee = StringTanggal(notgl);
+    dataabsenbulanan(datee, namabulan)
+}
+
+function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+}
+
+const cocoklibur = (tgl) => { /// bolean
+    let k = JSON.parse(localStorage.getItem("TglLibur"))
+    // let d = JSON.parse(localStorage.getItem("Ketlibur"))
+    let arrayStringTglLibur = k.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
+    //let arrayKetLibur = k.map(m => Object.keys(m).map(n => m[n])).reduce((a, b) => a.concat(b));
+
+    let str = StringTanggal(new Date(tgl))
+
+    let inte = arrayStringTglLibur.indexOf(str)
+
+    if (inte > -1) {
+        return true
+    } else {
+        return false
+    }
+
+}
+const keteranganlibur = (tgl) => { /// bolean
+    let k = JSON.parse(localStorage.getItem("TglLibur"))
+    // let d = JSON.parse(localStorage.getItem("Ketlibur"))
+    let arrayStringTglLibur = k.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
+    let arrayKetLibur = k.map(m => Object.keys(m).map(n => m[n])).reduce((a, b) => a.concat(b));
+
+    let str = StringTanggal(new Date(tgl))
+
+    let inte = arrayStringTglLibur.indexOf(str);
+    let arr = ''
+
+    if (inte > -1) {
+        arr = arrayKetLibur[inte]
+
+    }
+
+    return arr
+}
+
+const dataabsenbulanan = async (datee, namabulan) => {
+
+    await fetch(url_absensiswa + "?action=rekapbulan&kelas=" + namakelas + "&strtgl=" + datee)
+        .then(m => m.json())
+        .then(k => {
+            //jsonabsenkelasperbulan = k[bulanapi];
+            rekapabsensiswabulanan = k[namabulan].filter(s => s.name == namasiswa);
+            //console.log(rekapabsensiswabulanan)
+            //---------------------------------------------------
+
+            for (var i = 0; i < rekapabsensiswabulanan.length; i++) {
+                //mengecek element kodeid
+                //kodeid = jsonabsenkelasperbulan[i].id + "_" + kelas + "_" + encodeURIComponent(jsonabsenkelasperbulan[i].name);
+                let kodetd = "td_" + encodeURIComponent(rekapabsensiswabulanan[i].name) + "_" + rekapabsensiswabulanan[i].id;
+                //console.log(kodetd)
+                var isikehadiran = document.getElementById(kodetd)
+
+                if (isikehadiran == null) {
+                    //document.getElementById("tabel_rekap_absen_nama_tgl").innerHTML += "<li>" + decodeURIComponent(jsonabsenkelasperbulan[i].name) + " pada tanggal " + new Date(jsonabsenkelasperbulan[i].Time_Stamp).getDate() + " Tidak ada/diubah namanya.</li>";
+                } else {
+                    var link = rekapabsensiswabulanan[i].fileContent;
+                    if (link !== "") {
+                        var linksplit = link.replace("https://drive.google.com/file/d/", "");
+                        var linksplitt = linksplit.replace("/view?usp=drivesdk", "");
+
+                    } else {
+
+                        var linksplitt = idlogo;
+                    }
+
+
+                    var cekdiv = document.getElementById(kodetd);
+                    if (cekdiv != null) {
+                        //document.getElementById(kodetd).removeAttribute("onclick");
+
+                        // isikehadiran.innerHTML = "<div style='width:22px;height:32px;cursor:pointer;border:1px solid blue'><a href='" + jsonabsenkelasperbulan[i].fileContent + "' target='_blank'><img src='https://drive.google.com/uc?export=view&id=" + linksplitt + "'  style='width:20px; height:30px'  alt='poto'><br/>" + jsonabsenkelasperbulan[i].kehadiran + "</a></div>";
+                        isikehadiran.innerHTML = `<img class="w3-image" src="https://drive.google.com/uc?export=view&id=${linksplitt}" style="width:20px; height:30px;cursor:pointer" alt="poto" onclick="klikpotosiswa(this)"/><br/>${rekapabsensiswabulanan[i].kehadiran}`;
+
+                    }
+                    //document.getElementById("tabel_rekap_absen_nama_tgl").innerHTML +="";
+                }
+
+            }
+
+        }).catch(er => {
+            console.log(er)
+        })
+
+}
+
+
+
+//////////////////////////////////////////////////////////
+
+let jsonmenudatapembelajaran;
+const menudatapembelajaran = () => {
+    modalmateri.style.display = "block";
+    fetch(linkmateri + "&action=kronolog&idtoken=" + jenjang)
+        .then(m => m.json())
+        .then(j => {
+
+            spanlabelmateri.innerHTML = "Jumlah Materi ada " + j.result.length + " Silakan pilih : <br><sub class='w3-text-blue'>Materi terbaru ada di urutan terakhir</sub>";
+
+            jsonmenudatapembelajaran = j.result;
+            siswapilihmateri.innerHTML = ""
+            for (let i = 0; i < j.result.length; i++) {
+                let op = document.createElement("option");
+                op.setAttribute("value", i)
+                op.setAttribute("id", "materike" + i)
+                let teks = document.createTextNode(j.result[i].idmapel)
+                op.appendChild(teks)
+                siswapilihmateri.appendChild(op)
+
+            }
+
+
+        }).catch(er => {
+            console.log(er);
+        })
+}
+const fetckronologi = () => {
+    fetch(linkmateri + "&action=kronolog&idtoken=" + jenjang)
+        .then(m => m.json())
+        .then(j => {
+            //templatekronologi(j.result);
+            //kronologijson = j.result;
+            console.log(j)
+
+        })
+}
+
+const modalfnmateri = () => {
+    let x = document.getElementById("siswapilihmateri").selectedIndex;
+    let y = document.getElementById("siswapilihmateri").options;
+    //alert("Index: " + y[x].index + " is " + y[x].text + " dan value = " + y[x].value);
+    //let namabulan = y[x].text;
+    //modalnamabulan.innerHTML = namabulan.toUpperCase() + " 2021";
+    let indek = parseInt(y[x].value);
+
+    let mtri = jsonmenudatapembelajaran[indek].idmapel;
+    let idmateri = jsonmenudatapembelajaran[indek].idmateri;
+    let tagih = jsonmenudatapembelajaran[indek].jenistagihan
+    let ctok = jsonmenudatapembelajaran[indek].crtToken
+    let idtgl = jsonmenudatapembelajaran[indek].idtgl;
+    let idtglend = jsonmenudatapembelajaran[indek].idtglend;
+    let trueEssay = (jsonmenudatapembelajaran[indek].jumlahessay == 0) ? false : true;
+    let bataswaktu = new Date(idtglend).getTime();
+    let awalwaktu = new Date(idtgl).getTime()
+
+    let integerWaktusekarang = new Date().getTime();
+
+    divmodalmateri.innerHTML = `
+    <table class="w3-card-4 w3-table-all garis w3-centered">
+    <tr>
+        <th>
+            Identitas KBM
+        </th>
+        <th>
+            Hasil Belajar
+        </th>
+        <th>
+            Waktu KBM
+        </th>
+        <th>
+            Aksi
+        </th>
+    </tr>
+    <tr>
+        <td>
+            ${mtri.toUpperCase()}
+        </td>
+        <td>
+            <div id="ddtabelhasilbelajar">
+            <i class="fa fa-spin fa-refresh"></i>
+            </div>
+            </td>
+            <td>
+            ${tanggalfulllengkap(new Date(idtgl))} <br> s/d<br>
+            ${tanggalfulllengkap(new Date(idtglend))} <br>
+            
+            </td>
+            <td id="tdtombolsoaloffline">
+            <i class="fa fa-spin fa-refresh"></i>
+        
+        </td>
+    </tr>
+    
+    </table>
+    `
+
+    // let url = urlnilai + "?action=datasiswasudahmengerjakan";
+    let paramtambahan = "&idkelas=" + encodeURIComponent(namakelas);
+    fetch(urlnilai + "?action=nilairseponkronologi" + paramtambahan)
+        .then(m => m.json())
+        .then(f => {
+            // console.log(f)
+            let res = f.records;
+
+
+
+            let ressort = res.filter(k => k.idmapel == mtri && k.jenistagihan == tagih & k.crtToken == ctok & k.namasiswa == namasiswa)
+            // nilairesponkronologi = f.records;
+            if (ressort.length == 0) {
+                if (integerWaktusekarang < awalwaktu && integerWaktusekarang < bataswaktu) {
+                    ddtabelhasilbelajar.innerHTML = "Maaf, Pembelajaran belum bisa diakses";
+                    tdtombolsoaloffline.innerHTML = "Maaf, Pembelajaran belum bisa diakses";
+                }
+                else if (integerWaktusekarang > awalwaktu && integerWaktusekarang > bataswaktu) {
+
+                    ddtabelhasilbelajar.innerHTML = "Ananda melewatkan KBM Ini";
+                    tdtombolsoaloffline.innerHTML = `<button class='w3-button w3-blue' onclick='soaloffline("${idmateri}");modalmateri.style.display = "none"'>Latihan lagi</button>`;
+                    alert("Ananda melewatkan KBM ini. Tapi jangan khawatir, cobalah Ananda Klik tombol Latihan Lagi, tulis jawabannya di kertas kemudian serahkan ke gurumu via Whatsapp. Gurumu akan membantumu.")
+                } else {
+                    //domTabel.rows[(d + 1)].cells[6].innerHTML = `<button class="w3-button w3-green" onclick="previewriwayat(${d})">Mulai Belajar</button>`
+                    ddtabelhasilbelajar.innerHTML = "Sedang Berlangsung, tapi nilai belum dikirimkan";
+                    tdtombolsoaloffline.innerHTML = "Sedang Berlangsung, tapi nilai belum dikirimkan";
+                    let elhadir = document.querySelector(".ketabsensiswa")
+                    if (elhadir.innerHTML == "Ananda Belum Absen") {
+                        alert("Ayo, materi ini sedang berlangsung. Ananda masih punya kesempatan untuk mengerjakan dan mengirimkan nilai. Silakan Ananda Absen terlebih dahulu untuk mengerjakannya.")
+                    } else {
+                        alert("Ayo, materi ini sedang berlangsung. Ananda masih punya kesempatan untuk mengerjakan dan mengirimkan nilai. Ananda sudah absen, silakan ke halaman utama untuk mengerjakan materi")
+                    }
+                }
+
+            } else {
+                let last = ressort.length - 1;
+                let obnilaikd = ressort[last].nilaikd;
+                let idhtml = ressort[last].html_jawaban;
+                let cekessay = (ressort[last].nilaiEssay == "" && trueEssay) ? `<button class='w3-button w3-red' onclick='lihatljksaya("${idhtml}");modalmateri.style.display = "none"'>LJK (?)</button>` : `<button class='w3-button w3-green' onclick='lihatljksaya("${idhtml}");modalmateri.style.display = "none"'>LJK <i class="fa fa-check-circle"></i></button>`;
+
+
+                let objek = JSON.parse(obnilaikd);
+                let keyobjek = Object.keys(objek)
+                let teks = "";
+                for (i = 0; i < keyobjek.length; i++) {
+                    teks += keyobjek[i] + " = " + objek[keyobjek[i]] + "<br>"
+
+                }
+
+                //let teks =`${obnilaikd["PKN_3.1"]}`
+                let usbukan = (ressort[last].jenistagihan == "ustertulis") ? true : false;
+                if (usbukan) {
+                    ddtabelhasilbelajar.innerHTML = `Nilai akan diumumkan pada tanggal 15 Juni 2021 di menu Pengumuman Kelulusan`;
+                } else {
+                    ddtabelhasilbelajar.innerHTML = `Selesai, dengan skor <br> ${teks}<br>${cekessay}`;
+
+                }
+
+                tdtombolsoaloffline.innerHTML = `<button class='w3-button w3-blue' onclick='soaloffline("${idmateri}");modalmateri.style.display = "none"'>Latihan lagi</button>`
+
+
+            }
+
+
+        }
+        )
+
+
+}
