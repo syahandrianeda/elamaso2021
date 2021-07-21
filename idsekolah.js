@@ -11,5 +11,3 @@ const webnow = "https://sdnratujaya1-elamaso.net";
 
 //ratujaya1 -6.419750106636168, 106.81287155720607
 const angkadistring = ["nis", "nisn", "nik", "nokk", "pd_hp", "dapo_nikayah", "dapo_nikibu", "dapo_nikwali", "dapo_jarakrumahkesekolah"];
-
-

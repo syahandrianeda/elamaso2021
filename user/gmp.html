@@ -1848,83 +1848,23 @@ _OPSI-PG-C_1C isikan opsi jawaban C
         </div>
     </div>
 
-    <script>
-        const pgeditnosoal = () => {
-            let val = inputnosoalpg.value;
-            let txar = document.getElementById("ketpen4");
-            document.getElementById("contohsoalke-1").innerHTML = val;
-            txar.textContent = `_PG_${val} isikan pertanyaan ....
-_OPSI-PG_${val}A isikan opsi jawaban A
-_OPSI-PG_${val}B isikan opsi jawaban B
-_OPSI-PG_${val}C isikan opsi jawaban C
-_OPSI-PG_${val}D isikan opsi jawaban D
-`
-        }
-        const pgeditnosoalC = () => {
-            let val = inputnosoalpgC.value;
-            let txar = document.getElementById("ketpen27");
-            document.getElementById("contohsoalke-1C").innerHTML = val;
-            txar.textContent = `_PG_${val} isikan pertanyaan ....
-_OPSI-PG-C_${val}A isikan opsi jawaban A
-_OPSI-PG-C_${val}B isikan opsi jawaban B
-_OPSI-PG-C_${val}C isikan opsi jawaban C
+    <script src="/timekbm.js"></script>
 
-`
-        }
-        const pgeditnosoaltabel = () => {
-            let val = inputnosoalpgtabel.value;
-            let txar = document.getElementById("ketpen5");
-            document.getElementById("contohsoaltabelke1").innerHTML = val;
-            txar.textContent = `
-_PG_${val} Pertanyaan soal Pilhan Ganda
-_START-TABEL-OPSI_
-Opsi <|HEADER|>	Header	<|HEADER|>	Contoh
-_OPSI-SEL_${val}A	<|>	Mutualisme	<|>	Hubungan bunga dengan lebah
-_OPSI-SEL_${val}B 	<|>	Parasitisme	<|>	Hubungan bakteri E-Coli pada usus manusia
-_OPSI-SEL_${val}C 	<|>	Komensialisme	<|>	Benalu pada batang pohon mangga
-_OPSI-SEL_${val}D 	<|>	Xerofitisme	<|>	Hubungan burung jalak dengan kerbau`
-        }
-        const editnosoalessay = () => {
-            let val = inputnosoalessay.value;
-            let txar = document.getElementById("ketpen6");
-            document.getElementById("contohsoalessay").innerHTML = val;
-            txar.textContent = `_ESSAY-NO_${val} pertanyaan Essay`
-        }
-        const tombolketikjawaban = (id) => {
-            alert("Siswa mengetik jawaban essay nomor " + id)
-        }
-        const tomboluploadjawaban = (id) => {
-            alert("Siswa mengupload jawaban essay nomor " + id)
-        }
-        const klikpotosiswa = (el) => {
-
-            document.getElementById("img01").src = el.src;
-            document.getElementById("previewpotoabsen").style.display = "block";
-
-        }
-    </script>
     <iframe id="iframeprint" name="iframeprint" style="display:none"></iframe>
-    <script src="/js/datasiswagurumapel.js?v=12.0"></script>
+    <script src="/gmp/datasiswagurumapel.js?v=12.0"></script>
 
-    <script src="/js/guruprofil.js?v=12.0"></script>
-    <script src="/js/gurumapel.js?v=12.6"></script>
-    <script src="/js/absengurumapel.js?v=12.1"></script>
-
-
-    <script src="/js/waktu.js?v=12.0"></script>
+    <!-- <script src="/guru/guruprofil.js?v=12.0"></script> -->
+    <script src="/guru/guruprofildankehadiran.js"></script>
+    <script src="/gmp/gurumapel.js?v=12.6"></script>
+    <script src="/gmp/absengurumapel.js?v=12.1"></script>
 
 
-    <script src="/js/editor.js?v=12.0"></script>
+    <script src="/guru/waktu.js?v=12.0"></script>
 
-    <script>
-        let kodebarismateriyangdikerjakan = "belumdisi";
-        let parameterbantuisiljk = "belumdisi";
-        sumber_repository.innerHTML = `
-        <option id="repo0" value="0" selected>Silakan Pilih Repository</option>
-        <option id="repo1" value="1">Repository dari Sekolah Lain</option>
-        <option id="repo2" value="2">Cara Membuat Konten Materi</option>
-        <option id="repo3" value="3">Download File KKM dan KD</option>`;
-    </script>
+
+    <script src="/guru/editor.js?v=12.0"></script>
+
+
     <style>
         input[class='calc']+label.opsi {
             color: #000;
@@ -1942,17 +1882,17 @@ _OPSI-SEL_${val}D 	<|>	Xerofitisme	<|>	Hubungan burung jalak dengan kerbau`
 
         }
     </style>
-    <script src="/js/variabel.js?v=9" render></script>
-    <script src="/js/exceltabel.js?v=12.0" render></script>
-    <script src="/js/materigurumapel.js?v=12.1"></script>
-    <script src="/js/uploadmaterigurumapel.js?v=12.0"></script>
-    <script src="/js/aafnbaruv7.js?v=10.0"></script>
-    <script src="/js/nilai.js?v=12.0"></script>
-    <script src="/js/kurikulum.js?v=12.0"></script>
-    <script src="/js/videoelamaso.js?v=12.0"></script>
-    <script src="/js/kehadiranguru.js?v=12.0"></script>
-    <script type="text/javascript" src="/js/zframe.js?v=12.2"></script>
-    <script src="/js/app.js"></script>
+    <script src="/guru/variabel.js?v=9" render></script>
+    <script src="/guru/exceltabel.js?v=12.0" render></script>
+    <script src="/gmp/materigurumapel.js?v=12.1"></script>
+    <script src="/gmp/uploadmaterigurumapel.js?v=12.0"></script>
+    <script src="/guru/aafnbaruv7.js?v=10.0"></script>
+    <script src="/guru/nilai.js?v=12.0"></script>
+    <script src="/guru/kurikulum.js?v=12.0"></script>
+    <script src="/guru/videoelamaso.js?v=12.0"></script>
+
+    <script type="text/javascript" src="/guru/zframe.js?v=12.2"></script>
+    <!-- <script src="/guru/app.js"></script> -->
 </body>
 
 </html>

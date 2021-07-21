@@ -39,7 +39,7 @@
 
     <link rel="stylesheet" href="/css/css_siswa.css">
     <link rel="stylesheet" href="/css/csssiswa.css">
-    <script src="/script/idsekolah.js"></script>
+    <script src="/idsekolah.js"></script>
     <script>
         let jlo = JSON.parse(localStorage.getItem("inst_id"))
         let urlmateri = jlo.url_materi;
@@ -215,6 +215,9 @@
             <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="logout()"><i
                     class="fa fa-times"></i> 
                 Logout</a>
+            <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding"
+                onclick="window.location.replace(web2021semester1)"><i class="fa fa-globe"></i> 
+                Arsip Tahun Lalu</a>
             <a href="javascript:void(0);"
                 class="w3-bar-item w3-button w3-padding-16 w3-hide-large w3-dark-grey w3-hover-black"
                 onclick="w3_close()" title="close menu">
@@ -330,7 +333,7 @@
                     <h3>Raportku</h3>
                 </div>
             </div>
-            <div class="w3-third " style="cursor: pointer; margin:50px 0" onclick="pengumumankelulusan()">
+            <div class="w3-third barkelulusanku" style="cursor: pointer; margin:50px 0" onclick="pengumumankelulusan()">
                 <div class="w3-container n_zoom w3-center ">
                     <div><img src="/img/pngegg (12).png" style="height: 90px;"></div>
 
@@ -931,11 +934,16 @@ borderhasilnama
     <footer class="w3-main w3-yellow" style="text-align:center">Telah dilisensikan untuk <a href="https://lamaso.online"
             target="_blank">PT EKA CIPTA MULTITAMA</a>
     </footer>
+    <script src="/timekbm.js"></script>
     <script src="/script/siswa.js"></script>
-    <script src="/js/materi.js"></script>
-    <script>
+    <script src="/script/materi.js"></script>
+    <!-- <script src="/script/uploadmedia.js"></script> -->
 
+    <script id="rendered-js" src="/script/renderpdf.js??v=5.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.2.61/jspdf.min.js">
     </script>
+
+
 </body>
 
 
