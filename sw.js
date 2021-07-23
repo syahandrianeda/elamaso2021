@@ -23,6 +23,7 @@ const assets = [
     "/img/bgloginortu.jpeg",
     "/img/PTK.png",
 
+    
     "/js/aafnbaruv7.js",
     "/js/absen.js",
     "/js/absengurumapel.js",

@@ -366,7 +366,7 @@ const downloadfiledraft = (json, namafile) => {
 }
 
 const berandaguru = () => {
-    alert('Beranda Guru')
+    tampilinsublamangurukelas("beranda")
 }
 let urlmaterisekolahlain = [];
 const pilihrepository = () => {

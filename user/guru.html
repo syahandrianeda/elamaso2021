@@ -95,6 +95,9 @@
     <meta name="theme-color" content="#ffffff">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.5/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.4.1/chart.min.js"
+        integrity="sha512-5vwN8yor2fFT9pgPS9p9R7AszYaNn0LkQElTXIsZFCL7ucT8zDCAqlQXDdaqgA1mZP47hdvztBMsIoFxq/FyyQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
 <body class="tesbody">
@@ -150,7 +153,7 @@
         <div class="w3-bar-block" id="bargurukelas">
             <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="berandaguru()"><i
                     class="fa fa-home"></i>
-                beranda</a>
+                Beranda</a>
             <a href="javascript:void(0);" class="w3-bar-item w3-button w3-padding" onclick="profilguru()"><i
                     class="fa fa-user-o"></i>
                 Profil Saya</a>
@@ -221,8 +224,10 @@
         </header>
         <!-- <button class="w3-hover-border-light-blue" onclick="cekElementidRekapTabel()">Cek Local Storage</button> -->
         <div class="w3-main w3-margin w3-animate-zoom w3-card-4 w3-padding" style="background-color:rgb(250, 234, 8)">
-            <div class="w3-container">
-                Pesan Khusus akan muncul di sini!
+            <div class="pesankhususkepsek w3-card w3-white w3-margin-top w3-container w3-round-large w3-hide">
+
+            </div>
+            <div class="pesankhusussiswa w3-card w3-white w3-margin-top w3-container w3-round-large w3-hide">
 
             </div>
         </div>
@@ -298,108 +303,124 @@
             <!-- <h2><b id="kelassayapilih"></b></h2> -->
 
             <div id="loadkelassaya" style="text-align:center"></div>
-
-            <div id="tabelrekapkelas" style="border:1px dotted blue;padding:5px;border-radius:15px;overflow:auto">
-                <div style="float:left;padding:5px;margin:5px">
-                    <h3>Rekapitulasi Data Kelas</h3>
-                    <br />Jumlah Keselurahan:
-                    <table class="versi-table w3-center w3-striped w3-bordered w3-border w3-hoverable w3-white">
-                        <tr>
-                            <th>Jumlah Siswa</th>
-                            <th id="tbljumlahsiswa">0 Siswa</th>
-                        </tr>
-                    </table>
-                </div>
-                <div style="float:left;padding:5px;margin:5px">
-                    <br /><br />Berdasarkan Gender (Jenis Kelamin):
-                    <table class="versi-table w3-center w3-striped w3-bordered w3-border w3-hoverable w3-white">
-                        <tr>
-                            <th>
-                                Gender
-                            </th>
-                            <th>Jumlah</th>
-                            <th>Usia: &le; 6 Tahun</th>
-                            <th>Usia: 7 - 12 Tahun</th>
-                            <th>Usia: &ge; 13 Tahun</th>
-                        </tr>
-                        <tr>
-                            <td>Laki-laki</td>
-                            <td id="tbljumlahlakilaki">0 Siswa</td>
-                            <td id="usiaL6tahun"></td>
-                            <td id="usiaL7tahun"></td>
-                            <td id="usiaL13tahun"></td>
-                        </tr>
-                        <tr>
-                            <td>Perempuan</td>
-                            <td id="tbljumlahperempuan">0 Siswa</td>
-                            <td id="usiaP6tahun"></td>
-                            <td id="usiaP7tahun"></td>
-                            <td id="usiaP13tahun"></td>
-                        </tr>
-                    </table>
-                </div>
-                <div style="float:left;padding:5px;margin:5px">
-                    <br /><br />Berdasarkan Agama:
-                    <table class="versi-table w3-center w3-striped w3-bordered w3-border w3-hoverable w3-white">
-                        <tr>
-                            <th>Agama</th>
-                            <th>Total</th>
-                            <th> Laki-laki</th>
-                            <th> Perempuan</th>
-                        </tr>
-                        <tr>
-                            <td>Beragama Islam</td>
-                            <td id="tblberagamaislam">0 siswa</td>
-                            <td id="tblberagamaislamL"> Siswa</td>
-                            <td id="tblberagamaislamP"> Siswa</td>
-                        </tr>
-                        <tr>
-                            <td>Beragama Kristen</td>
-                            <td id="tblberagamakristen">0 siswa</td>
-                            <td id="tblberagamakristenL"> Siswa</td>
-                            <td id="tblberagamakristenP"> Siswa</td>
-                        </tr>
-                        <tr>
-                            <td>Beragama Katholik</td>
-                            <td id="tblberagamakatholik">0 siswa</td>
-                            <td id="tblberagamakatholikL"> Siswa</td>
-                            <td id="tblberagamakatholikP"> Siswa</td>
-                        </tr>
-                        <tr>
-                            <td>Beragama Hindu</td>
-                            <td id="tblberagamahindu">0 siswa</td>
-                            <td id="tblberagamahinduL"> Siswa</td>
-                            <td id="tblberagamahinduP"> Siswa</td>
-                        </tr>
-                        <tr>
-                            <td>Beragama Budha</td>
-                            <td id="tblberagamabudha">0 siswa</td>
-                            <td id="tblberagamabudhaL"> Siswa</td>
-                            <td id="tblberagamabudhaP"> Siswa</td>
-                        </tr>
-                        <tr>
-                            <td>Beragama Khonghucu</td>
-                            <td id="tblberagamakhonghucu">0 siswa</td>
-                            <td id="tblberagamakhonghucuL"> Siswa</td>
-                            <td id="tblberagamakhonghucuP"> Siswa</td>
-                        </tr>
-                    </table>
-                </div>
+            <div class="w3-card-4 w3-container w3-round-xlarge w3-padding">
+                <button id="tambahsiswa" onclick="tambahsiswa()"
+                    class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i
+                        class="fa fa-pencil-square-o"></i> Tambah/Cari
+                    Siswa</button>
+                <button id="cetakdatasiswa" onclick="cetakini()"
+                    class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i
+                        class="fa fa-print"></i> Cetak</button>
+                <button id="exceldatasiswa" onclick="exceldatasiswa()"
+                    class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i
+                        class="fa fa-file-excel-o"></i> Export Xls</button>
+                <button id="exportdatasiswa" onclick="exportdatasiswa()"
+                    class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i
+                        class="fa fa-file-excel-o"></i> Export Detail</button>
+                <button id="exportdatasiswa" onclick="importdatasiswa()"
+                    class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i
+                        class="fa fa-file-excel-o"></i> Import Detail</button>
+                <button id="exportdatasiswa" onclick="barusimpanserverdatasiswa()"
+                    class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"><i
+                        class="fa fa-globe"></i> Simpan Detail Server</button>
             </div>
-            <hr />
-            <div id="tabeltempatdaftarkelassaya" style="width:100%;font-size:10px;overflow-x:auto">
+            <div id="tabeltempatdaftarkelassaya" style="width:100%;font-size:11px;overflow-x:auto">
 
                 TABEL MEMUUAT EDIT, HAPUS DI KOLOM TABEL<br /><br />
                 DI AKHIR TABEL, ADA TOMBOL TAMBAH MURID<br /><br />
 
             </div>
-            <button id="tambahsiswa" onclick="tambahsiswa()"><i class="fa fa-pencil-square-o"></i> Tambah Cari
-                Siswa</button>
-            <button id="cetakdatasiswa" onclick="cetakini()"><i class="fa fa-print"></i> Cetak</button>
-            <button id="exceldatasiswa" onclick="exceldatasiswa()"><i class="fa fa-file-excel-o"></i> Simpan ke
-                Excel</button>
+
+            <div id="tabelrekapkelas" style="border:1px dotted blue;padding:5px;border-radius:15px;overflow:auto">
+                <h3>Rekapitulasi Data Kelas</h3>
+
+                <div
+                    class="w3-container w3-card-4 w3-white w3-margin w3-center w3-border-bottom w3-border-yellow w3-round">
+                    Jumlah Keselurahan:
 
 
+
+                </div>
+                <div
+                    class="w3-container w3-card-4 w3-white w3-margin w3-center w3-border-bottom w3-border-yellow  w3-round">
+                    Berdasarkan Gender (Jenis Kelamin):
+
+                </div>
+                <div
+                    class="w3-container w3-card-4 w3-white w3-margin w3-center w3-border-bottom w3-border-yellow w3-round">
+                    Berdasarkan Agama:
+
+                </div>
+                <div class="w3-container w3-border w3-white w3-margin w3-center w3-round">
+                    <table class="w3-table-all garis w3-small w3-centered">
+                        <caption>Tabel Rekapitulasi Jumlah Data Siswa</caption>
+                        <thead>
+                            <tr class="w3-light-gray">
+                                <th rowspan="2">Jenis Kelamin</th>
+                                <th rowspan="2">Total</th>
+                                <th colspan="3"> Data Umur Siswa</th>
+                                <th colspan="6"> Data Agama Siswa</th>
+                            </tr>
+                            <tr class="w3-light-gray">
+                                <th>&le; 6 Tahun</th>
+                                <th>7- 12 Tahun</th>
+                                <th>&ge; 13 Tahun</th>
+                                <th>Islam</th>
+                                <th>Kristen <br /> Protestan</th>
+                                <th>Katholik</th>
+                                <th>Hindu</th>
+                                <th>Budha</th>
+                                <th>Khonghucu</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Laki-Laki</td>
+                                <td id="tbljumlahlakilaki">0</td>
+                                <td id="usiaL6tahun"></td>
+                                <td id="usiaL7tahun"></td>
+                                <td id="usiaL13tahun"></td>
+                                <td id="tblberagamaislamL"></td>
+                                <td id="tblberagamakristenL"></td>
+                                <td id="tblberagamakatholikL"></td>
+                                <td id="tblberagamahinduL"></td>
+                                <td id="tblberagamabudhaL"></td>
+
+                                <td id="tblberagamakhonghucuL"></td>
+                            </tr>
+                            <tr>
+                                <td>Perempuan</td>
+                                <td id="tbljumlahperempuan">0</td>
+                                <td id="usiaP6tahun"></td>
+                                <td id="usiaP7tahun"></td>
+                                <td id="usiaP13tahun"></td>
+                                <td id="tblberagamaislamP"></td>
+                                <td id="tblberagamakristenP"></td>
+                                <td id="tblberagamakatholikP"></td>
+                                <td id="tblberagamahinduP"></td>
+                                <td id="tblberagamabudhaP"></td>
+                                <td id="tblberagamakhonghucuP"></td>
+                            </tr>
+
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>Total</td>
+                                <td id="tbljumlahsiswa"></td>
+                                <td id="umur6total"></td>
+                                <td id="umur7total"></td>
+                                <td id="umur13total"></td>
+                                <td id="tblberagamaislam">0</td>
+                                <td id="tblberagamakristen">0</td>
+                                <td id="tblberagamakatholik">0</td>
+                                <td id="tblberagamahindu">0</td>
+                                <td id="tblberagamabudha">0</td>
+                                <td id="tblberagamakhonghucu">0</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
         </div>
         <div class="w3-container" id="dataabsensi">
 
@@ -2607,19 +2628,31 @@ _OPSI-PG-C_1C isikan opsi jawaban C
         </div>
     </div>
 
-    <div id="loadingljk" class="w3-modal w3-white">
+    <!-- <div id="loadingljk" class="w3-modal w3-white">
         <div class="w3-modal-container">
             <div class="w3-modal-content w3-card-4 w3-padding-16" style="width: 98%;">
-                <!-- <span class="w3-btn w3-blue w3-right w3-badge" onclick="loadingljk.style.display='none'">&times;</span> -->
-                <span class="w3-btn w3-blue w3-right w3-badge" onclick="tutuploadingljk()">&times;</span>
+                   <span class="w3-btn w3-blue w3-right w3-badge" onclick="tutuploadingljk()">&times;</span>
                 <div id="infoloadingljk" class="w3-margin">
                     <i class=" fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i>
                 </div>
                 <div style="height: 50px;"></div>
             </div>
         </div>
-    </div>
+    </div> -->
+    <div id="loadingljk" class="w3-modal">
+        <div class="w3-modal-content w3-card-4 " style="width: 98%">
+            <header class="warnaeka w3-card-4  w3-border-bottom w3-border-black w3-container">
+                <span class="w3-button w3-right w3-round-large w3-light-blue" onclick="tutuploadingljk()">&times;</span>
+            </header>
+            <div id="infoloadingljk" class="w3-margin">
+                <!-- <i class=" fa fa-spin fa-spinner w3-jumbo w3-display-middle"></i> -->
+                <p class="w3-center"><img src="/img/barloading.gif"></p>
+            </div>
+            <div style="height: 50px;clear:both"></div>
+            <footer class="warnaeka w3-card-4  w3-topbar w3-border-black w3-container"><br></footer>
+        </div>
 
+    </div>
     <div id="previewpotoabsen" class="w3-modal" onclick="this.style.display='none';pesanpreviewpotoabsen.innerHTML=''">
         <div class="w3-modal-content w3-animate-zoom">
             <span class="w3-button w3-hover-red w3-xlarge w3-display-topright">&times;</span>
@@ -2790,6 +2823,7 @@ _OPSI-PG-C_1C isikan opsi jawaban C
 
     <div id="datasiswaprint" style="display:hide;overflow-x:auto"></div>
     <input type="file" id="fileImportExcel" class="w3-hide" />
+    <input type="file" id="inputimportdatasiswa" class="w3-hide" />
 
     <iframe id="iframeprint" name="iframeprint" style="display:none"></iframe>
 

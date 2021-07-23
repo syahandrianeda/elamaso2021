@@ -2508,15 +2508,15 @@ const validasiajuandata = () => {
         }
         keyurut.push(cekhead[i]);
     }
-    console.log(keyurut);
-    console.log(valurut)
+    // console.log(keyurut);
+    // console.log(valurut)
     let cocok = (JSON.stringify(keyurut) == JSON.stringify(cekhead)) ? "COCOK" : "BEDA";
-    console.log(cocok);
+    // console.log(cocok);
 
-    console.log("dataoke");
-    console.log(dataoke);
-    console.log("datagaada");
-    console.log(datagaada);
+    // console.log("dataoke");
+    // console.log(dataoke);
+    // console.log("datagaada");
+    // console.log(datagaada);
     let tabel = JSON.stringify(valurut);
     let datakirim = new FormData();
     // datakirim.append("action", );
@@ -2525,7 +2525,7 @@ const validasiajuandata = () => {
     datakirim.append("tokensiswa", tokensiswa);
     datakirim.append("idss", jlo.ss_datauser);
 
-    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif/></p>`
+    infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"/></p>`
     fetch(url_absensiswa + "?action=daftarulangdankonfirmasinya", {
         method: "post",
         body: datakirim
@@ -2584,7 +2584,7 @@ const biolengkap = () => {
                     if (el == undefined || el == null) {
                     } else {
                         if (keys[i].indexOf("dok_") > -1) {
-                            let iddoc = (cariid[keys[i]] == "") ? `<b class="w3-text-red">Tidak Melampirkan</b>` : `<div class="containerbaru"><iframe class="responsive-iframebaru" src="https://drive.google.com/file/d/${(data.cpdb_id_file_akta == "") ? "18Zvo5idM92xYEIzqKDDFnc0iqI6JvUnS" : data.cpdb_id_file_akta}/preview" title="dokumen"></iframe></div>`;
+                            let iddoc = (cariid[keys[i]] == "") ? `<b class="w3-text-red">Tidak Melampirkan</b>` : `<div class="containerbaru"><iframe class="responsive-iframebaru" src="https://drive.google.com/file/d/${(cariid[keys[i]] == "") ? "18Zvo5idM92xYEIzqKDDFnc0iqI6JvUnS" : cariid[keys[i]]}/preview" title="dokumen"></iframe></div>`;
                             el.innerHTML = iddoc;
                         } else if (keys[i].indexOf("tahunlahir") > -1) {
                             el.innerHTML = (cariid[keys[i]] == "") ? "" : tanggalfull(cariid[keys[i]]);
@@ -2599,7 +2599,7 @@ const biolengkap = () => {
         })
         .catch(er => {
             console.log(er);
-            infoloadingljk.innerHTML = "Terjadi kesalahan. Ulangi sesi Ana sesaat lagi."
+            infoloadingljk.innerHTML = "Terjadi kesalahan. Ulangi sesi Anda sesaat lagi."
         })
 
 
@@ -3797,7 +3797,7 @@ const uploadvideorekaman = async (id) => {
 
 }
 const uploadpotokamera = async (id) => {
-    tmblkirim.innerHTML = `<i class="fa fa-refresh fa-spinner"></i> Sedang proses ....`;
+    tmblkirim.innerHTML = `<i class="fa fa-refresh fa-spin"></i> Sedang proses ....`;
     let jwbase64 = document.getElementById("jwbase64").textContent
     var tempat = document.getElementById("filejawaban" + id);
 
@@ -3833,7 +3833,7 @@ const uploadpotokamera = async (id) => {
 
 }
 const uploadmediagaleri = async (id) => {
-    tmblkirim.innerHTML = `<i class="fa fa-refresh fa-spinner"></i> Sedang proses ....`;
+    tmblkirim.innerHTML = `<i class="fa fa-refresh fa-spin"></i> Sedang proses ....`;
     let jwbase64 = document.getElementById("jwbase64").textContent
     var tempat = document.getElementById("filejawaban" + id);
 

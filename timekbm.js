@@ -89,3 +89,6 @@ if (linkyangsedangaktif.indexOf("guru.html") > -1) {
     <option id="repo3" value="3">Download File KKM dan KD</option>`;
 
 }
+
+/// kelas untuk tombol 
+//class="w3-button warnaeka w3-round-large w3-card-4 w3-border-bottom w3-border-black"

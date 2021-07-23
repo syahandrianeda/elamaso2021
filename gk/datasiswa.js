@@ -1,5 +1,5 @@
 
-function hapussiswa(id) {
+function hapussiswaxxxx(id) {
     var konfirm = confirm("Siswa ini akan dihilangkan dari kelas Anda. \n \n Tapi data masih berada di database kami. \n \n Anda yakin ingin menghapusnya? id " + id)
     if (konfirm == true) {
         var url = linkDataUserWithIdss + "&action=hapussiswa"
@@ -19,7 +19,8 @@ function hapussiswa(id) {
                         localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
 
                     });
-                tabeldatakelassaya();
+
+
                 await fetch(linkDataUserWithIdss + "&action=datasiswatidakaktif")
                     .then(m => m.json())
                     .then(k => {
@@ -27,6 +28,8 @@ function hapussiswa(id) {
                         jumlahseluruhsiswadisekolah = k.total
                         localStorage.setItem("datasiswatidakaktif", JSON.stringify(k))
                     })
+
+                updatesetelahverifikasidaftarulang()
 
             },
             error: function (er) {
@@ -39,6 +42,106 @@ function hapussiswa(id) {
     } else { alert("Anda membatalkan perintah untuk menghapus siswa Anda.") }
 }
 
+
+function hapussiswa(id) {
+    var konfirm = confirm("Siswa ini akan dihilangkan dari kelas Anda. \n \n Tapi data masih berada di database kami. \n \n Anda yakin ingin menghapusnya? id " + id)
+    if (!konfirm) {
+        alert("Anda membatalkan perintah hapus");
+        return
+    }
+    //let namaheader = namatabel.rows[0].cells[8].innerHTML;
+    var url = linkDataUserWithIdss + "&action=hapussiswa";
+    //alert(namaheader)
+
+
+    let jsonlamaanakini = jsondatasiswa.filter(s => s.id == id)[0];
+    jsonlamaanakini["aktif"] = "non-aktif";
+
+
+
+    let pus = [];
+    let key = arrayheadsumber.filter(s => s !== "time_stamp");//array
+
+    //Jika sebelumnya belum daftar ulang, maka API yang digunakan ini
+    let databelumkirim = new FormData();
+    for (let i = 0; i < key.length; i++) {
+        pus.push(jsonlamaanakini[key[i]]);
+        databelumkirim.append(key[i], jsonlamaanakini[key[i]]);
+    }
+
+    //Jika sebelumnya sudah daftar ulang, maka API yang digunakan ini
+    let tabel = JSON.stringify(pus);
+    let datakirim = new FormData();
+    datakirim.append("tabel", tabel);
+    datakirim.append("tokensiswa", id);
+    datakirim.append("idss", jlo.ss_datauser);
+
+    let semuapendaftarulang = informasiusulandata["all"]
+    let sudahdaftarulang = semuapendaftarulang.filter(s => s.id == id)
+    if (sudahdaftarulang.length == 0) {
+        $.ajax({
+            crossDomain: true,
+            url: url,
+            dataType: 'json',
+            method: 'POST',
+            contentType: 'application/x-www-form-urlencoded',
+            data: 'id=' + id,
+            success: async function (x) {
+                alert(x);
+                await fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
+                    .then(m => m.json())
+                    .then(k => {
+                        jsondatasiswa = k.datasiswa;
+                        localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
+
+                    });
+
+
+                await fetch(linkDataUserWithIdss + "&action=datasiswatidakaktif")
+                    .then(m => m.json())
+                    .then(k => {
+                        arraysiswatidakaktif = k.datasiswa;
+                        jumlahseluruhsiswadisekolah = k.total
+                        localStorage.setItem("datasiswatidakaktif", JSON.stringify(k))
+                    })
+
+                updatesetelahverifikasidaftarulang()
+
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+
+        })
+
+    } else {
+        fetch(url_absensiswa + "?action=daftarulangduasheet", {
+            method: "post",
+            body: datakirim
+        })
+            .then(m => m.json())
+            .then(r => {
+                //infoloadingljk.innerHTML = r.result;
+                // console.log(r)
+                let datasiswakelasini = r.datasiswa.filter(s => s.nama_rombel == idNamaKelas && s.aktif == "aktif");
+                // console.log(datasiswakelasini)
+                jsondatasiswa = datasiswakelasini;
+                localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(datasiswakelasini));
+
+                updatesetelahverifikasidaftarulang();
+                alert("Dengan fitur perubahan yang Anda lakukan, Status verifikasi sesuai dengan status verifikasi sebelumnya.")
+            })
+            .catch(er => {
+                console.log(er);
+                infoloadingljk.innerHTML = "Terjadi kesalahan";
+            })
+
+
+
+
+    }
+}
 
 function kirimeditsiswa() { // versil lama, terbaru tanpa keterangan lama
     var namaform = document.getElementById("modaledithapus");
@@ -261,11 +364,11 @@ function print(x) {
 
 function exceldatasiswa() {
     var datasiswadiv = document.getElementById("datasiswaprint");
+    var tabeleditt = document.getElementById("myTable");//.getElementsByTagName("tbody")[0];
     datasiswadiv.innerHTML = "";
     var tabelhasil = document.createElement("table");
     tabelhasil.setAttribute("class", "versi-table");
     tabelhasil.setAttribute("id", "myTableCopy");
-    var tabeleditt = document.getElementById("myTable");//.getElementsByTagName("tbody")[0];
     var cln = tabeleditt.cloneNode(true);
     tabelhasil.appendChild(cln);
     datasiswadiv.appendChild(tabelhasil);
@@ -367,7 +470,7 @@ function exceldatasiswa() {
 
 
 
-function exceldatasiswa() {
+function exceldatasiswaLama() {
     var datasiswadiv = document.getElementById("datasiswaprint");
     datasiswadiv.innerHTML = "";
     var tabelhasil = document.createElement("table");
@@ -479,6 +582,138 @@ function exceldatasiswa() {
     });
     datasiswadiv.innerHTML = "";
 }
+function exceldatasiswa() {
+    var datasiswadiv = document.getElementById("datasiswaprint");
+    datasiswadiv.innerHTML = "";
+    var namatabel = document.getElementById("myTable");
+    var head = namatabel.getElementsByTagName("thead")[0];
+    var bodyy = namatabel.getElementsByTagName("tbody")[0];
+
+    let html = `<table id="myTableCopy" class="versi-table">
+    <tr>
+        <td colspan="13"> ${idNamaSekolah.toUpperCase()}</td>
+    </tr>
+    <tr>
+        <td colspan="13"> DATA SISWA KELAS ${idNamaKelas}</td>
+    </tr>
+    <tr>
+        <td colspan="13"> SEMESTER ${idSemester} TAHUN PELAJARAN ${idTeksTapel}</td>
+    </tr>
+    <tr><td colspan="13"></td></tr>
+    <tr><td colspan="13"></td></tr>
+    ${head.outerHTML}
+    `;
+    let lr = bodyy.rows;
+    //console.log(lr.length);
+    // console.log(lr);
+    let htmll = "";
+    let isii, bersihspasi, bersihenter;
+    for (let i = 0; i < lr.length; i++) {
+        htmll += `<tr>`;
+        let sel = lr[i].cells;
+        for (let j = 0; j < sel.length; j++) {
+            if (j == 1) {
+                htmll += `<td>${jsondatasiswa[i].id}</td>`;
+            } else if (j == 2 || j == 3 || j == 12) {
+                isii = sel[j].innerHTML
+                bersihspasi = isii.replace(/\s+/g, "");
+                bersihenter = bersihspasi.replace(/\n/g, "");
+                htmll += (sel[j].innerHTML == "") ? `<td></td>` : `<td>'${bersihenter}</td>`;
+            }
+            else {
+                isii = sel[j].innerHTML
+                bersihspasi = isii.replace(/\s+/g, "");
+                bersihenter = bersihspasi.replace(/\n/g, "");
+                htmll += `<td>${bersihenter}</td>`;
+            }
+        }
+        htmll += `</tr>`;
+
+    }
+
+    //console.log(htmll);
+    html += `${htmll}<tr><td colspan="13"></td></tr>
+    <tr><td colspan="13"></td></tr>
+    <tr>
+    <td colspan="3">Mengetahui,</td>
+    <td colspan="7"></td>
+    <td colspan="3">${jlo.kota}, ${tanggalfull(new Date())}</td>
+    </tr>
+    <tr>
+        <td colspan="3">Kepala ${idNamaSekolah}</td>
+        <td colspan="7"></td>
+        <td colspan="3">${idJenisGuru}  ${idNamaKelas}</td>
+    </tr>
+    <tr><td colspan="13"></td></tr>
+    <tr><td colspan="13"></td></tr>
+    <tr><td colspan="13"></td></tr>
+    <tr>
+        <td colspan="3"><b><u>${idNamaKepsek}</u></b></td>
+        <td colspan="7"></td>
+        <td colspan="3"><b><u>${namauser}</u></b></td>
+    </tr><tr>
+        <td colspan="3">NIP. ${idNipKepsek}</td>
+        <td colspan="7"></td>
+        <td colspan="3">NIP. ${idGuruKelas}</td>
+    </tr></table>`;
+    datasiswadiv.innerHTML = html;
+
+    $("#myTableCopy").table2excel({
+        name: " SDN Ratujaya 1",
+        filename: "Data Siswa Kelas " + ruangankelas + " Tapel " + idTeksTapel.replace("/", " ") + " dicetak pada " + new Date(),
+        fileext: ".xls",
+        exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true,
+        preserveColors: true,
+        jumlahheader: 1,
+        barisatas: 5
+    });
+    datasiswadiv.innerHTML = "";
+};
+const exportdatasiswa = () => {
+    alert("Mengekspor Data Siswa Kelas Anda adalah mengekspor data berdasarkan database yang telah disimpan dan format sesuai dengan Database E-Lamaso (isi sesuai Dapodik). File ini bisa digunakan untuk mengekspor ke Tabel (jika diperlukan)");
+    let datasiswadiv = document.getElementById("datasiswaprint");
+    datasiswadiv.innerHTML = "";
+    let html = `<table class="versi-table" id="myTableCopy"><tr>`;
+    //head
+    for (let i = 0; i < arrayheadsumber.length; i++) {
+        html += `<td>${arrayheadsumber[i]}</td>`;
+    }
+    html += `</tr>`
+    for (let j = 0; j < jsondatasiswa.length; j++) {
+        html += `<tr>`;
+        let ob = jsondatasiswa[j];
+        for (k = 0; k < arrayheadsumber.length; k++) {
+            let form_number = angkadistring.indexOf(arrayheadsumber[k])
+            if (form_number > -1) {
+                html += `<td>${(ob[arrayheadsumber[k]] == "") ? "" : "'" + ob[arrayheadsumber[k]]}</td>`;
+
+            } else {
+                html += `<td>${ob[arrayheadsumber[k]]}</td>`;
+
+            }
+        }
+
+        html += `</tr>`
+    }
+
+    datasiswadiv.innerHTML = html;
+
+    $("#myTableCopy").table2excel({
+        name: " SDN Ratujaya 1",
+        filename: "FILE EXPORT DATA SISWA KELAS " + ruangankelas + " " + new Date().getTime(),
+        fileext: ".xls",
+        exclude_img: true,
+        exclude_links: true,
+        exclude_inputs: true,
+        preserveColors: true,
+        jumlahheader: 1,
+        barisatas: 0
+    });
+    datasiswadiv.innerHTML = "";
+};
+
 
 
 const tambahsiswa = () => {
@@ -631,10 +866,8 @@ async function editsiswa(y) {
     if (!konfirm) {
         return
     }
-
+    // alert("Dengan menyimpan ini, Anda tidak secara langsung tidak memverifikasi");
     let namatabel = document.getElementById("myTable").getElementsByTagName("tbody")[0].rows[y];
-    //let namaheader = namatabel.rows[0].cells[8].innerHTML;
-    //alert(namaheader)
     let xid = jsondatasiswa[y].id, xjenjang = idJenjang, xnama_rombel = idNamaKelas,
         xnis = namatabel.cells[2].innerHTML,
         xnisn = namatabel.cells[3].innerHTML, xnik = jsondatasiswa[y].nik,
@@ -651,65 +884,121 @@ async function editsiswa(y) {
         spdhp = namatabel.cells[12].innerHTML,
         spdaktif = "aktif", spdeditoleh = namauser;
 
+    let jsonlamaanakini = jsondatasiswa.filter(s => s.id == xid)[0];
+    jsonlamaanakini["id"] = xid;
+    jsonlamaanakini["jenjang"] = xjenjang;
+    jsonlamaanakini["nama_rombel"] = xnama_rombel;
+    jsonlamaanakini["nis"] = xnis.replace(/&nbsp;/g, "");
+    jsonlamaanakini["nisn"] = xnisn.replace(/&nbsp;/g, "");
+    jsonlamaanakini["nik"] = xnik.replace(/&nbsp;/g, "");
+    jsonlamaanakini["nokk"] = xnokk.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_nama"] = xpdnama.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_jk"] = xpdjk.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_tl"] = xpdtl.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_tanggallahir"] = xpdtgl;
+    jsonlamaanakini["pd_agama"] = spdagama.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_namaayah"] = spdayah.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_namaibu"] = spdibu.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_alamat"] = spdalamat.replace(/&nbsp;/g, "");
+    jsonlamaanakini["pd_hp"] = spdhp.replace(/&nbsp;/g, "");
+    jsonlamaanakini["aktif"] = spdaktif.replace(/&nbsp;/g, "");
+    jsonlamaanakini["dieditoleh"] = spdeditoleh;
 
 
-    let data = new FormData();
-    data.append("id", xid);
-    data.append("jenjang", xjenjang);
-    data.append("nama_rombel", xnama_rombel);
-    data.append("nis", xnis);
-    data.append("nisn", xnisn);
-    data.append("nik", xnik);
-    data.append("nokk", xnokk);
-    data.append("pd_nama", xpdnama);
-    data.append("pd_jk", xpdjk);
-    data.append("pd_tl", xpdtl);
-    data.append("pd_tanggallahir", xpdtgl);
-    data.append("pd_agama", spdagama);
-    data.append("pd_namaayah", spdayah);
-    data.append("pd_namaibu", spdibu);
-    data.append("pd_alamat", spdalamat);
-    data.append("pd_hp", spdhp);
-    data.append("aktif", spdaktif);
-    data.append("dieditoleh", spdeditoleh);
+    let pus = [];
+    let key = arrayheadsumber.filter(s => s !== "time_stamp");//array
+
+    //Jika sebelumnya belum daftar ulang, maka API yang digunakan ini
+    let databelumkirim = new FormData();
+    for (let i = 0; i < key.length; i++) {
+        pus.push(jsonlamaanakini[key[i]]);
+        databelumkirim.append(key[i], jsonlamaanakini[key[i]]);
+    }
+
+    //Jika sebelumnya sudah daftar ulang, maka API yang digunakan ini
+    let tabel = JSON.stringify(pus);
+    let datakirim = new FormData();
+    datakirim.append("tabel", tabel);
+    datakirim.append("tokensiswa", xid);
+    datakirim.append("idss", jlo.ss_datauser);
+
+    let semuapendaftarulang = informasiusulandata["all"]
+    let sudahdaftarulang = semuapendaftarulang.filter(s => s.id == xid)
+    if (sudahdaftarulang.length == 0) {
+        let aaa = linkDataUserWithIdss + "&action=editsiswa";
+        await fetch(aaa, {
+            method: "post",
+            body: databelumkirim
+        }).then(m => m.json())
+            .then(f => {
+
+                alert(f);
+                fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
+                    .then(n => n.json())
+                    .then(k => {
+                        jsondatasiswa = k.datasiswa;
+                        localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
+                        tabeldatakelassaya();
+                    });
 
 
-    let aaa = linkDataUserWithIdss + "&action=editsiswa";
-    await fetch(aaa, {
-        method: "post",
-        body: data
-    }).then(m => m.json())
-        .then(f => {
-
-            alert(f);
-            fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
-                .then(n => n.json())
-                .then(k => {
-                    jsondatasiswa = k.datasiswa;
-                    localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
-                    tabeldatakelassaya();
-                });
-
-
+            })
+            .catch(er => alert(er));
+    } else {
+        await fetch(url_absensiswa + "?action=daftarulangduasheet", {
+            method: "post",
+            body: datakirim
         })
-        .catch(er => alert(er));
+            .then(m => m.json())
+            .then(r => {
+                //infoloadingljk.innerHTML = r.result;
+                // console.log(r)
+                let datasiswakelasini = r.datasiswa.filter(s => s.nama_rombel == idNamaKelas && s.aktif == "aktif");
+                // console.log(datasiswakelasini)
+                jsondatasiswa = datasiswakelasini;
+                localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(datasiswakelasini));
 
-    //     alert("id=" + xid + "\n jenjang= " + xjenjang + "\n namarombel = " + xnama_rombel + "\n nis=" + xnis
-    //         + "\n xnisn=" + xnisn
-    //         + "\n xnik=" + xnik
-    //         + "\n xnokk=" + xnokk
-    //         + "\n xpdnama=" + xpdnama
-    //         + "\n xpdjk=" + xpdjk
-    //         + "\n xpdtl=" + xpdtl
-    //         + "\n xpdtgl=" + xpdtgl
-    //         + "\n spdagama=" + spdagama
-    //         + "\n spdayah=" + spdayah
-    //         + "\n spdibu=" + spdibu
-    //         + "\n spdalamat=" + spdalamat
-    //         + "\n spdhp=" + spdhp
-    //         + "\n spdaktif=" + spdaktif
-    //         + "\n diedito oleh=" + spdeditoleh
-    //     )
+                tabeldatakelassaya();
+                alert("Dengan fitur perubahan yang Anda lakukan, Status verifikasi sesuai dengan status verifikasi sebelumnya.")
+            })
+            .catch(er => {
+                console.log(er);
+                infoloadingljk.innerHTML = "Terjadi kesalahan";
+            })
+    }
+    //infoloadingljk.innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"/></p>`
+
+
+    // console.log(jsonlamaanakini);
+    // let statussebelumnya = jsonlamaanakini.usulanperubahandata;
+    // if (statussebelumnya.indexOf("disetujui") > -1) {
+    //     jsonlamaanakini.usulanperubahandata = "Ajuan Ke-" + (parseInt(statussebelumnya.match(/(\d+)/)[0])) + "disetujui dan isian dibantu guru ke-" + parseInt(statussebelumnya.match(/(\d+)/)[0]) + 1;
+    // } else {
+    //     jsonlamaanakini.usulanperubahandata = statussebelumnya;
+    // }
+
+    // data.append("jenjang", xjenjang);
+    // data.append("nama_rombel", xnama_rombel);
+    // data.append("nis", xnis);
+    // data.append("nisn", xnisn);
+    // data.append("nik", xnik);
+    // data.append("nokk", xnokk);
+    // data.append("pd_nama", xpdnama);
+    // data.append("pd_jk", xpdjk);
+    // data.append("pd_tl", xpdtl);
+    // data.append("pd_tanggallahir", xpdtgl);
+    // data.append("pd_agama", spdagama);
+    // data.append("pd_namaayah", spdayah);
+    // data.append("pd_namaibu", spdibu);
+    // data.append("pd_alamat", spdalamat);
+    // data.append("pd_hp", spdhp);
+    // data.append("aktif", spdaktif);
+    // data.append("dieditoleh", spdeditoleh);
+
+
+
+
+
 }
 
 const editttl = (brs) => {

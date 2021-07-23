@@ -15,7 +15,7 @@
             exclude_judul: true,
             // exclude_ttd: true,
             name: "Table2Excel",
-            sheetName: "created by_Ade Andriansyah_",
+            sheetName: "elamaso",
             filename: "table2excel",
             fileext: ".xlsx",
             exclude_img: true,

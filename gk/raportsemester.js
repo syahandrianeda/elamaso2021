@@ -1313,7 +1313,7 @@ const getdataolahan = () => {
     fetch(constlinknilai + "?action=getdatafromtab" + param)
         .then(m => m.json())
         .then(k => {
-            //console.log(k);
+            console.log(k);
             if (k.result == 0) {
                 alert("Anda belum pernah menyimpan data pengolahan nilai.");
                 divto.innerHTML = `
@@ -1329,6 +1329,7 @@ const getdataolahan = () => {
 
             } else {
                 let ob = Object.keys(k.data[0]).filter(k => !(k === "no" || k === "nama"));
+                console.log(ob)
                 let key = Object.keys(k.data[0]);
                 let obb = JSON.stringify(ob);
                 let ddx = JSON.stringify(dds);
@@ -1461,11 +1462,9 @@ const simpandatakd3 = () => {
         let perbaris = lr[r];
         let isi = []
         for (s = 0; s < perbaris.cells.length; s++) {
-
-            let d = perbaris.cells[s].innerHTML;
-
+            let d;
+            d = perbaris.cells[s].innerHTML;
             isi.push(d);
-
         }
         all.push(isi)
     }
