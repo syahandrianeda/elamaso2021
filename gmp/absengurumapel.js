@@ -1,4 +1,5 @@
 async function absensisiswa() {
+    loadingtopbarin("loadingtopbar");
     if (jsondatasiswa.length == 0) {
         alert("Anda Belum Memilih Kelas.");
         return;
@@ -8,6 +9,14 @@ async function absensisiswa() {
     }
     tampilinsublamangurukelas("absen");
     absenhariini.style.display = "block";
+    clearInterval(stoploadingtopbar);
+    divlod = document.querySelector(".loadingtopbar");
+    divlod.style.width = "100%";
+    setTimeout(() => {
+        divlod.style.width = "1px"
+        divlod.className += " w3-hide";
+
+    }, 3000);
 }
 
 async function createtableabsenhariini() {

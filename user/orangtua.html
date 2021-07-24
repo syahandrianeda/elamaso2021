@@ -52,36 +52,27 @@
         const identitaskotasekolah = jlo.kota;
         const linkmateri = urlmateri + "?idss=" + ssmateri;
         const surel = jlo.surel;
-
         let urlnilai = "";
-
         let namasiswa, url_absenkaldik;
         let namakelas;
         let jenjang;
         let arrayStringTglLibur = [], arrayKetLibur = [];
-
         let belajaraktif = true;
         let sudahhadir;//= 0;
         let absenheader = "";
         let url_absensiswa = "";
         let url_kaldikaja = "";
-
-
         if (localStorage.hasOwnProperty("typeuser")) {
             let m = JSON.parse(localStorage.getItem("typeuser"))
             // console.log(m.akses);
             if (m.akses == "Guru Kelas") {
                 //window.location.href="/user/guru.html";
                 window.location.replace("/user/guru.html");
-
             } else if (m.akses == "Guru Mapel") {
                 window.location.replace("/user/gmp.html");
-
             } else if (m.akses == "Kepala Sekolah") {
-
                 window.location.replace("/user/kepsek.html");
             } else {
-
                 //let jlo = JSON.parse(localStorage.getItem("inst_id"))
                 let urlmateri = jlo.url_materi;
                 let ssmateri = jlo.ss_materi;

@@ -511,9 +511,10 @@ function pindahsemester() {
     let x = document.getElementById("selectpindahsemester").options;
     let y = document.getElementById("selectpindahsemester").selectedIndex;
     let val = x[y].value;
+    let teks = x[y].text;
     if (val == "1") {
-        let confirm = confirm(`Anda yakin ingin melanjutkan ke WebbApp elamaso ${teks}? Klik OK untuk melanjutkan atau CANCEL untuk membatalkan.`);
-        if (confirm) {
+        let confirmm = confirm(`Anda yakin ingin melanjutkan ke WebbApp elamaso ${teks}? Klik OK untuk melanjutkan atau CANCEL untuk membatalkan.`);
+        if (confirmm) {
             window.location.replace(web2021semester1)
 
         }

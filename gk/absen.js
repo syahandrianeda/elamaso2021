@@ -6,11 +6,36 @@ async function absensisiswa() {
     if (jsondatasiswa.length == 0) {
         alert("Liat data siswa dulu");
         tabeldatakelassaya();
+        // let elstablengkap1 = document.getElementById('scrolltabelabsenrekap');
+        // let elstablengkap2 = document.getElementById('idtabelrekapsemester');
+        // let wid = elstablengkap2.offsetWidth;
+        // // let divscroll = document.getElementById("scrollatas");
+        // let isidivscroll = document.getElementById("isiscrolltabelabsenrekap");
+
+        // //let ww = divolahnilai.offsetWidth;
+
+        // // elstablengkap1.setAttribute("style", `border: none 0px red;overflow-x: scroll;position:sticky;position:-webkit-sticky;top:25px;`)
+
+        // isidivscroll.setAttribute("style", `width:${wid}px;height:20px`)
+        // let divolahnilai = document.getElementById("olahnilai");
+        // let ww = divolahnilai.offsetWidth;
+
+
+
     } else {
         await createtableabsenhariini();
     }
     absenhariini.style.display = "block";
 }
+
+// let elstablengkap1 = document.getElementById("scrolltabelabsenrekap")
+// let elstablengkap2 = document.getElementById("tabelabsenrekap")
+// elstablengkap1.onscroll = function () {
+//     elstablengkap2.scrollLeft = elstablengkap1.scrollLeft;
+// };
+// elstablengkap2.onscroll = function () {
+//     elstablengkap1.scrollLeft = elstablengkap2.scrollLeft;
+// };
 
 async function createtableabsenhariini() {
     var tgl = new Date();
@@ -594,8 +619,10 @@ const lihatrekapkelas = async (datee) => {
             tabelnya.rows[k + 3].cells[iStart * 1 + 4].innerHTML = countHE - (countHadir + countIjin + countSakit); //alpa
 
         }
-        REKAPAbsen[bulanapi] = arrayy
+        REKAPAbsen[bulanapi] = arrayy;
+
     }
+
 
 }
 
@@ -880,8 +907,9 @@ const buattabelrekapsemester = () => {
     let divtabel = document.getElementById("tabelabsenrekap");
     divtabel.innerHTML = "";
     let tabel = document.createElement("table");
-    tabel.setAttribute("class", "versi-table w3-border modifgaris w3-tiny")
+    tabel.setAttribute("class", "versi-table w3-border modifgaris w3-tiny idtabelrekapsemester")
     tabel.setAttribute("id", "idtabelrekapsemester")
+
 
     let thead = tabel.createTHead();
     let brstr = thead.insertRow(0);
@@ -979,12 +1007,29 @@ const buattabelrekapsemester = () => {
 
 
     // }
-    divtabel.innerHTML = `<button class="w3-button w3-aqua w3-round-large" onclick="excelRekapSemester()"><i class="fa fa-file-excel-o"><i> Simpan Excel</button>`
+    divtabel.innerHTML += `<button class="w3-button w3-aqua w3-round-large" onclick="excelRekapSemester()"><i class="fa fa-file-excel-o"><i> Simpan Excel</button>`
     divtabel.innerHTML += `   <button class="w3-button w3-blue-grey w3-round-large" onclick="printRekapSemester()"><i class="fa fa-print"><i> Print </button><hr>`
+
     divtabel.appendChild(tabel);
 
-}
+    let wid = document.querySelector(".idtabelrekapsemester").offsetWidth;
+    //console.log(wid);
+    let divscroll = document.getElementById("scrolltabelabsenrekap");
+    let isidivscroll = document.getElementById("isiscrolltabelabsenrekap");
 
+    // divscroll.setAttribute("style", `x-index:999;border: none 0px red;overflow-x: scroll;position:sticky;position:-webkit-sticky;top:25px;">`)
+    isidivscroll.setAttribute("style", `width:1474px;height:20px;`)
+
+};
+
+let elstablengkap1 = document.getElementById("scrolltabelabsenrekap")
+let elstablengkap2 = document.getElementById("tabelabsenrekap")
+elstablengkap1.onscroll = function () {
+    elstablengkap2.scrollLeft = elstablengkap1.scrollLeft;
+};
+elstablengkap2.onscroll = function () {
+    elstablengkap1.scrollLeft = elstablengkap2.scrollLeft;
+};
 const cekElementidRekapTabel = () => {
     let semester = SemesterBerapaSekarang();
 

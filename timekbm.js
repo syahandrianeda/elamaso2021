@@ -80,6 +80,24 @@ if (linkyangsedangaktif.indexOf("guru.html") > -1) {
 
 
 } else if (linkyangsedangaktif.indexOf("gmp.html") > -1) {
+    document.getElementById("pilihbulanrekap").innerHTML = `
+    <option id="indeka" value="${yyyyxmmxdd(new Date())}">Pilih Bulan</option>
+    <option id="indek0" value="2021-07-01">Juli 2021</option>
+    <option id="indek1" value="2021-08-01">Agustus 2021</option>
+    <option id="indek2" value="2021-09-01">September 2021</option>
+    <option id="indek3" value="2021-10-01">Oktober 2021</option>
+    <option id="indek4" value="2021-11-01">Nopember 2021</option>
+    <option id="indek5" value="2021-12-01">Desember 2021</option>`;
+
+    document.getElementById("daftarpilihbulankehadiranguru").innerHTML = `
+    <option id="indeka" value="${yyyyxmmxdd(new Date())}">Pilih Bulan</option>
+    <option id="indek0" value="2021-07-01">Juli 2021</option>
+    <option id="indek1" value="2021-08-01">Agustus 2021</option>
+    <option id="indek2" value="2021-09-01">September 2021</option>
+    <option id="indek3" value="2021-10-01">Oktober 2021</option>
+    <option id="indek4" value="2021-11-01">Nopember 2021</option>
+    <option id="indek5" value="2021-12-01">Desember 2021</option>`;
+
     let kodebarismateriyangdikerjakan = "belumdisi";
     let parameterbantuisiljk = "belumdisi";
     sumber_repository.innerHTML = `

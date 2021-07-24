@@ -1187,9 +1187,6 @@ let flag = 0;
 let ahteks = "";
 
 eidmateri.addEventListener("blur", function (e) {
-    //console.log(e.target.value);
-
-
 
 
     //hteks.id = new Date().getTime();
@@ -1198,7 +1195,6 @@ eidmateri.addEventListener("blur", function (e) {
     // ahteks.push(hteks)
     ahteks += teks + "<<|>>"
     flag++
-
 
 })
 
@@ -1234,4 +1230,192 @@ btnredo.addEventListener("click", function () {
 let btnfn7video = document.querySelector(".fn7video");
 btnfn7video.addEventListener("click", function () {
     daftarvideo();
-})
+});
+
+function barufindkuncipgkd(teks) {
+    let findPG = teks.match(/^_PG_\d{1,2}\s|^_OPSI-PG_\d{1,2}[A-D]\s|^_OPSI-PG-C_\d{1,2}[A-D](\s)|^_OPSI-SEL_\d{1,2}[A-D]\s|^_ESSAY-NO_\d{1,2}\s/gm);
+    let div = document.querySelector(".tekeditorpg");
+    // <div id="divbantu_kuncijawaban"></div>
+    // <div id="divbantu_sebarankd"></div>
+    let divradiopg = document.getElementById("divbantu_kuncijawaban");
+    divradiopg.innerHTML = "";
+
+    if (findPG !== null) {
+        let cekcariopsi = teks.match(/^_OPSI-PG_\d{1,2}[A-D]\s|^_OPSI-PG-C_\d{1,2}[A-D](\s)|^_OPSI-SEL_\d{1,2}[A-D]\s/gm);
+        
+
+        let tanpaspasi = findPG.map(s => s.replace(/\s|\t/g, ""));
+        let opsinya = (cekcariopsi == null) ? [] : cekcariopsi.map(s => s.replace(/\s|\t/g, ""));
+
+
+        let result = {};
+        let cekduplikat = tanpaspasi.filter((x, i, a) => a.indexOf(x) !== i)
+        result["elemenduplikat"] = cekduplikat;
+
+
+
+        let koleksiEl_PG = tanpaspasi.filter(s => s.indexOf("_PG_") > -1);//.map(m=> m.replace("_PG_"));
+        let koleksino_PG = tanpaspasi.filter(s => s.indexOf("_PG_") > -1).map(m => parseInt(m.replace("_PG_", "")));
+        let koleksiopsi_PG = opsinya.map(s => s.replace("_OPSI-PG_", "") || s.replace("_OPSI-PG-C_", "") || s.replace("_OPSI-SEL_", ""));//.map(m => m.match(/\d[A-D]/g)[0]);
+
+        result["koleksi_el_pg"] = koleksiEl_PG; // "_SEMUA KODE_"
+        result["koleksi_no_pg"] = koleksino_PG; // 
+        result["koleksi_opsi_pg"] = koleksiopsi_PG;
+        let pg_duplikat = koleksiopsi_PG.filter((x, i, a) => a.indexOf(x) !== i);
+        result["koleksi_opsi_pg_duplikat"] = pg_duplikat;
+        result["koleksi_all_elemen"] = tanpaspasi;
+
+        // result["koleksino_opsi"] = opsinya.map(m => m.replace(/_/, ""));
+        let PG = [];
+        for (i = 0; i < koleksino_PG.length; i++) {
+            let cocokkan = koleksino_PG[i];
+            let pattern = cocokkan
+            let nopg = koleksiopsi_PG.filter(s => (s == cocokkan + "A" || s == cocokkan + "B" || s == cocokkan + "C" || s == cocokkan + "D"));
+            let obj = {};
+            obj["nosoal"] = koleksino_PG[i];
+            obj["arrayopsi"] = nopg;
+
+            PG.push(obj);
+        }
+        // result["PG"] = PG;
+        let filteressay = tanpaspasi.filter(s => s.indexOf("_ESSAY-NO_") > -1);;
+        let filter_no_essay = tanpaspasi.filter(s => s.indexOf("_ESSAY-NO_") > -1).map(m => parseInt(m.replace("_ESSAY-NO_", "")));
+
+        let koleksi_all_nosoal = koleksino_PG.concat(filter_no_essay);
+        let koleksi_nosoal_duplikat = koleksi_all_nosoal.filter((x, i, a) => a.indexOf(x) !== i);
+
+
+
+        result["koleksi_el_essay"] = filteressay;
+        result["koleksi_no_essay"] = filter_no_essay;
+        result["koleksi_all_nosoal"] = koleksi_all_nosoal;
+        result["koleksi_nosoal_duplikat"] = koleksi_nosoal_duplikat;
+        result["NOSOAL"] = PG;
+
+
+        let html = "";
+        let oke = "Kode Soal PG dan Opsinya yang terdeteksi:";
+        let el_input = "";
+
+        // GA BOLEH ADA DUPLIKAT, harusnol;
+        let nolelemen = cekduplikat.length;
+        let nolnomorsoal = koleksi_nosoal_duplikat.length;
+        let nolopsipg = pg_duplikat.length;
+        if (nolelemen > 0 || nolnomorsoal > 0 || nolopsipg > 0) {
+
+        } else {
+            let objekdatasoal = result.NOSOAL;
+           // console.log(objekdatasoal)
+            if (objekdatasoal.length == 0) {
+                html = `TIDAK TERDETEKSI ADANYA SOAL PILIHAN GANDA`
+            } else {
+                html = "Silakan Pilih tiap-tiap Opsi Pilihan Ganda tiap nomor soal berikut sebagai kunci jawabannya."
+                html += `<table class="w3-table-all w3-tiny garis w3-centered"><tr>
+                <th>No Soal</th>
+                <th colspan="4">Opsi Jawaban<br/><sub>(Klik hurufny, huruf yang menyala adalah kunci jawaban pilihan Anda</sub></th>
+                </tr>`
+                for (let a = 0; a < objekdatasoal.length; a++) {
+                    html += `<tr><td class="warnaeka">${objekdatasoal[a].nosoal}</td>`;
+                    let arrayopsi = objekdatasoal[a].arrayopsi;
+                    //console.log(arrayopsi);
+                    for (let b = 0; b < arrayopsi.length; b++) {
+                        html += `<td class="tdpg_pgeditor_${arrayopsi[b]} tdnosoal_editor_${objekdatasoal[a].nosoal} tangan">
+                        <label for="tomboleditor_bantuopsi${arrayopsi[b]}" class="lbl_pgeditor_${arrayopsi[b]}">${arrayopsi[b].match(/\D/)[0]}</label>
+                        </td>`;
+                        el_input += `<br/><input type="radio" id="tomboleditor_bantuopsi${arrayopsi[b]}" name="rdsoal_${objekdatasoal[a].nosoal}" class="pg_buatkuncikd" value="${arrayopsi[b]}" onchange="checked_buatkunci(this)"/>${arrayopsi[b]}`;
+
+                    }
+
+                    html += `</tr>`
+                }
+                html += `</table>`;
+
+
+            }
+        }
+        div.innerHTML = html;
+        divradiopg.innerHTML = el_input;
+        let cekkunci = teks.match(/^_KUNCI-PG_/gm);
+        let cekkd= teks.match(/^_KUNCI-KD_/gm);
+        if(cekkd !== null || cekkunci !== null){
+            console.log(cekkd);
+            console.log(cekkunci);
+        }
+
+        // nolelemen= elemenduplikat.length 
+
+
+        // if (findPG !== null) {
+        //     let htmltes = "";
+        //     for (let i = 0; i < findPG.length; i++) {
+        //         htmltes += `<div class="w3-left w3-card-4 w3-margin w3-round w3-container">${findPG[i]}</div>`
+        //     }
+        //     div.innerHTML = htmltes;
+        // };
+        console.log(result)
+    } else {
+        let html = ` PENGATURAN KUNCI JAWABAN
+        <br /><br />
+        Saat ini belum terdeteksi adanya nomor soal Pilihan Ganda atau ESSAY diketikan Anda. Nomor soal dan
+        pilihan opsi jawabannya akan muncul otomatis. Anda tinggal memilih Opsi Jawaban di
+        tiap-tiap opsi yang terdeteksi sebagai KUNCI JAWABAN soal PG Anda.
+        <br /><br />Abaikan pesan ini jika Anda akan memmbuat konten materi tanpa adanya tagihan
+        Saran: Pastikan Anda menyelesaikan seluruh pengeditan konten materi sebelum memilih
+        kunci jawaban.
+        <table class="w3-table-all tabelpilihkuncipg">
+           
+        </table>`;
+        div.innerHTML = html;
+    }
+    // let cariopsi =(cekcariopsi !== null)?[]:cekcariopsi; 
+    //console.log(cekcariopsi);
+}
+eidmateri.addEventListener("keyup", function (e) {
+    let teks = e.target.value;
+
+
+    // let teks = e.target.value;
+    if (teks !== "") {
+        barufindkuncipgkd(teks);
+
+    }
+
+});
+const checked_buatkunci = (el) => {
+    let opsilengkap = el.value;//1A
+    let no = el.value.match(/\d+/);//1A
+    let ele = document.querySelectorAll(".tdnosoal_editor_" + no);
+    let elaktif = document.querySelector(".tdpg_pgeditor_" + opsilengkap);
+    //hapus dulu bg warannya;
+    for (i = 0; i < ele.length; i++) {
+        ele[i].className = ele[i].className.replace("w3-light-blue");
+    };
+    elaktif.className += " w3-light-blue";
+
+    let textarea = document.getElementById("idmateri");
+    let val = textarea.value;
+    let n = val.length;
+    let awal = val.indexOf("_KUNCI-PG_");
+    let batasawal = val.substring(awal, n).split("/n")[0]
+
+    console.log(awal);
+    console.log(batasawal);
+
+    // var len = textarea.value.length;
+    // var start = textarea.selectionStart;
+    // var end = textarea.selectionEnd;
+    // var sel = textarea.value.substring(start, end);
+
+    // let replace = "";
+    // let adabaris = sel.split("\n");
+    // for (i = 0; i < adabaris.length; i++) {
+    //     if (adabaris[i].length > 0) {
+    //         replace += "<u>" + adabaris[i] + "</u>";
+    //     }
+    // }
+
+    // textarea.value = textarea.value.substring(0, start) + replace + textarea.value.substring(end, len);
+
+
+};
+

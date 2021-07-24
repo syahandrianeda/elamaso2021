@@ -80,7 +80,6 @@
                 // constlinknilai = jlo[ddurl];
                 // constpreviewljk = jlo[ddurl];
 
-
                 // url_kaldikaja = jlo.url_dataabsen;//
                 // //url_absenkaldik = jlo.url_dataabsen + "?action=datakaldik";
 
@@ -113,19 +112,24 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 
-<body>
+<body class="tesbody">
 
     <!-- Top container -->
-    <div class=" w3-bar w3-top w3-black w3-large" style="z-index:4">
-        <button class="w3-bar-item w3-button w3-hide-large w3-hover-none w3-hover-text-light-grey"
-            onclick="w3_open();"><i class="fa fa-bars"></i>  Menu</button>
-        <span class="w3-bar-item w3-right">e-Lamaso Guru</span>
+
+    <div class=" w3-bar w3-top w3-large w3-card-4" style="z-index:4;background-color: rgb(250, 234, 8)">
+        <button class="w3-bar-item w3-button  w3-hover-black w3-hover-text-light-grey" onclick="w3_open();"><i
+                class="fa fa-bars"></i>  Menu</button>
+        <span class="w3-bar-item w3-right">e-Lamaso GMP</span>
+    </div>
+    <div class="w3-bar w3-top w3-tiny">
+        <div class="w3-teal loadingtopbar w3-hide" style="width:1px;margin-top:45px;height: 5px;transition: width 2s">
+            &nbsp;
+        </div>
     </div>
 
-
     <!-- Sidebar/menu -->
-    <nav class="w3-sidebar w3-collapse w3-white w3-animate-left" style="z-index:3;width:300px;" id="mySidebar"><br>
-        <!-- A. SIDEBAR-->
+    <nav class="w3-sidebar  w3-animate-left tesbody " style="z-index:3;width:300px;display:none" id="mySidebar"><br>
+
         <div class="w3-container w3-row">
             <!-- 1. Logo Sekolah -->
             <div class="w3-col s4">
@@ -198,144 +202,107 @@
                 <i class="fa fa-remove fa-fw"></i>  Tutup Menu
             </a>
         </div>
-
-
-
-
-
-
-
     </nav>
     <!-- Overlay effect when opening sidebar on small screens -->
-    <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer"
-        title="close side menu" id="myOverlay">
+
+    <div class="w3-overlay   w3-animate-opacity w3-center" onclick="w3_close()"
+        style="cursor:pointer;background-color:rgb(235, 235, 233)" title="close side menu" id="myOverlay">
+        <img src="/img/bgwa3.png" style="margin:15% 5% 5% 25%">
     </div>
 
 
-    <!-- Laman GURU KELAS diambil dari kode html div id 'mainmenulamaso' -->
-    <div class="w3-main" style="margin-left:300px;margin-top:43px;" id="lamangurukelas">
-        <!-- <h1>Halaman GURU KELAS</h1> -->
-        <!-- Header -->
+    <div class="w3-main" style="margin-top:43px;" id="lamangurukelas">
 
         <header id="idheaderguru" class="w3-container">
             <h5>
                 <i class="fa fa-dashboard"></i>
                 <b id="dashboardgurukelas">
                     Guru Kelas <i class="fa fa-spin fa-spinner"></i>
-
                 </b>
+                <br>
+                <i class="fa fa-calendar-times-o"></i>
+                <b class="n_tapelsemester">
+                    Tahun Pelajaran
+                </b><select class="w3-yellow w3-hover-khaki" style="width: 50%;height:30px;" id="selectpindahsemester"
+                    onchange="pindahsemester()">
+                    <option selected value="now">Tapel 2021/2022 Semester 1</option>
+                    <option value="1">Tapel 2020/2021 Semester 2</option>
+                </select>
             </h5>
 
         </header>
-        <!-- <button class="w3-hover-border-light-blue" onclick="cekElementidRekapTabel()">Cek Local Storage</button> -->
         <div class="w3-row-padding w3-margin-bottom" id="pintumasukgurumapel">
             <label for="gmppilihrombel">Pilih Kelas</label>
-            <select id="gmppilihrombel" class="w3-select w3-border-blue w3-blue w3-hover-aqua"
-                onchange="fngmppilihrombel()">
+            <select id="gmppilihrombel" class="w3-select warnaeka" onchange="fngmppilihrombel()">
 
             </select>
 
         </div>
 
-        <div class="w3-row-padding w3-margin-bottom" id="menusayaabsenguru">
-            <div class="w3-quarter" style="cursor:pointer" id="tomboltabeldatakelassaya" onclick="tabeldatakelassaya()">
-                <div class="w3-container w3-aqua w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-id-card-o w3-xxxlarge"></i></div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
+
+        <div class="w3-row-padding" id="menusayaabsenguru">
+            <div class="w3-quarter" style="margin:50px 0;cursor: pointer;" id="tomboltabeldatakelassaya"
+                onclick="tabeldatakelassaya()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_datakelas.png"></div>
+
+
                     <h3>Data Kelas</h3>
                 </div>
             </div>
-            <div class="w3-quarter elabsen" style="cursor:pointer" onclick="absensisiswa()">
-                <!-- onclick="tampilinisiabsen()"> -->
-                <div class="w3-container w3-lime w3-padding-16 elabsen">
-                    <div class="w3-left elabsen "><i class="fa fa-calendar-check-o w3-xxxlarge"></i></div>
-                    <div class="w3-right elabsen">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear elabsen"></div>
-                    <h3 class="elabsen">Absensi Siswa</h3>
+            <div class="w3-quarter" style="cursor: pointer; margin:50px 0" onclick="absensisiswa()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_absensi.png"></div>
+
+
+                    <h3>Absen Siswa</h3>
                 </div>
             </div>
-            <div class="w3-quarter" style="cursor:pointer" onclick="pembelajaran()">
-                <!-- <div class="w3-quarter" style="cursor:pointer" onclick="riwayatmateri()"> -->
-                <!-- onclick="tampilinisiabsen()"> tampilin rekapitulasi absen-->
-                <div class="w3-container w3-indigo w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-book w3-xxxlarge"></i><i class="fa fa-child"></i></div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
+            <div class="w3-quarter elabsen" style="cursor: pointer; margin:50px 0" onclick="pembelajaran()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_pembelajaran.png"></div>
+
                     <h3>Pembelajaran</h3>
                 </div>
             </div>
-            <div class="w3-quarter" style="cursor:pointer" onclick="kurikulum()">
-                <!-- onclick="tampilinisiabsen()"> -->
-                <div class="w3-container w3-red w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-gears w3-xxxlarge"></i><i class="fa fa-book w3-large"></i>
-                    </div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
+            <div class="w3-quarter" style="cursor: pointer; margin:50px 0" onclick="kurikulum()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_kurikulum.png"></div>
+
                     <h3>Kurikulum</h3>
                 </div>
             </div>
-            <div class="w3-quarter" style="cursor:pointer" onclick="nilaimapel()">
-                <!-- onclick="tampilinisiabsen()"> -->
-                <div class="w3-container w3-purple w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-star w3-xxxlarge"></i></div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
+
+            <div class="w3-quarter" style="margin:50px 0;cursor: pointer;" onclick="nilaimapel()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_nilaii.webp"></div>
+
                     <h3>Nilai Mapel</h3>
                 </div>
             </div>
+            <div class="w3-quarter" style="cursor: pointer; margin:50px 0" onclick="raportkelas()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_rapor.webp"></div>
 
-            <!-- <div class="w3-quarter" style="cursor:pointer" onclick="alert('Maaf, fitur ini hanya untuk Guru Kelas')">
-            
-                <div class="w3-container w3-pale-red w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-graduation-cap w3-xxxlarge"></i></div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
                     <h3>Raport</h3>
                 </div>
-            </div> -->
+            </div>
+            <div class="w3-quarter" style="cursor: pointer; margin:50px 0" onclick="kehadiranguru()">
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_kehadiran.webp"></div>
 
-            <div class="w3-quarter" style="cursor:pointer" onclick="kehadiranguru()">
-                <!-- onclick="tampilinisiabsen()"> -->
-                <div class="w3-container w3-yellow w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-user w3-xxxlarge"></i></div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
-                    <h3>Piket</h3>
+                    <h3>Kehadiran Guru</h3>
                 </div>
             </div>
+            <!-- //onclick="framekreatifitas()"> -->
+            <div class="w3-quarter" style="cursor: pointer; margin:50px 0" onclick="loadingAPI.style.display='block'">
 
-            <div class="w3-quarter" style="cursor:pointer" onclick="framekreatifitas()">
-                <div class="w3-container w3-cyan w3-padding-16">
-                    <div class="w3-left"><i class="fa fa-picture-o w3-xxxlarge"></i></div>
-                    <div class="w3-right">
-                        <h3>...</h3>
-                    </div>
-                    <div class="w3-clear"></div>
+                <div class="w3-container n_zoom w3-center ">
+                    <div><img src="/img/lg_frame.webp"></div>
+
                     <h3>Frame</h3>
                 </div>
-
-
             </div>
-
-
-
-
-
 
 
         </div>
@@ -469,7 +436,8 @@
                 <!-- // <h3>Bulanan</h3> -->
                 <h3><span id="bulanrekap">Silakan Pilih Bulannya....</span></h3>
                 PILIH BULAN :
-                <select id="pilihbulanrekap" style="width:30%" onchange="pilihopsibulanrekap()">
+                <select id="pilihbulanrekap" class="w3-select warnaeka" style="width:80%"
+                    onchange="pilihopsibulanrekap()">
                     <option id="pilih" selected>Pilih Bulan</option>
                     <option id="Juli" value="2020-07-01">Juli 2020</option>
                     <option id="Agustus" value="2020-08-01">Agustus 2020 </option>
@@ -749,7 +717,8 @@
                                 <div
                                     style="display:inline-block;padding:1px;border:1px solid blue;background-color: aqua;">
                                     Tabel: <input type="checkbox" checked id="ed_headertabel" /><label
-                                        for="ed_headertabel"> Header:</label><br>
+                                        for="ed_headertabel">
+                                        Header:</label><br>
                                     <i class="fa fa-table fa-list-ol w3-hover-pale-green w3-button w3-border w3-border-red ed_tabel"
                                         title="Tabel"></i>
                                 </div>
@@ -783,8 +752,19 @@
 
                             </div>
                         </div>
-                        <textarea type="text" id="idmateri" name="idmateri" placeholder="Silakan buat materi di sini"
-                            style="width:100%; height:700px" class=" w3-border-purple  w3-round-xlarge"></textarea>
+                        <div class="w3-row">
+                            <div class="w3-col l9">
+                                <textarea type="text" id="idmateri" name="idmateri"
+                                    placeholder="Silakan buat materi di sini" style="height:700px"
+                                    class=" w3-border-purple  w3-round-xlarge"></textarea>
+
+                            </div>
+                            <div
+                                class="w3-col l3  w3-card-4 w3-container w3-round-large tekeditorpg w3-margin-top w3-light-grey">
+                                KUNCI JAWABAN
+                            </div>
+
+                        </div>
 
 
                     </fieldset>
@@ -1754,7 +1734,7 @@ _OPSI-PG-C_1C isikan opsi jawaban C
 
     </div>
 
-    <div id="loadingAPI" class="w3-modal w3-red">
+    <div id="loadingAPI" class="w3-modal w3-light-gray w3-opacity-min">
         <div class="w3-modal-container">
             <span class="w3-btn w3-blue w3-right w3-badge" onclick="loadingAPI.style.display='none'">&times;</span>
             <div id="infoloadingAPI" class="w3-modal-content w3-card-4 w3-round-medium w3-text-blue w3-display-middle">
@@ -1885,17 +1865,18 @@ _OPSI-PG-C_1C isikan opsi jawaban C
 
         }
     </style>
-    <script src="/guru/variabel.js?v=9" render></script>
-    <script src="/guru/exceltabel.js?v=12.0" render></script>
-    <script src="/gmp/materigurumapel.js?v=12.1"></script>
-    <script src="/gmp/uploadmaterigurumapel.js?v=12.0"></script>
-    <script src="/guru/aafnbaruv7.js?v=10.0"></script>
-    <script src="/guru/nilai.js?v=12.0"></script>
-    <script src="/guru/kurikulum.js?v=12.0"></script>
-    <script src="/guru/videoelamaso.js?v=12.0"></script>
+    <script src="/guru/variabel.js" render></script>
+    <script src="/guru/exceltabel.js" render></script>
+    <script src="/gmp/materigurumapel.js"></script>
+    <script src="/gmp/uploadmaterigurumapel.js"></script>
+    <script src="/guru/aafnbaruv7.js"></script>
+    <script src="/guru/nilai.js"></script>
+    <script src="/guru/kurikulum.js"></script>
+    <script src="/guru/videoelamaso.js"></script>
 
-    <script type="text/javascript" src="/guru/zframe.js?v=12.2"></script>
+    <script type="text/javascript" src="/guru/zframe.js"></script>
     <!-- <script src="/guru/app.js"></script> -->
+
 </body>
 
 </html>

@@ -39,3 +39,4 @@ const anjangsanaguru = () => {
     alert("Maaf, fitur belum tersedia")
 }
 
+

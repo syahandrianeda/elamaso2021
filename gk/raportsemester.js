@@ -1182,7 +1182,8 @@ const koleksicekliskd = () => {
     let divolahnilai = document.getElementById("olahnilai");
     let ww = divolahnilai.offsetWidth;
 
-    divscroll.setAttribute("style", `border: none 0px red;overflow-x: scroll;`)
+    divscroll.setAttribute("style", `border: none 0px red;overflow-x: scroll;position:sticky;position:-webkit-sticky;top:25px;`)
+
     isidivscroll.setAttribute("style", `width:${wid}px;height:20px`)
 
 }
@@ -3151,7 +3152,7 @@ const koleksicekliskdketerampilan = () => {
     let divolahnilai = document.getElementById("olahnilai");
     let ww = divolahnilai.offsetWidth;
 
-    divscroll.setAttribute("style", `border: none 0px red;overflow-x: scroll;`)
+    divscroll.setAttribute("style", `border: none 0px red;overflow-x: scroll;position:sticky;position:-webkit-sticky;top:25px;`)
     isidivscroll.setAttribute("style", `width:${wid}px;height:20px`)
 
 }
@@ -4117,7 +4118,7 @@ tabacrdklainnya.addEventListener("click", async function () {
     let isidivscroll = document.getElementById("isiscrollatas_b");
 
 
-    divscroll.setAttribute("style", `border: none 0px red;overflow-x: scroll;`)
+    divscroll.setAttribute("style", `border: none 0px red;overflow-x: scroll;position:sticky;position:-webkit-sticky;top:25px;`)
     isidivscroll.setAttribute("style", `width:${wid}px;height:20px`)
 })
 

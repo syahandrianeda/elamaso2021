@@ -1,18 +1,41 @@
 window.onscroll = function () { scrollFunction() };
-let elementini = document.querySelector(".tomboleditor")
+let elementini = document.querySelector(".tomboleditor");
+let el_set_kuncipg = document.querySelector(".tekeditorpg");
+
 function scrollFunction() {
-
     let a = document.querySelector("#idmateri").offsetTop;
-    let b = document.querySelector("#loadketKD").offsetTop + 20;
 
-
+    let b = document.querySelector("#loadketKD").offsetTop;// + 20;
+    //console.log((rounded >= a && rounded <= b))
     var rounded = Math.round(document.documentElement.scrollTop);
     if (rounded >= a && rounded <= b) {
-        elementini.setAttribute("style", "position:fixed;top:43px;transition:0.2s;width:70%");
+        elementini.className = elementini.className.replace("l12", "l9");
     } else {
-        elementini.setAttribute("style", "position:static;transition:0.2s;width:100%");
+        elementini.className = elementini.className.replace("l9", "l12");
+
     }
 }
+
+// function scrollFunction() {
+
+//     let a = document.querySelector("#idmateri").offsetTop;
+//     let b = document.querySelector("#loadketKD").offsetTop + 20;
+
+//     console.log(elementini.offsetWidth)
+//     var rounded = Math.round(document.documentElement.scrollTop);
+//     if (rounded >= a && rounded <= b) {
+//         elementini.setAttribute("style", "position:sticky;top:43px;transition:0.2s;");
+//         let cekcol = elementini.className.indexOf("w3-col l12");
+//         if(cekcol == -1){
+//             elementini.className += " w3-col l";
+//         }else{
+//             elementini.className = elementini.className.replace("w3-col l3", "")
+//         }
+//         elementini.className = ` w3-col l9`;
+//     } else {
+//         elementini.setAttribute("style", "transition:0.2s;width:1320px");
+//     }
+//}
 
 let btneditor = document.querySelector(".bukatekseditor");
 let btneditor2 = document.querySelector(".bukatekseditor2");

@@ -10,12 +10,31 @@ let idNamaSekolah, idNamaKelas, idGuruKelas, idNipGuruKelas,
     idNamaKepsek, idJenjang;
 let REKAPAbsen = {}, OBJEKHariEfektif;
 let obDataRekapKehadiran;
-
+let idinterval
 let informasiusulandata = {};
 
 jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
-
+let stoploadingtopbar;
+const loadingtopbarin = (el) => {
+    var elem = document.querySelector("." + el);
+    elem.className = elem.className.replace("w3-hide", "")
+    var width = 1;
+    stoploadingtopbar = setInterval(frame2, 10);
+    function frame2() {
+        // if (width >= 1000000) {
+        //     clearInterval(stoploadingtopbar);
+        //     // elem.style.width = 0;
+        //     // elem.style.width = 90 + '%';
+        //     // elem.innerHTML = `100%`;
+        // } else {
+        width += 100;
+        elem.style.width = width / 1000 + '%';
+        //elem.innerHTML = (width / 105).toFixed(0) + "% ";
+        //}
+    }
+}
 (async function () {
+    loadingtopbarin("loadingtopbar");
     OBJEKHariEfektif = {
         "Januari": 0, "Februari": 0, "Maret": 0,
         "April": 0, "Mei": 0, "Juni": 0, "Juli": 0, "Agustus": 0,
@@ -84,26 +103,26 @@ jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
     logo.setAttribute("src", "https://drive.google.com/uc?export=view&id=" + idimage);
     logo.setAttribute("alt", "Poto Guru");
     logo.setAttribute("style", "width:90px; height:90px");
-    if (localStorage.hasOwnProperty("datasiswa_" + ruangankelas)) {
-        jsondatasiswa = JSON.parse(localStorage.getItem("datasiswa_" + ruangankelas)).datasiswa;
-    } else {
-        await fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
-            .then(m => m.json())
-            .then(k => {
-                jsondatasiswa = k.datasiswa;
-                localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
+    // if (localStorage.hasOwnProperty("datasiswa_" + ruangankelas)) {
+    //     jsondatasiswa = JSON.parse(localStorage.getItem("datasiswa_" + ruangankelas)).datasiswa;
+    // } else {
+    await fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
+        .then(m => m.json())
+        .then(k => {
+            jsondatasiswa = k.datasiswa;
+            localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
 
-            }).catch(er => {
-                console.log("muat ulang lagi: " + er);
-                fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
-                    .then(m => m.json())
-                    .then(k => {
-                        jsondatasiswa = k.datasiswa;
-                        localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
+        }).catch(er => {
+            console.log("muat ulang lagi: " + er);
+            fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
+                .then(m => m.json())
+                .then(k => {
+                    jsondatasiswa = k.datasiswa;
+                    localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
 
-                    })
-            });
-    }
+                })
+        });
+    // }
     await fetch(linkDataUserWithIdss + "&action=usulanperbaikandata")
         .then(m => m.json())
         .then(k => {
@@ -184,6 +203,14 @@ jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
 
     dashboardgurukelas.innerHTML = idJenisGuru + " " + idNamaKelas + " ( " + namauser + " )";
 
+    clearInterval(stoploadingtopbar);
+    let divlod = document.querySelector(".loadingtopbar");
+    divlod.style.width = "100%";
+    setTimeout(() => {
+        divlod.style.width = "1px"
+        divlod.className += " w3-hide";
+
+    }, 3000);
 
 })();
 
@@ -547,7 +574,7 @@ const importdatasiswa = () => {
     })
     elinput.click();
 };
-let idinterval
+
 const barusimpanserverdatasiswa = async () => {
     let konfirm = confirm("Proses pengiriman data ke server dari tabel ini akan membutuhkan waktu yang lama. Anda yakin ingin melanjutkannya (Proses tidak bisa dihentikan)?\n\n Klik OK untuk melanjutkan atau klik CANCEL untuk membatalkan.");
 
@@ -564,7 +591,7 @@ const barusimpanserverdatasiswa = async () => {
     datahtml += `<h3 class="w3-center">Proses Pengiriman Data</h3>
     Mohon Tunggu, proses membutuhkan waktu yang lama
     <div class="w3-border">
-        <div class="warnaeka lebarin" style="width:1%;height:20px;transition: width 2s"><div class="statusloadingkirim"></div></div>
+        <div class="warnaeka lebarin" style="width:1%;height:20px;transition: width 2s"></div>
     </div>
     <table class="w3-table w3-striped tabelproseskirim w3-small">`;
     for (let i = 0; i < jsondatasiswa.length; i++) {
@@ -593,20 +620,37 @@ const barusimpanserverdatasiswa = async () => {
     } else {
         objekdikirim = jsondatasiswa;
     }
-    let i = 0
+    let ld_atas = document.querySelector(".lebarin");
+    let i = 0;
     do {
+        let elemen = document.querySelector(".statuskirimserveranake_" + i);
+        let kelas = ".statuskirimserveranake_" + i
         animasimove("statuskirimserveranake_" + i);
-        setTimeout(() => {
-            clearInterval(idinterval);
-            let elemen = document.querySelector(".statuskirimserveranake_" + i);
-            elemen.style.width = 1 + "px";
-            elemen.style.width = "100%";
+        let count = i + 1;
+        let wd = (count / objekdikirim.length) * 100;
+        ld_atas.style.width = `${wd}%`;
+        ld_atas.innerHTML = `${wd.toFixed(0)}%`;
+        await generatoreditsiswa(objekdikirim, i, kelas)
+        // await fetch(linkDataUserWithIdss + "&action=usulanperbaikandata")
+        //     .then(m => m.json())
+        //     .then(k => {
+        //         clearInterval(idinterval);
 
-            elemen.innerHTML = "100%";
-            i++
-        }, 10000);
+        //         elemen.style.width = "90%";
+        //         elemen.innerHTML = "100%";
+        //         console.log(i);
+        //     }).catch(er => {
+        //         console.log(er);
+        //         elemen.style.width = "90%";
+
+        //         elemen.innerHTML = "gagal";
+
+        //     })
+
+        i++
     }
-    while (i < jsondatasiswa.length)
+    while (i < objekdikirim.length)
+    ld_atas.innerHTML = "100% Lengkap"
     // let selaktif = document.querySelector(".statuskirimserveranake_0");
     // selaktif.innerHTML = `<div class="warnaeka siswake_0" style="width=1%;transition: width 2s"></div>`
     // 
@@ -618,7 +662,9 @@ const barusimpanserverdatasiswa = async () => {
     // await fetch(ling + "&action=usulanperbaikandata"){
 
 
-    arraydatasiswadariimport = []
+    arraydatasiswadariimport = [];
+    updatesetelahverifikasidaftarulang()
+
 }
 
 const animasimove = (el) => {
@@ -626,15 +672,15 @@ const animasimove = (el) => {
     var width = 1;
     idinterval = setInterval(frame, 10);
     function frame() {
-        if (width >= 800) {
+        if (width >= 8000) {
             clearInterval(idinterval);
             // elem.style.width = 0;
             // elem.style.width = 90 + '%';
             // elem.innerHTML = `100%`;
         } else {
-            width++;
+            width += 10;
             elem.style.width = width / 10 + '%';
-            elem.innerHTML = (width / 10).toFixed(0) + "% ";
+            elem.innerHTML = (width / 105).toFixed(0) + "% ";
         }
     }
 
@@ -683,6 +729,8 @@ const prosesimportdasasiswa = (data, idelemen) => {
                 } else if (angkadistring.indexOf(key) > -1) {
                     objek[key] = excelRows[i][key];//.replace("'", "");
 
+                } else if (key == "pd_tanggallahir") {
+                    objek[key] = tanggalfull(new Date(excelRows[i][key]));
                 } else {
                     objek[key] = excelRows[i][key];
                 }
@@ -742,8 +790,9 @@ const prosesimportdasasiswa = (data, idelemen) => {
 }
 
 
-async function generatoreditsiswa(pararrayobjek, y) {
+async function generatoreditsiswa(pararrayobjek, y, elemen) {
 
+    let td = document.querySelector(elemen);
     let namatabel = document.getElementById("myTable").getElementsByTagName("tbody")[0].rows[y];
     let xid = pararrayobjek[y].id, xjenjang = idJenjang, xnama_rombel = idNamaKelas,
         xnis = namatabel.cells[2].innerHTML,
@@ -808,10 +857,18 @@ async function generatoreditsiswa(pararrayobjek, y) {
             body: databelumkirim
         }).then(m => m.json())
             .then(f => {
-
+                console.log(f);
+                clearInterval(idinterval);
+                td.style.width = "90%";
+                td.innerHTML = "100%";
 
             })
-            .catch(er => alert(er));
+            .catch(er => {
+                console.log(er);
+                clearInterval(idinterval);
+                td.style.width = "90%";
+                td.innerHTML = "Gagal"
+            });
     } else {
         await fetch(url_absensiswa + "?action=daftarulangduasheet", {
             method: "post",
@@ -821,17 +878,22 @@ async function generatoreditsiswa(pararrayobjek, y) {
             .then(r => {
                 //infoloadingljk.innerHTML = r.result;
                 // console.log(r)
-                let datasiswakelasini = r.datasiswa.filter(s => s.nama_rombel == idNamaKelas && s.aktif == "aktif");
-                // console.log(datasiswakelasini)
-                pararrayobjek = datasiswakelasini;
-                localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(datasiswakelasini));
+                // let datasiswakelasini = r.datasiswa.filter(s => s.nama_rombel == idNamaKelas && s.aktif == "aktif");
+                // // console.log(datasiswakelasini)
+                // pararrayobjek = datasiswakelasini;
+                // localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(datasiswakelasini));
+                clearInterval(idinterval);
+                td.style.width = "90%";
+                td.innerHTML = "100%";
 
-                tabeldatakelassaya();
-                alert("Dengan fitur perubahan yang Anda lakukan, Status verifikasi sesuai dengan status verifikasi sebelumnya.")
+
             })
             .catch(er => {
                 console.log(er);
-                infoloadingljk.innerHTML = "Terjadi kesalahan";
+                clearInterval(idinterval);
+                td.style.width = "90%";
+                td.innerHTML = "Gagal"
+                // infoloadingljk.innerHTML = "Terjadi kesalahan";
             })
     }
 
@@ -2716,7 +2778,7 @@ const validasiajuandata = async (tokensiswa) => {
 
 };
 const updatesetelahverifikasidaftarulang = async () => {
-
+    await updateDatasiswa()
     document.querySelector(".pesankhusussiswa").innerHTML = `<p class="w3-center"><img src="/img/barloading.gif"/></p>`;
     await fetch(linkDataUserWithIdss + "&action=usulanperbaikandata")
         .then(m => m.json())

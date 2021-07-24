@@ -11,7 +11,32 @@ let REKAPAbsen = {}, OBJEKHariEfektif;
 let obDataRekapKehadiran;
 jsonlocalstorage = JSON.parse(localStorage.getItem("inst_id"));
 let jsonabsenkelasperbulan = [];
+let idinterval;
+let stoploadingtopbar;
+const loadingtopbarin = (el) => {
+    var elem = document.querySelector("." + el);
+    elem.className = elem.className.replace("w3-hide", "");
+    elem.style.width = "1px";
+    var width = 1;
+    stoploadingtopbar = setInterval(frame2, 10);
+    function frame2() {
+        if (width >= 1000000) {
+            clearInterval(stoploadingtopbar);
+            // elem.style.width = 0;
+            // elem.style.width = 90 + '%';
+            // elem.innerHTML = `100%`;
+        } else {
+            width += 100;
+            elem.style.width = width / 1000 + '%';
+            //elem.innerHTML = (width / 105).toFixed(0) + "% ";
+        }
+    }
+}
 (async function () {
+    var elem = document.querySelector(".loadingtopbar");
+    elem.style.width = "1px";
+    let divlod;
+    loadingtopbarin("loadingtopbar");
     OBJEKHariEfektif = {
         "Januari": 0, "Februari": 0, "Maret": 0,
         "April": 0, "Mei": 0, "Juni": 0, "Juli": 0, "Agustus": 0,
@@ -48,19 +73,21 @@ let jsonabsenkelasperbulan = [];
     url_absenkaldik = jsonlocalstorage.url_dataabsen + "?action=datakaldik&idss=" + jsonlocalstorage.ss_dataabsen
     let idInstansi = JSON.parse(localStorage.getItem("inst_id"));
     idNamaSekolah = idInstansi.namainstansi;
-    loadingAPI.style.display = "block";
-    infoloadingAPI.innerHTML = "Sedang memproses Kalender Pendidikan ..."
+    // loadingAPI.style.display = "block";
+    // infoloadingAPI.innerHTML = "Sedang memproses Kalender Pendidikan ..."
+    //
     await fetch(url_absenkaldik).then(m => m.json()).then(k => {
         localStorage.setItem('Kaldik', JSON.stringify(k.records));
         localStorage.setItem('TglLibur', JSON.stringify(k.stringTgl))
 
         arrayStringTglLibur = k.stringTgl.map(m => Object.keys(m)).reduce((a, b) => a.concat(b));
         arrayKetLibur = k.stringTgl.map(m => Object.keys(m).map(n => m[n])).reduce((a, b) => a.concat(b));
-        loadingAPI.style.display = "none";
-        infoloadingAPI.innerHTML = ""
+        // loadingAPI.style.display = "none";
+        // infoloadingAPI.innerHTML = "";
+
     }).catch(er => {
         console.log("muat ulang: " + er);
-        infoloadingAPI.innerHTML = "Ups, maaf. Terjadi Kesalahan... Coba lagi ya ...."
+        //infoloadingAPI.innerHTML = "Ups, maaf. Terjadi Kesalahan... Coba lagi ya ...."
     });
 
     namasekolah.innerHTML = namauser;
@@ -85,8 +112,9 @@ let jsonabsenkelasperbulan = [];
     gmpbuatselectrombeol.appendChild(teks)
     gmppilihrombel.innerHTML = "";
     gmppilihrombel.appendChild(gmpbuatselectrombeol);
-    loadingAPI.style.display = "block";
-    infoloadingAPI.innerHTML = "Sedang memproses Identitas Guru"
+    // loadingAPI.style.display = "block";
+    // infoloadingAPI.innerHTML = "Sedang memproses Identitas Guru"
+
     await fetch(linkDataUserWithIdss + "&action=profilguru&id=" + idguru)
         .then(m => m.json())
         .then(k => {
@@ -99,16 +127,27 @@ let jsonabsenkelasperbulan = [];
                 gmpbuatselectrombeol.appendChild(teks)
                 gmppilihrombel.appendChild(gmpbuatselectrombeol);
             }
-            loadingAPI.style.display = "";
-            infoloadingAPI.innerHTML = ""
+            // loadingAPI.style.display = "";
+            // infoloadingAPI.innerHTML = "";
+
         })
         .catch(er => {
-            loadingAPI.style.display = "block";
-            infoloadingAPI.innerHTML = "Ups, Terjadi Kesalahan. Silakan coba lagi nanti. <br>Kode Eror: " + er
-        })
+            console.log(er)
+            // loadingAPI.style.display = "block";
+            // infoloadingAPI.innerHTML = "Ups, Terjadi Kesalahan. Silakan coba lagi nanti. <br>Kode Eror: " + er
+        });
+    clearInterval(stoploadingtopbar);
+    divlod = document.querySelector(".loadingtopbar");
+    divlod.style.width = "100%";
+    setTimeout(() => {
+        divlod.style.width = "1px"
+        divlod.className += " w3-hide";
+
+    }, 3000);
 })();
 
 const fngmppilihrombel = async () => {
+    loadingtopbarin("loadingtopbar");
     let x = document.getElementById("gmppilihrombel").selectedIndex;
     let y = document.getElementById("gmppilihrombel").options;
     ruangankelas = y[x].value
@@ -121,22 +160,31 @@ const fngmppilihrombel = async () => {
         jsondatasiswa = JSON.parse(localStorage.getItem("datasiswa_" + ruangankelas)).datasiswa;
         tabeldatakelassaya();
     } else {
-        loadingAPI.style.display = "block";
-        infoloadingAPI.innerHTML = "Sedang memproses Data Siswa Kelas " + ruangankelas + ", Mohon tunggu....";
+        // loadingAPI.style.display = "block";
+        // infoloadingAPI.innerHTML = "Sedang memproses Data Siswa Kelas " + ruangankelas + ", Mohon tunggu....";
         await fetch(linkDataUserWithIdss + "&action=datasiswaaktif&kelas=" + ruangankelas)
             .then(m => m.json())
             .then(k => {
-                loadingAPI.style.display = "none";
-                infoloadingAPI.innerHTML = ""
+
                 jsondatasiswa = k.datasiswa;
                 localStorage.setItem("datasiswa_" + ruangankelas, JSON.stringify(k));
                 tabeldatakelassaya();
             }).catch(er => {
                 console.log("muat ulang lagi: " + er);
-                infoloadingAPI.innerHTML = "Maaf, Terjadi Kesalahan. Coba lagi nanti. <br>Kode error : " + er + " <br>row: 231"
+                // infoloadingAPI.innerHTML = "Maaf, Terjadi Kesalahan. Coba lagi nanti. <br>Kode error : " + er + " <br>row: 231"
             });;
-    }
+    };
+
+
     await buattabelrekapsemester();
+    clearInterval(stoploadingtopbar);
+    divlod = document.querySelector(".loadingtopbar");
+    divlod.style.width = "100%";
+    setTimeout(() => {
+        divlod.style.width = "1px"
+        divlod.className += " w3-hide";
+
+    }, 3000);
 }
 
 const updateDatasiswa = () => {
@@ -1127,3 +1175,22 @@ const cekDiskLocalStorage = async () => {
         console.log(`You can write up to ${remaining} more bytes.`);
     }
 }
+
+const animasimove = (el) => {
+    var elem = document.querySelector("." + el);
+    var width = 1;
+    idinterval = setInterval(frame, 10);
+    function frame() {
+        if (width >= 8000) {
+            clearInterval(idinterval);
+            // elem.style.width = 0;
+            // elem.style.width = 90 + '%';
+            // elem.innerHTML = `100%`;
+        } else {
+            width += 10;
+            elem.style.width = width / 10 + '%';
+            elem.innerHTML = (width / 105).toFixed(0) + "% ";
+        }
+    }
+
+};

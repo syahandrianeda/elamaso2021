@@ -109,6 +109,12 @@
         <span class="w3-bar-item w3-right">e-Lamaso Guru</span>
     </div>
 
+    <div class="w3-bar w3-top w3-tiny">
+        <div class="w3-teal loadingtopbar w3-hide" style="width:1px;margin-top:45px;height: 5px;transition: width 2s">
+            &nbsp;
+        </div>
+    </div>
+
 
     <!-- Sidebar/menu -->
     <nav class="w3-sidebar  w3-animate-left tesbody " style="z-index:3;width:300px;display:none" id="mySidebar">
@@ -218,17 +224,11 @@
                     <option value="1">Tapel 2020/2021 Semester 2</option>
                 </select>
             </h5>
-
-
-
         </header>
-        <!-- <button class="w3-hover-border-light-blue" onclick="cekElementidRekapTabel()">Cek Local Storage</button> -->
         <div class="w3-main w3-margin w3-animate-zoom w3-card-4 w3-padding" style="background-color:rgb(250, 234, 8)">
             <div class="pesankhususkepsek w3-card w3-white w3-margin-top w3-container w3-round-large w3-hide">
-
             </div>
             <div class="pesankhusussiswa w3-card w3-white w3-margin-top w3-container w3-round-large w3-hide">
-
             </div>
         </div>
 
@@ -296,7 +296,7 @@
 
 
         </div>
-        <div id="batasaksesguru">...</div>
+        <div id="batasaksesguru"></div>
 
         <div class="w3-container" id="datakelassaya">
 
@@ -442,7 +442,8 @@
                 <!-- // <h3>Bulanan</h3> -->
                 <h3><span id="bulanrekap">Silakan Pilih Bulannya....</span></h3>
                 PILIH BULAN :
-                <select id="pilihbulanrekap" style="width:30%" onchange="pilihopsibulanrekap()">
+                <select id="pilihbulanrekap" class="w3-select warnaeka" style="width:80%"
+                    onchange="pilihopsibulanrekap()">
                     <option id="pilih" selected>Pilih Bulan</option>
                     <option id="Juli" value="2020-07-01">Juli 2020</option>
                     <option id="Agustus" value="2020-08-01">Agustus 2020 </option>
@@ -477,8 +478,11 @@
             <div id="absenrekap" class="tabcontent">
                 <h3>Rekapitulasi Absensi</h3>
                 (Untuk melihat data rekap, silakan cek di Rekap Bulanan)
-
-                <div id="tabelabsenrekap" style="overflow-x:auto">tabeldatakelasrekap</div>
+                <div id="scrolltabelabsenrekap"
+                    style="border: none 0px red;overflow-x: scroll;position:sticky;position:-webkit-sticky;top:25px;">
+                    <div id="isiscrolltabelabsenrekap" style="width:100px;height:20px">.</div>
+                </div>
+                <div id="tabelabsenrekap" style="overflow-x: scroll; overflow-y: hidden;">tabeldatakelasrekap</div>
 
             </div>
         </div>
@@ -593,176 +597,222 @@
                         <input type="text" name="kuncikd" id="kuncikd" placeholder="Kunci KD otomatis muncul" />
                         <br>
                         <br>
-                        <div class="tomboleditor w3-light-gray w3-card-4 w3-padding w3-round-xlarge w3-small">
-                            TEKS EDITOR:<span class="w3-button bukatekseditor" title="Buka"><i
-                                    class="fa fa-angle-double-down w3-medium"></i></span>
-                            MATEMATIKA:<span class="w3-button bukatekseditor2" title="Buka"><i
-                                    class="fa fa-angle-double-down w3-medium"></i></span>
-                            ELAMASO EDITOR:<span class="w3-button bukatekseditor3" title="Buka"><i
-                                    class="fa fa-angle-double-down w3-medium"></i></span>
-                            <span class="fn7undo fa fa-undo w3-blue w3-button" title="undo"></span>
-                            <span class="fn7redo fa fa-repeat w3-deep-purple w3-button" title="redo"></span>
+                        <div class="w3-row-padding">
 
-                            <div class="divtekseditor w3-hide">
+                            <div class="tomboleditor w3-col l12  w3-light-gray w3-card-4 w3-padding w3-round-xlarge w3-tiny"
+                                style="position: sticky; position: -webkit-sticky;top:43px;transition: .2s;">
+                                TEKS EDITOR:<span class=" w3-button bukatekseditor" title="Buka"><i
+                                        class="fa fa-angle-double-down w3-medium"></i></span>
+                                MATEMATIKA:<span class="w3-button bukatekseditor2" title="Buka"><i
+                                        class="fa fa-angle-double-down w3-medium"></i></span>
+                                ELAMASO EDITOR:<span class="w3-button bukatekseditor3" title="Buka"><i
+                                        class="fa fa-angle-double-down w3-medium"></i></span>
+                                <span class="fn7undo fa fa-undo w3-blue w3-button" title="undo"></span>
+                                <span class="fn7redo fa fa-repeat w3-deep-purple w3-button" title="redo"></span>
 
-                                <sup>Drag teksnya, lalu klik</sup><br>
-                                <i class="fa fa-align-center w3-hover-blue w3-button w3-border w3-border-orange ed_ratatengah"
-                                    title="Rata Tengah"></i>
-                                <i class="fa fa-align-justify w3-hover-blue w3-button w3-border w3-border-orange ed_ratapinggir"
-                                    title="Rata Pinggir"></i>
-                                <i class="fa fa-align-left w3-hover-blue w3-button w3-border w3-border-orange ed_ratakiri"
-                                    title="Rata kiri"></i>
-                                <i class="fa fa-align-right w3-hover-blue w3-button w3-border w3-border-orange ed_ratakanan"
-                                    title="Rata kanan"></i>
+                                <div class="divtekseditor w3-hide">
 
-                                <i class="fa fa-bold w3-hover-pale-green w3-button w3-border w3-border-blue ed_tebalkan"
-                                    title="Tebalkan"></i>
-                                <i class="fa fa-italic w3-hover-pale-green w3-button w3-border w3-border-blue ed_miringkan"
-                                    title="Miringkan"></i>
-                                <i class="fa fa-underline w3-hover-pale-green w3-button w3-border w3-border-blue ed_garisbawah"
-                                    title="Garis Bawah"></i>
+                                    <sup>Drag teksnya, lalu klik</sup><br>
+                                    <i class="fa fa-align-center w3-hover-blue w3-button w3-border w3-border-orange ed_ratatengah"
+                                        title="Rata Tengah"></i>
+                                    <i class="fa fa-align-justify w3-hover-blue w3-button w3-border w3-border-orange ed_ratapinggir"
+                                        title="Rata Pinggir"></i>
+                                    <i class="fa fa-align-left w3-hover-blue w3-button w3-border w3-border-orange ed_ratakiri"
+                                        title="Rata kiri"></i>
+                                    <i class="fa fa-align-right w3-hover-blue w3-button w3-border w3-border-orange ed_ratakanan"
+                                        title="Rata kanan"></i>
 
-                                <i class="fa w3-hover-purple w3-button w3-border w3-border-red ed_semuakapital"
-                                    title="Semua Kapital">AA</i>
-                                <i class="fa w3-hover-purple w3-button w3-border w3-border-red ed_semuahurufkecil"
-                                    title="Semua Huruf Kecil">aa</i>
-                                <i class="fa w3-hover-purple w3-button w3-border w3-border-red ed_tiapawalkatakapital"
-                                    title="Tiap awal kata kapital">Aa</i>
-                                <i class="fa fa-superscript w3-hover-blue w3-button w3-border w3-border-orange ed_pangkat"
-                                    title="Pangkat"></i>
-                                <i class="fa fa-subscript w3-hover-blue w3-button w3-border w3-border-orange ed_subtitle"
-                                    title="Subtitle"></i>
+                                    <i class="fa fa-bold w3-hover-pale-green w3-button w3-border w3-border-blue ed_tebalkan"
+                                        title="Tebalkan"></i>
+                                    <i class="fa fa-italic w3-hover-pale-green w3-button w3-border w3-border-blue ed_miringkan"
+                                        title="Miringkan"></i>
+                                    <i class="fa fa-underline w3-hover-pale-green w3-button w3-border w3-border-blue ed_garisbawah"
+                                        title="Garis Bawah"></i>
 
-                                <i class="fa fa-list-ol w3-hover-yellow  w3-button w3-border w3-border-black ed_listnomor"
-                                    title="List Nomor">1</i>
-                                <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listabjadkapital"
-                                    title="List Abjad Kapital">A</i>
-                                <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listabjadnonkapital"
-                                    title="List Abjad Nonkapital">a</i>
-                                <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listbulet"
-                                    title="List bulet">o</i>
-                                <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listcustom"
-                                    title="List bulet">Custom</i>
+                                    <i class="fa w3-hover-purple w3-button w3-border w3-border-red ed_semuakapital"
+                                        title="Semua Kapital">AA</i>
+                                    <i class="fa w3-hover-purple w3-button w3-border w3-border-red ed_semuahurufkecil"
+                                        title="Semua Huruf Kecil">aa</i>
+                                    <i class="fa w3-hover-purple w3-button w3-border w3-border-red ed_tiapawalkatakapital"
+                                        title="Tiap awal kata kapital">Aa</i>
+                                    <i class="fa fa-superscript w3-hover-blue w3-button w3-border w3-border-orange ed_pangkat"
+                                        title="Pangkat"></i>
+                                    <i class="fa fa-subscript w3-hover-blue w3-button w3-border w3-border-orange ed_subtitle"
+                                        title="Subtitle"></i>
+
+                                    <i class="fa fa-list-ol w3-hover-yellow  w3-button w3-border w3-border-black ed_listnomor"
+                                        title="List Nomor">1</i>
+                                    <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listabjadkapital"
+                                        title="List Abjad Kapital">A</i>
+                                    <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listabjadnonkapital"
+                                        title="List Abjad Nonkapital">a</i>
+                                    <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listbulet"
+                                        title="List bulet">o</i>
+                                    <i class="fa fa-list-ol w3-hover-yellow w3-button w3-border w3-border-black ed_listcustom"
+                                        title="List bulet">Custom</i>
+
+                                </div>
+                                <div class="divtekseditor2 w3-hide">
+                                    <sup>Drag teksnya, lalu klik </sup><br>
+                                    <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pecahanbiasa"
+                                        title="Pecahan Biasa"><img src="/img/pecahanbiasa.PNG" alt="simbol" /></span>
+                                    <span
+                                        class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pecahancampuran"
+                                        title="Pecahan campuran"><img src="/img/pecahancampuran.PNG"
+                                            alt="simbol" /></span>
+                                    <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pangkatn"
+                                        title="Pangkat"><img src="/img/pangkat.PNG" alt="simbol" /></span>
+                                    <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_akarkuadrat"
+                                        title="Akar Kuadrat"><img src="/img/akarkuadrat.PNG" alt="simbol" /></span>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_akarpangkattiga"
+                                        title="Akar pangkat tiga"><img src="/img/akarkubik.PNG" alt="simbol" /></i><br>
+                                    <sup>Taruh kursornya, lalu klik </sup><br>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_kali"
+                                        title="Kali">&times;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_bagi"
+                                        title="bagi">&div;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_sudut"
+                                        title="Sudut">&ang;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_lebihbesarsamadengan"
+                                        title="Lebih Besar sama dengan">&ge;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_lebihkecilsamadengan"
+                                        title="Lebih kecil sama dengan">&le;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_plusminus"
+                                        title="Kurang Lebih">&PlusMinus;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_derajatsuhu"
+                                        title="Derajat/Suhu">&#176;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_ceklis"
+                                        title="Ceklis">&checkmark;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pi"
+                                        title="Pi ">&#8508;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkiri"
+                                        title="Panah kiri">&larr;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkanan"
+                                        title="Panah kanan">&rarr;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkanandobel"
+                                        title="Panah kanan dobel">&DoubleLongRightArrow;</i>
+                                    <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkiridobel"
+                                        title="Panah Kiri dobel">&DoubleLongLeftArrow;</i>
+                                </div>
+                                <div class="divtekseditor3 w3-hide w3-small">
+                                    <div
+                                        style="display:inline-block;padding:1px;border:1px solid blue;background-color:magenta">
+                                        PG (4 opsi s/d D):<br> No Soal <input type="number" min="1" max="50" value="1"
+                                            class="in_pgd" style="width:50px" />
+                                        <i class="fa  w3-hover-blue w3-button w3-dark-grey w3-border w3-border-orange ed_pgd"
+                                            title="PG Opsi s/d D">PG ABCD</i>
+                                    </div>
+                                    <div
+                                        style="display:inline-block;padding:1px;border:1px solid blue;background-color:lightgreen">
+                                        PG (3 opsi s/d C): <br>No Soal <input type="number" min="1" max="50" value="1"
+                                            class="in_pgc" style="width:50px" />
+                                        <i class="fa  w3-hover-blue w3-button w3-border  w3-dark-grey w3-border-orange ed_pgc"
+                                            title="PG Opsi s/d D">PG ABC</i>
+                                    </div>
+                                    <div
+                                        style="display:inline-block;padding:1px;border:1px solid blue;background-color:lightblue">
+                                        ESSAY: <br>No Soal <input type="number" min="1" max="50" value="1"
+                                            class="in_essay" style="width:50px" />
+                                        <i class="fa  w3-hover-blue w3-button w3-border w3-border-orange ed_essay"
+                                            title="PG Opsi s/d D">Essay</i>
+                                    </div>
+                                    <div
+                                        style="display:inline-block;padding:1px;border:1px solid blue;background-color:lavenderblush">
+                                        PG (OPSI TABEL): <br>No
+                                        Soal <input type="number" class="in_pgtabel" min="1" max="50" value="1"
+                                            style="width:50px" />
+                                        <i class="fa  w3-hover-blue w3-button w3-border w3-border-orange ed_pgtabel"
+                                            title="PG Opsi s/d D">OPSI TABEL</i>
+                                    </div>
+                                    <div
+                                        style="display:inline-block;padding:1px;border:1px solid blue;background-color: aqua;">
+                                        Tabel: <input type="checkbox" checked id="ed_headertabel" /><label
+                                            for="ed_headertabel">
+                                            Header:</label><br>
+                                        <i class="fa fa-table fa-list-ol w3-hover-pale-green w3-button w3-border w3-border-red ed_tabel"
+                                            title="Tabel"></i>
+                                    </div>
+                                    <div
+                                        style="display:inline-block;padding:1px;border:1px solid blue;background-color: aqua;">
+                                        Lainnya:<br>
+                                        <i class="fa fa-text-width w3-hover-pale-green w3-button w3-border w3-border-red ed_satubariskan"
+                                            title="Jadikan satubaris"></i>
+                                        <i class="fa fa-youtube  w3-hover-pale-green w3-button w3-border w3-border-red ed_youtube"
+                                            title="Youtube"></i>
+                                        <i class="fa w3-hover-pale-green w3-button w3-border w3-border-red ed_pemisahkunci"
+                                            title="Pemisah Kunci KD/jawaban">&lt;||&gt;</i>
+                                    </div>
+                                    <div
+                                        style="display:inline-block;text-align:center;padding:1px;border:1px solid rgb(9, 255, 0);background-color: aqua;">
+                                        Sebaran KD dari Tabel(sumber Ms. Word):<br>
+                                        <i class="fa fa-check-circle w3-red w3-hover-pale-blue w3-button w3-border w3-border-red ed_sebarankddaritabel"
+                                            title="Sebaran KD dari Tabel"></i>
+
+                                    </div>
+
+                                </div>
+                                <br />
+                                <div class="w3-tiny">
+                                    <span class="fn7cekpreview w3-green w3-button">CEK PREVIEW</span>
+                                    <span class="fn7petunjukuploadmateri w3-blue w3-button">PETUNJUK UPLOAD
+                                        MATERI</span>
+                                    <span class="fn7gambar w3-khaki w3-button">UPLOAD GAMBAR</span>
+                                    <span class="fn7video w3-brown w3-button">UPLOAD VIDEO/FILE LAINNYA</span>
+                                    <span class="fn7simpandraft w3-red w3-button">SIMPAN DRAFT</span>
+                                    <span class="fn7taruhdraft w3-dark-grey w3-button">TARUH DRAFT</span>
 
 
-
-
-
-
+                                </div>
+                            </div>
+                            <!-- sampai disini -->
+                            <div class="w3-col coltextarea l9">
+                                <textarea type="text" id="idmateri" name="idmateri"
+                                    placeholder="Silakan buat materi di sini" style="height:700px"
+                                    class=" w3-border-purple  w3-round-xlarge"></textarea>
 
                             </div>
-                            <div class="divtekseditor2 w3-hide">
-                                <sup>Drag teksnya, lalu klik </sup><br>
-                                <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pecahanbiasa"
-                                    title="Pecahan Biasa"><img src="/img/pecahanbiasa.PNG" alt="simbol" /></span>
-                                <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pecahancampuran"
-                                    title="Pecahan campuran"><img src="/img/pecahancampuran.PNG" alt="simbol" /></span>
-                                <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pangkatn"
-                                    title="Pangkat"><img src="/img/pangkat.PNG" alt="simbol" /></span>
-                                <span class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_akarkuadrat"
-                                    title="Akar Kuadrat"><img src="/img/akarkuadrat.PNG" alt="simbol" /></span>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_akarpangkattiga"
-                                    title="Akar pangkat tiga"><img src="/img/akarkubik.PNG" alt="simbol" /></i><br>
-                                <sup>Taruh kursornya, lalu klik </sup><br>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_kali"
-                                    title="Kali">&times;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_bagi"
-                                    title="bagi">&div;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_sudut"
-                                    title="Sudut">&ang;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_lebihbesarsamadengan"
-                                    title="Lebih Besar sama dengan">&ge;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_lebihkecilsamadengan"
-                                    title="Lebih kecil sama dengan">&le;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_plusminus"
-                                    title="Kurang Lebih">&PlusMinus;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_derajatsuhu"
-                                    title="Derajat/Suhu">&#176;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_ceklis"
-                                    title="Ceklis">&checkmark;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_pi"
-                                    title="Pi ">&#8508;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkiri"
-                                    title="Panah kiri">&larr;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkanan"
-                                    title="Panah kanan">&rarr;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkanandobel"
-                                    title="Panah kanan dobel">&DoubleLongRightArrow;</i>
-                                <i class="fa w3-hover-blue w3-button w3-border w3-border-orange ed_panahkiridobel"
-                                    title="Panah Kiri dobel">&DoubleLongLeftArrow;</i>
+
+                            <div class="w3-col l3 w3-right w3-card-4 w3-container w3-round-large tekeditorpg w3-margin-top w3-light-grey"
+                                style="position: sticky;position:-webkit-sticky;top:47px;z-index: 3;">
+                                PENGATURAN KUNCI JAWABAN
+                                <br /><br />
+                                Saat ini belum terdeteksi adanya nomor soal Pilihan Ganda diketikan Anda. Nomor soal dan
+                                pilihan opsi jawabannya akan muncul otomatis. Anda tinggal memilih Opsi Jawaban di
+                                tiap-tiap opsi yang terdeteksi sebagai KUNCI JAWABAN soal PG Anda.
+                                <br /><br />
+                                Saran: Pastikan Anda menyelesaikan seluruh pengeditan konten materi sebelum memilih
+                                kunci jawaban.
+                                <table class="w3-table-all tabelpilihkuncipg">
+                                    <tr>
+                                        <td>PG 1</td>
+                                        <td>A B C D</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PG 2</td>
+                                        <td>A B C D</td>
+                                    </tr>
+
+                                </table>
                             </div>
-                            <div class="divtekseditor3 w3-hide w3-small">
-                                <div
-                                    style="display:inline-block;padding:1px;border:1px solid blue;background-color:magenta">
-                                    PG (4 opsi s/d D):<br> No Soal <input type="number" min="1" max="50" value="1"
-                                        class="in_pgd" style="width:50px" />
-                                    <i class="fa  w3-hover-blue w3-button w3-dark-grey w3-border w3-border-orange ed_pgd"
-                                        title="PG Opsi s/d D">PG ABCD</i>
-                                </div>
-                                <div
-                                    style="display:inline-block;padding:1px;border:1px solid blue;background-color:lightgreen">
-                                    PG (3 opsi s/d C): <br>No Soal <input type="number" min="1" max="50" value="1"
-                                        class="in_pgc" style="width:50px" />
-                                    <i class="fa  w3-hover-blue w3-button w3-border  w3-dark-grey w3-border-orange ed_pgc"
-                                        title="PG Opsi s/d D">PG ABC</i>
-                                </div>
-                                <div
-                                    style="display:inline-block;padding:1px;border:1px solid blue;background-color:lightblue">
-                                    ESSAY: <br>No Soal <input type="number" min="1" max="50" value="1" class="in_essay"
-                                        style="width:50px" />
-                                    <i class="fa  w3-hover-blue w3-button w3-border w3-border-orange ed_essay"
-                                        title="PG Opsi s/d D">Essay</i>
-                                </div>
-                                <div
-                                    style="display:inline-block;padding:1px;border:1px solid blue;background-color:lavenderblush">
-                                    PG (OPSI TABEL): <br>No
-                                    Soal <input type="number" class="in_pgtabel" min="1" max="50" value="1"
-                                        style="width:50px" />
-                                    <i class="fa  w3-hover-blue w3-button w3-border w3-border-orange ed_pgtabel"
-                                        title="PG Opsi s/d D">OPSI TABEL</i>
-                                </div>
-                                <div
-                                    style="display:inline-block;padding:1px;border:1px solid blue;background-color: aqua;">
-                                    Tabel: <input type="checkbox" checked id="ed_headertabel" /><label
-                                        for="ed_headertabel">
-                                        Header:</label><br>
-                                    <i class="fa fa-table fa-list-ol w3-hover-pale-green w3-button w3-border w3-border-red ed_tabel"
-                                        title="Tabel"></i>
-                                </div>
-                                <div
-                                    style="display:inline-block;padding:1px;border:1px solid blue;background-color: aqua;">
-                                    Lainnya:<br>
-                                    <i class="fa fa-text-width w3-hover-pale-green w3-button w3-border w3-border-red ed_satubariskan"
-                                        title="Jadikan satubaris"></i>
-                                    <i class="fa fa-youtube  w3-hover-pale-green w3-button w3-border w3-border-red ed_youtube"
-                                        title="Youtube"></i>
-                                    <i class="fa w3-hover-pale-green w3-button w3-border w3-border-red ed_pemisahkunci"
-                                        title="Pemisah Kunci KD/jawaban">&lt;||&gt;</i>
-                                </div>
-                                <div
-                                    style="display:inline-block;text-align:center;padding:1px;border:1px solid rgb(9, 255, 0);background-color: aqua;">
-                                    Sebaran KD dari Tabel(sumber Ms. Word):<br>
-                                    <i class="fa fa-check-circle w3-red w3-hover-pale-blue w3-button w3-border w3-border-red ed_sebarankddaritabel"
-                                        title="Sebaran KD dari Tabel"></i>
 
-                                </div>
+                            <div
+                                class="w3-col l9  w3-left w3-card-4 w3-container w3-round-large tekesebarankd w3-margin-top w3-light-grey">
+                                SEBARAN KD
+                                <table class="w3-table-all tabelsebarankd">
+                                    <tr>
+                                        <td>MAPEL</td>
+                                        <td>KD</td>
+                                        <td>NOMOR SOAL</td>
+                                    </tr>
+                                    <tr>
+                                        <td>PKN</td>
+                                        <td>3.1</td>
+                                        <td>1, 2, 3, 4, 5, 6</td>
+                                    </tr>
 
-                            </div>
-                            <br />
-                            <div class="w3-tiny">
-                                <span class="fn7cekpreview w3-green w3-button">CEK PREVIEW</span>
-                                <span class="fn7petunjukuploadmateri w3-blue w3-button">PETUNJUK UPLOAD MATERI</span>
-                                <span class="fn7gambar w3-khaki w3-button">UPLOAD GAMBAR</span>
-                                <span class="fn7video w3-brown w3-button">UPLOAD VIDEO/FILE LAINNYA</span>
-                                <span class="fn7simpandraft w3-red w3-button">SIMPAN DRAFT</span>
-                                <span class="fn7taruhdraft w3-dark-grey w3-button">TARUH DRAFT</span>
-
-
+                                </table>
                             </div>
                         </div>
-                        <textarea type="text" id="idmateri" name="idmateri" placeholder="Silakan buat materi di sini"
-                            style="width:100%; height:700px" class=" w3-border-purple  w3-round-xlarge"></textarea>
-
 
                     </fieldset>
                     <fieldset class="w3-hide">
@@ -791,10 +841,14 @@
                 <div id="loadketKD"></div>
 
 
-                <button class="wa w3-deep-purple w3-hover-aqua" id="tombolpublikasikan"
-                    onclick="publikasikanmateribaru()">PUBLIKASIKAN</button>
+                <div class="w3-margin-top">
+                    <button class="wa w3-deep-purple w3-hover-aqua" id="tombolpublikasikan"
+                        onclick="publikasikanmateribaru()">PUBLIKASIKAN</button>
 
+                </div>
 
+                <div id="divbantu_kuncijawaban" class="w3-hide">TEEES DIVBANTU KUNCI JAWABAN</div>
+                <div id="divbantu_sebarankd" class="w3-hide">TES DIVBANTU SEBARAN KD</div>
 
 
 
@@ -1258,7 +1312,7 @@
                         <button class="w3-button tabtabrekappts">Rekap PTS</button>
                         <button class="w3-button tabtabrekappaspak">Rekap PAS/PAK</button>
                     </div>
-                    <div id="scrollatas">
+                    <div id="scrollatas" style="position:sticky;top:47px;">
                         <div id="isiscrollatas">.</div>
                     </div>
                     <div style="overflow-x: scroll; overflow-y: hidden;" id="tabeldatanilaiki3">
